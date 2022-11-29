@@ -36,122 +36,103 @@ public void sousmarin() {
 		int l = (int)(Math.random() * 15);
 		int c = (int)(Math.random() * 15);
 		
-		if(l<0 || c<0 || l>ligne || c>col) {
-			System.out.print("Erreur A");
-			return;
-		}
 			if(grille[l][c] == '.') {
 				grille[l][c] = '0';
-			}
-			else {
-				System.out.print("Erreur, emplacement déjà pris");
 			}
 	}
 	
 	public void destroyer() {
 		
-		int l = (int)(Math.random() * 15);
-        int c = (int)(Math.random() * 12);
         int p = (int)(Math.random() * 2);
         
-        int l1 = (int)(Math.random() * 12);
-        int c1 = (int)(Math.random() * 15);
-			
-		if(l<0 || c<0 || l>ligne || c>col) {
-			System.out.print("Erreur A");
-			return;
-		}
-		if(p==0) {
-			if(grille[l][c] == '.') {
-				for(int b=0;b<3;b++) {
-					grille[l+b][c] = '1';
-				}
-			}
-			else {
-				System.out.print("Erreur, emplacement déjà pris");
-			}
-		}
+        if(p==0) {
+        	testA(3,14,11,'1');
+        }
 		if(p==1) {
-			if(grille[l1][c1] == '.') {
-				for(int a=0;a<3;a++) {
-					grille[l1][c1+a] = '1';
-				}
-			}
-			else {
-				System.out.print("Erreur, emplacement déjà pris");
-			}
+			testB(3,14,11,'1');
+			
 		}
 	}
 	
 public void croiseur() {
 		
-		int l = (int)(Math.random() * 15);
-		int c = (int)(Math.random() * 10);
+
 		int p = (int)(Math.random() * 2);
-		
-		int l1 = (int)(Math.random() * 15);
-		int c1 = (int)(Math.random() * 10);
-		
-		if(l<0 || c<0 || l>ligne || c>col) {
-			System.out.print("Erreur A");
-			return;
-		}
+
 		if(p==0) {
-			if(grille[l][c] == '.') {
-				for(int b=0;b<5;b++) {
-					grille[l+b][c] = '2';
-				}
-			}
-			else {
-				System.out.print("Erreur, emplacement déjà pris");
-			}
+			testA(5,14,9,'2');
 		}
 		if(p==1) {
-			if(grille[l][c] == '.') {
-				for(int a=0;a<5;a++) {
-					grille[l][c+a] = '2';
-				}
-			}
-			else {
-				System.out.print("Erreur, emplacement déjà pris");
-			}
+			testB(5,14,9,'2');
 		}
 	}
 	public void cuirasse() {
 	
-	int l = (int)(Math.random() * 8);
-	int c = (int)(Math.random() * 15);
+
 	int p = (int)(Math.random() * 2);
 	
-	int l1 = (int)(Math.random() * 15);
-	int c1 = (int)(Math.random() * 8);
 	
-	if(l<0 || c<0 || l>ligne || c>col) {
-		System.out.print("Erreur en dehors de la zone");
-		return;
-	}
 	if(p==0) {
-		if(grille[l][c] == '.') {
-			for(int b=0;b<7;b++) {
-				grille[l+b][c] = '3';
-			}
-			
-		}
-		else {
-			System.out.print("Erreur, emplacement déjà pris");
-		}
+		testA(7,14,7,'3');
 	}
 	if(p==1) {
-		if(grille[l1][c1] == '.') {
-			for(int a=0;a<7;a++) {
-				grille[l1][c1+a] = '3';
-			}
-		}
-		else {
-			System.out.print("Erreur, emplacement déjà pris");
-		}
+		testB(7,14,7,'3');
 	}
 }
+	
+	public char getCase(int l, int c) {
+		return grille[l][c];
+	}
+	
+	public void testA(int val, int t1, int t2, char ch) {
+		int l = t2;
+        int c = t1;
+		int test = 0;
+    	
+		while(true) {
+			
+				if(grille[l+1][c] == '.') {
+					test=test+1;
+					System.out.println(test);
+				}
+				else {
+					l = (int)(Math.random() * t2);
+			        c = (int)(Math.random() * t1);
+				}
+				if(test==val) {
+					break;
+				}
+		}
+    	for(int b=0;b<val;b++) {
+        	
+			grille[l+b][c] = ch;
+        	}
+	}
+	public void testB(int val, int t1, int t2, char ch) {
+		int l = t1;
+        int c = t2;
+		int test = 0;
+    	
+		while(true) {
+			
+				if(grille[l][c+1] == '.') {
+					test = test+1;
+					System.out.println(test);
+				}
+				else {
+					l = (int)(Math.random() * t1); 
+			        c = (int)(Math.random() * t2);
+				}
+				if(test==val) {
+					break;
+				}
+		}
+    	for(int b=0;b<val;b++) {
+        	
+			grille[l][c+b] = ch;
+        	}
+	}
+	
 
 	
 }
