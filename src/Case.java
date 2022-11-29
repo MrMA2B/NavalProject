@@ -1,6 +1,6 @@
 
 public class Case {
-	Bateau bat; // Bateau se trouvant sur la case
+	Navire bat; // Bateau se trouvant sur la case
 	int typeBat; // identifiant du bateau se trouvant sur la case
 	boolean deja; // case deja jouée ou non
 	EtatCase how; // Etat de la cas
@@ -11,12 +11,12 @@ public class Case {
 		deja = false;
 		typeBat = i;
 	}
-	public Bateau getBat() {
+	public Navire getBat() {
 		return bat;
 		
 	}
 
-	public void setBat(Bateau bat) {
+	public void setBat(Navire bat) {
 		this.bat = bat;
 	}
 
