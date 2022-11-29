@@ -42,9 +42,10 @@ public class main
                 Test.destroyer();
                 Test.destroyer();
                 Test.destroyer();
-                //Test.croiseur();
-                //Test.croiseur();
-                //Test.cuirasse();
+                Test.croiseur();
+                Test.croiseur();
+                Test.cuirasse();
+                Test.cuirasse();
              
                 Test.afficher();
                 

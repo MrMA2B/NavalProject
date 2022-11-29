@@ -88,12 +88,13 @@ public void croiseur() {
 		int l = t2;
         int c = t1;
 		int test = 0;
+		int test2 = 0;
     	
 		while(true) {
 			
-				if(grille[l+1][c] == '.') {
+				if(grille[l+test2][c] == '.') {
 					test=test+1;
-					System.out.println(test);
+					test2 = test2 + 1;
 				}
 				else {
 					l = (int)(Math.random() * t2);
@@ -112,12 +113,13 @@ public void croiseur() {
 		int l = t1;
         int c = t2;
 		int test = 0;
+		int test2 = 0;
     	
 		while(true) {
-			
-				if(grille[l][c+1] == '.') {
+		
+				if(grille[l][c+test2] == '.') {
 					test = test+1;
-					System.out.println(test);
+					test2 = test2+1;
 				}
 				else {
 					l = (int)(Math.random() * t1); 
@@ -128,7 +130,6 @@ public void croiseur() {
 				}
 		}
     	for(int b=0;b<val;b++) {
-        	
 			grille[l][c+b] = ch;
         	}
 	}
