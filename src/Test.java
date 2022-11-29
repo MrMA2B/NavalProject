@@ -37,46 +37,78 @@ public void sousmarin() {
 		int c = (int)(Math.random() * 15);
 		
 			if(grille[l][c] == '.') {
-				grille[l][c] = '0';
+				grille[l][c] = 'S';
 			}
 	}
 	
 	public void destroyer() {
-		
+		int l = (int)(Math.random() * 15);
+		int c = (int)(Math.random() * 12);
         int p = (int)(Math.random() * 2);
+        boolean placee = false;
         
         if(p==0) {
-        	testA(3,14,11,'1');
+        	while(placee == false) {
+        		placee = testA(3,l,c,'D');
+        		l = (int)(Math.random() * 15);
+        		c = (int)(Math.random() * 12);
+        	}
         }
+        
 		if(p==1) {
-			testB(3,14,11,'1');
-			
+			while(placee == false) {
+        		placee = testB(3,l,c,'D');
+        		l = (int)(Math.random() * 15);
+        		c = (int)(Math.random() * 12);
+			}
 		}
 	}
 	
 public void croiseur() {
 		
-
+		int l = (int)(Math.random() * 15);
+		int c = (int)(Math.random() * 10);
 		int p = (int)(Math.random() * 2);
+		boolean gg = false;
 
 		if(p==0) {
-			testA(5,14,9,'2');
+			while(gg == false) {
+        		gg = testA(5,l,c,'F');
+        		l = (int)(Math.random() * 15);
+        		c = (int)(Math.random() * 12);
+			}
 		}
 		if(p==1) {
-			testB(5,14,9,'2');
+			while(gg == false) {
+        		gg = testB(5,l,c,'F');
+        		l = (int)(Math.random() * 15);
+        		c = (int)(Math.random() * 12);
+			}
 		}
 	}
 	public void cuirasse() {
 	
-
+		
+	int l = (int)(Math.random() * 15);
+	int c = (int)(Math.random() * 8);
 	int p = (int)(Math.random() * 2);
+	boolean gg = false;
 	
 	
 	if(p==0) {
-		testA(7,14,7,'3');
+		while(gg == false) {
+    		gg = testA(7,l,c,'C');
+    		l = (int)(Math.random() * 15);
+    		c = (int)(Math.random() * 8);
+		}
+	
 	}
 	if(p==1) {
-		testB(7,14,7,'3');
+		while(gg == false) {
+    		gg = testB(7,l,c,'C');
+    		l = (int)(Math.random() * 15);
+    		c = (int)(Math.random() * 8);
+		}
 	}
 }
 	
@@ -84,54 +116,49 @@ public void croiseur() {
 		return grille[l][c];
 	}
 	
-	public void testA(int val, int t1, int t2, char ch) {
+	public boolean testA(int val, int t1, int t2, char ch) {
 		int l = t2;
         int c = t1;
 		int test = 0;
-		int test2 = 0;
-    	
-		while(true) {
-			
-				if(grille[l+test2][c] == '.') {
-					test=test+1;
-					test2 = test2 + 1;
+    		
+			for(int b=0;b<val;b++) {
+			if(grille[l+b][c] == '.') {
+				test=test+1;
 				}
-				else {
-					l = (int)(Math.random() * t2);
-			        c = (int)(Math.random() * t1);
-				}
-				if(test==val) {
-					break;
-				}
-		}
-    	for(int b=0;b<val;b++) {
-        	
-			grille[l+b][c] = ch;
-        	}
+			}
+			if(test==val) {
+				for(int b=0;b<val;b++) {
+		        	
+					grille[l+b][c] = ch;
+		        	}
+				return true;
+			}
+			else {
+				return false;
+			}
+		
 	}
-	public void testB(int val, int t1, int t2, char ch) {
+
+	public boolean testB(int val, int t1, int t2, char ch) {
 		int l = t1;
         int c = t2;
 		int test = 0;
-		int test2 = 0;
-    	
-		while(true) {
-		
-				if(grille[l][c+test2] == '.') {
-					test = test+1;
-					test2 = test2+1;
+    		
+			for(int b=0;b<val;b++) {
+			if(grille[l][c+b] == '.') {
+				test=test+1;
 				}
-				else {
-					l = (int)(Math.random() * t1); 
-			        c = (int)(Math.random() * t2);
-				}
-				if(test==val) {
-					break;
-				}
-		}
-    	for(int b=0;b<val;b++) {
-			grille[l][c+b] = ch;
-        	}
+			}
+			if(test==val) {
+				for(int b=0;b<val;b++) {
+		        	
+					grille[l][c+b] = ch;
+		        	}
+			}
+			else {
+				return false;
+			}
+			return true;
 	}
 	
 

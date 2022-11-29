@@ -33,19 +33,18 @@ public class main
                 System.out.println("Vous jouez contre l'ordinateur");
                 
                 //Création de la grille
-                Test Test = new Test(15,15);
+                Grille Test = new Grille(15,15);
 
-                //Test.sousmarin();
-                Test.destroyer();
-                Test.destroyer();
-                Test.destroyer();
+               /* Test.sousmarin();
+                Test.sousmarin();
+                Test.sousmarin();
+                Test.sousmarin();
                 Test.destroyer();
                 Test.destroyer();
                 Test.destroyer();
                 Test.croiseur();
                 Test.croiseur();
-                Test.cuirasse();
-                Test.cuirasse();
+                Test.cuirasse();*/
              
                 Test.afficher();
                 
