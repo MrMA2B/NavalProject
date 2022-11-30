@@ -2,6 +2,7 @@
 import java.util.Scanner;
 
 public class main {
+	
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -32,15 +33,15 @@ public class main {
 
 				// Création de la grille
 				Grille grille = new Grille(15, 15);
-
+				
 				// Test : sousmarin;
 
 				Sousmarin s = new Sousmarin("s", 1, 3);
-				s.placer();
-//				Cuirasses c = new Cuirasses("c", 3, 3);
-//				c.placer();
-//				Fregate f = new Fregate("f", 3, 3);
-//				f.placer();
+				s.placer(grille);
+				Cuirasses c = new Cuirasses("c", 3, 3);
+				c.placer(grille);
+				Fregate f = new Fregate("f", 3, 3);
+				f.placer(grille);
 
 				grille.afficher();
 
