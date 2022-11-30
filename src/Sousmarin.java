@@ -1,8 +1,8 @@
 
 public class Sousmarin extends Navire {
 		
-	public Sousmarin(String name, int lenght, int pv) {
-		super(name, lenght, pv);
+	public Sousmarin() {
+		super();
 	}
 
 	public void placer(Grille grille) {

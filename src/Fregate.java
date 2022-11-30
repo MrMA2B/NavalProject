@@ -1,8 +1,8 @@
 
 public class Fregate extends Navire {
 
-	public Fregate(String name, int lenght, int pv) {
-		super(name, lenght, pv);
+	public Fregate() {
+		super();
 	}
 
 	public void placer(Grille grille) {

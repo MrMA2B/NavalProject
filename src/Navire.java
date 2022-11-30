@@ -5,10 +5,7 @@ public class Navire {
 	private int lenght;
 	private int pv;
 
-	public Navire(String nom, int taille, int vie) {
-		name = nom;
-		lenght = taille;
-		pv = vie;
+	public Navire() {
 	}
 
 	public boolean testA(int val, int t1, int t2, char ch, Grille grille) {

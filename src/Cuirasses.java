@@ -1,8 +1,8 @@
 
 public class Cuirasses extends Navire {
 
-	public Cuirasses(String name, int lenght, int pv) {
-		super(name, lenght, pv);
+	public Cuirasses() {
+		super();
 	}
 
 	public void placer(Grille grille) {

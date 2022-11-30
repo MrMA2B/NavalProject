@@ -1,8 +1,8 @@
 
 public class Destroyers extends Navire {
 
-	public Destroyers(String nom, int taille, int vie) {
-		super(nom, taille, vie);
+	public Destroyers() {
+		super();
 	}
 
 	public void placer(Grille grille) {
@@ -13,7 +13,7 @@ public class Destroyers extends Navire {
         
         if(p==0) {
         	while(placee == false) {
-        		placee = testA(3,l,c,'D',grille);
+        		placee = testA(3,l,c,'D',grille);//Modifier 3 par lenght du bateau 
         		l = (int)(Math.random() * 15);
         		c = (int)(Math.random() * 12);
         	}

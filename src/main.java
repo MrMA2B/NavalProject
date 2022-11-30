@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class main {
-	
+
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -34,15 +34,70 @@ public class main {
 				// Création de la grille
 				Grille grille = new Grille(15, 15);
 				
-				// Test : sousmarin;
-
-				Sousmarin s = new Sousmarin("s", 1, 3);
-				s.placer(grille);
-				Cuirasses c = new Cuirasses("c", 3, 3);
-				c.placer(grille);
-				Fregate f = new Fregate("f", 3, 3);
-				f.placer(grille);
-
+				// 4sm / 3 D / 2F / 1C;
+				// 30C
+				
+//				Sousmarin s1 = new Sousmarin();
+//				s1.placer(grille);
+//				Sousmarin s2 = new Sousmarin();
+//				s2.placer(grille);
+//				Sousmarin s3 = new Sousmarin();
+//				s3.placer(grille);
+//				Sousmarin s4 = new Sousmarin();
+//				s4.placer(grille);
+//				
+//				Destroyers d1 = new Destroyers();
+//				d1.placer(grille);
+//				Destroyers d2 = new Destroyers();
+//				d2.placer(grille);
+//				Destroyers d3 = new Destroyers();
+//				d3.placer(grille);
+//				
+//				Fregate f1 = new Fregate();
+//				f1.placer(grille);
+//				Fregate f2 = new Fregate();
+//				f2.placer(grille);
+//				
+				Cuirasses c0 = new Cuirasses();
+				c0.placer(grille);	
+				Cuirasses c1 = new Cuirasses();
+				c1.placer(grille);	
+				Cuirasses c2 = new Cuirasses();
+				c2.placer(grille);	
+				Cuirasses c3 = new Cuirasses();
+				c3.placer(grille);	
+				Cuirasses c4 = new Cuirasses();
+				c4.placer(grille);	
+				Cuirasses c5 = new Cuirasses();
+				c5.placer(grille);	
+				Cuirasses c6 = new Cuirasses();
+				c6.placer(grille);	
+				Cuirasses c7 = new Cuirasses();
+				c7.placer(grille);	
+				Cuirasses c8 = new Cuirasses();
+				c8.placer(grille);	
+				Cuirasses c9 = new Cuirasses();
+				c9.placer(grille);
+				Cuirasses c10 = new Cuirasses();
+				c10.placer(grille);	
+				Cuirasses c11 = new Cuirasses();
+				c11.placer(grille);	
+				Cuirasses c12 = new Cuirasses();
+				c12.placer(grille);	
+				Cuirasses c13 = new Cuirasses();
+				c13.placer(grille);	
+				Cuirasses c14 = new Cuirasses();
+				c14.placer(grille);	
+				Cuirasses c15 = new Cuirasses();
+				c15.placer(grille);	
+				Cuirasses c16 = new Cuirasses();
+				c16.placer(grille);	
+				Cuirasses c17 = new Cuirasses();
+				c17.placer(grille);	
+				Cuirasses c18 = new Cuirasses();
+				c18.placer(grille);	
+				Cuirasses c19 = new Cuirasses();
+				
 				grille.afficher();
 
 				break;
