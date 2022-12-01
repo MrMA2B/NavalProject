@@ -46,4 +46,12 @@ public class Navire {
 		}
 		return true;
 	}
+	
+	public void tirer(int x ,int y, Navire n, Grille grille) {
+		if(grille.getCase(x,y)=='.') {
+			grille.changeCase(x,y,'o');
+		}
+		if (grille.getCase(x,y)'S'||'C')	{
+			grille.changeCase(x,y,'x');
+	}
 }
