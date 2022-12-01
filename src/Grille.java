@@ -39,6 +39,51 @@ public class Grille {
 		grille[l][c] = a;
 	}
 	
+	public boolean isWater(int l, int c) {
+		if(getCase(l, c) == '.') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isSm(int l, int c) {
+		if(getCase(l, c) == 'S') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isF(int l, int c) {
+		if(getCase(l, c) == 'F') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isC(int l, int c) {
+		if(getCase(l, c) == 'C') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean isD(int l, int c) {
+		if(getCase(l, c) == 'D') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	// Getter
 	  public char[][] getGrille() {
 	    return grille;

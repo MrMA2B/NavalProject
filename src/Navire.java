@@ -1,10 +1,6 @@
 
 public class Navire {
 
-	public String name;
-	private int lenght;
-	private int pv;
-
 	public Navire() {
 	}
 
@@ -50,17 +46,4 @@ public class Navire {
 		}
 		return true;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public int getLenght() {
-		return lenght;
-	}
-
-	public int getPv() {
-		return pv;
-	}
-
 }
