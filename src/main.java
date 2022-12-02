@@ -30,24 +30,10 @@ public class main
         int choix = sc.nextInt();
         switch(choix){
             case 1 :
-                System.out.println("Vous jouez contre l'ordinateur");
-                
-                //Création de la grille
-                Grille Test = new Grille(15,15);
 
-               /* Test.sousmarin();
-                Test.sousmarin();
-                Test.sousmarin();
-                Test.sousmarin();
-                Test.destroyer();
-                Test.destroyer();
-                Test.destroyer();
-                Test.croiseur();
-                Test.croiseur();
-                Test.cuirasse();*/
-             
-                Test.afficher();
-                
+                Jeu Test = new Jeu();
+                Test.jeu()
+;              
                 break;
             case 2 : 
                 System.out.println("En travaux...");
@@ -73,5 +59,5 @@ public class main
         System.out.println("A l'inverse, si l'adversaire touche un de vos bateau, le message 'vous avez été touché' s'affichera et s'il parvient à couler votre bateau le message 'votre bateau a coulé' s'affichera");
         System.out.println("Le but est de couler tous les bateaux de l'adversaire");
     }
-
+		
 }
