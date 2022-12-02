@@ -13,7 +13,7 @@ public class Navire {
 		int test = 0;
 
 		for (int b = 0; b < val; b++) {
-			if (grille.getCase(l+b,c) == ".") {
+			if (grille.getCase(l+b,c) == ". ") {
 				test = test + 1;
 			}
 		}
@@ -37,7 +37,7 @@ public class Navire {
 		int test = 0;
 
 		for (int b = 0; b < val; b++) {
-			if (grille.getCase(l,c + b) == ".") {
+			if (grille.getCase(l,c + b) == ". ") {
 				test = test + 1;
 			}
 		}
