@@ -4,6 +4,7 @@ public class Navire {
 	public Navire() {
 	}
 
+	
 	public boolean testA(int val, int t1, int t2, char ch, Grille grille) {
 		int l = t2;
 		int c = t1;
@@ -51,7 +52,11 @@ public class Navire {
 		if(grille.getCase(x,y)=='.') {
 			grille.changeCase(x,y,'o');
 		}
-		if (grille.getCase(x,y)'S'||'C')	{
+		if (grille.getCase(x,y)=='S'||grille.getCase(x,y)=='C'||grille.getCase(x,y)=='F'||grille.getCase(x,y)=='D')	{
 			grille.changeCase(x,y,'x');
+		}
 	}
 }
+	
+
+	
