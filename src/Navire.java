@@ -2,6 +2,7 @@
 public class Navire {
 	private int x;
     private int y;
+    private int axe;
     
 	public Navire() {
 	}
@@ -21,6 +22,7 @@ public class Navire {
 				x=c;
 				y=l;
 				grille.changeCase(l+b, c, ch);
+				axe = 0;
 			}
 			return true;
 		} else {
@@ -43,6 +45,7 @@ public class Navire {
 			for (int b = 0; b < val; b++) {
 				x=c;
 				y=l;
+				axe = 1;
 				grille.changeCase(l, c+b, ch);
 			}
 		} else {
@@ -55,5 +58,8 @@ public class Navire {
     }
     public int getPositionY() {
         return y;
+    }
+    public int getAxe() {
+    	return axe;
     }
 }

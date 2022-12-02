@@ -222,10 +222,11 @@ public class Grille {
 		  }
 		  
 }
-	  public boolean testerPos(Navire navire, int sens, char val, int cases) {
+	  public boolean testerPos(Navire navire, char val, int cases) {
 		  int i = navire.getPositionY();
 		  int j = navire.getPositionX();
-		  if(sens == 0) {
+		  int axe = navire.getAxe();
+		  if(axe == 0) {
 			  if(val == 'H') {
 			  	if(grille[i-1][j] == "." && i-1 >= 0 ) {
 			  		return true;
@@ -237,7 +238,7 @@ public class Grille {
 				  	}
 				  }
 		  }
-		  if(sens == 1) {
+		  if(axe == 1) {
 			  if(val == 'G') {
 				  	if(grille[i][j-1] == "." && j-1 >= 0) {
 				  		return true;
