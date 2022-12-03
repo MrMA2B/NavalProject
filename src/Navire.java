@@ -1,6 +1,10 @@
 
 public class Navire {
-
+	
+	
+	public int x;
+	public int y;
+	protected int pv;
 	public Navire() {
 	}
 
@@ -48,15 +52,67 @@ public class Navire {
 		return true;
 	}
 	
-	public void tirer(int x ,int y, Navire n, Grille grille) {
+	public boolean tirer(int x ,int y, Grille grille) {
 		if(grille.getCase(x,y)=='.') {
-			grille.changeCase(x,y,'o');
-		}
+				grille.changeCase(x,y,'o');}
+			if(grille.getCase(x-1,y-1)=='.') {
+				grille.changeCase(x-1,y-1,'o' );}
+			if(grille.getCase(x,y-1)=='.') {
+				grille.changeCase(x,y-1,'o' );}
+			if(grille.getCase(x+1,y-1)=='.') {
+				grille.changeCase(x+1,y-1,'o' );}
+			if(grille.getCase(x-1,y)=='.') {
+				grille.changeCase(x-1,y,'o' );}
+			if(grille.getCase(x+1,y)=='.') {
+				grille.changeCase(x+1,y,'o' );}
+			if(grille.getCase(x-1,y+1)=='.') {
+				grille.changeCase(x-1,y+1,'o' );}
+			if(grille.getCase(x,y+1)=='.') {
+				grille.changeCase(x,y+1,'o' );}
+			if(grille.getCase(x+1,y+1)=='.') {
+				grille.changeCase(x+1,y+1,'o' );}
+				
 		if (grille.getCase(x,y)=='S'||grille.getCase(x,y)=='C'||grille.getCase(x,y)=='F'||grille.getCase(x,y)=='D')	{
-			grille.changeCase(x,y,'x');
+			grille.changeCase(x,y,'X');}
+			if(grille.getCase(x-1,y-1)=='S'||grille.getCase(x-1,y-1)=='C'||grille.getCase(x-1,y-1)=='F'||grille.getCase(x-1,y-1)=='D') {
+				grille.changeCase(x-1,y-1,'X' );}
+			if(grille.getCase(x,y-1)=='S'||grille.getCase(x,y-1)=='C'||grille.getCase(x,y-1)=='F'||grille.getCase(x,y-1)=='D') {
+				grille.changeCase(x,y-1,'X' );}
+			if(grille.getCase(x+1,y-1)=='S'||grille.getCase(x,y)=='C'||grille.getCase(x,y)=='F'||grille.getCase(x,y)=='D') {
+				grille.changeCase(x-1,y+1,'X' );}
+			if(grille.getCase(x-1,y)=='S'||grille.getCase(x-1,y)=='C'||grille.getCase(x-1,y)=='F'||grille.getCase(x-1,y)=='D') {
+				grille.changeCase(x-1,y,'X' );}
+			if(grille.getCase(x+1,y)=='S'||grille.getCase(x+1,y)=='C'||grille.getCase(x+1,y)=='F'||grille.getCase(x+1,y)=='D') {
+				grille.changeCase(x+1,y,'X' );}
+			if(grille.getCase(x-1,y+1)=='S'||grille.getCase(x-1,y+1)=='C'||grille.getCase(x-1,y+1)=='F'||grille.getCase(x-1,y+1)=='D') {
+				grille.changeCase(x-1,y+1,'X' );}
+			if(grille.getCase(x,y+1)=='S'||grille.getCase(x,y+1)=='C'||grille.getCase(x,y+1)=='F'||grille.getCase(x,y+1)=='D') {
+				grille.changeCase(x,y+1,'X' );}
+			if(grille.getCase(x+1,y+1)=='S'||grille.getCase(x+1,y+1)=='C'||grille.getCase(x+1,y+1)=='F'||grille.getCase(x+1,y+1)=='D') {
+				grille.changeCase(x+1,y+1,'X' );}
+		
+			
+		if(grille.getCase(x, y)=='x') {
+			return false;
 		}
+		return true;}
+	
+	
+	public int getPv() {
+		return pv;
+	}
+	
+	public void touche() {
+		pv=pv-1;
+	}
+	
+	public int getPositionX() {
+		return x;
+	}
+	public int getPositionY() {
+		return y;
 	}
 }
-	
+
 
 	
