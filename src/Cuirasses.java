@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Cuirasses extends Navire {
+public class Cuirasses extends Navire implements Serializable{
 
 	public Cuirasses() {
 		super();

@@ -1,7 +1,7 @@
 
+import java.io.Serializable;
 import java.util.Scanner;
-
-public class main {
+public class main implements Serializable{
 
 	static Scanner sc = new Scanner(System.in);
 
@@ -12,7 +12,6 @@ public class main {
 		while (true) {
 			if (entrer != 0) {
 				System.out.println("Faire Entrer pour continuer");
-				Serialisation sauvegarde;
 				
 				try {
 					System.in.read();
@@ -21,6 +20,9 @@ public class main {
 
 			}
 			entrer = 1;
+			
+			Serialisation save = new Serialisation();
+			save.sauvegarde();
 
 			System.out.println("Bienvenue dans Bataille Navale. Sélectionnez un choix pour commencer");
 			System.out.println("1. Jouer une partie");
@@ -36,7 +38,7 @@ public class main {
 				// Création de la grille
 				Grille grille = new Grille(15, 15);
 				
-				// 4sm / 3 D / 2F / 1C;
+				// 4sm / 3D / 2F / 1C;
 				// 30C
 				
 				Sousmarin s1 = new Sousmarin();
@@ -68,7 +70,7 @@ public class main {
 
 				break;
 			case 2:
-				System.out.println("En travaux...");
+				System.out.println("En travaux...");				
 				break;
 			case 3:
 				Aide();

@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Destroyers extends Navire {
+public class Destroyers extends Navire implements Serializable{
 
 	public Destroyers() {
 		super();

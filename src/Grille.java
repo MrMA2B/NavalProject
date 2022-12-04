@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Grille {
+public class Grille implements Serializable{
 
 	private int ligne;
 	private int col;

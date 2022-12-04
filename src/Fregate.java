@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Fregate extends Navire {
+public class Fregate extends Navire implements Serializable{
 
 	public Fregate() {
 		super();

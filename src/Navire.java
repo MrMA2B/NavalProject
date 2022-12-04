@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Navire {
+public class Navire implements Serializable{
 
 	public Navire() {
 	}

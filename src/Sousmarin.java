@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Sousmarin extends Navire {
+public class Sousmarin extends Navire implements Serializable{
 		
 	public Sousmarin() {
 		super();
