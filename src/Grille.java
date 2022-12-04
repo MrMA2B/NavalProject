@@ -93,4 +93,5 @@ public class Grille {
 	  public void setGrille(char[][] newGrille) {
 	    this.grille = newGrille;
 	  }
+
 }

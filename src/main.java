@@ -73,6 +73,16 @@ public class main {
 				}
 				test = false;
 				grille.afficher();
+				System.out.println("Rentre coord");
+				while (test == false) {
+					int x = sc.nextInt();
+					int y = sc.nextInt();
+					test = navire.tirer(x, y, grille);
+					navire.touche();
+					}
+				test = false;
+				grille.afficher();
+				System.out.println("Rentre coord");
 				while (test == false) {
 					int x = sc.nextInt();
 					int y = sc.nextInt();
@@ -81,7 +91,7 @@ public class main {
 					}
 					
 					grille.afficher();
-					System.out.println("Vies restantes pour C0 : "+c0.getPv());
+					System.out.println("Vies restantes pour d1 : "+d1.getPv());
 				break;
 			case 2:
 				System.out.println("En travaux...");

@@ -21,6 +21,11 @@ public class Sousmarin extends Navire {
 	if (grille.getCase(x,y)=='S') {
 		grille.changeCase(x,y,'X');
 	}
+	if (grille.getCase(x,y)=='C'||grille.getCase(x,y)=='F'||grille.getCase(x,y)=='D') {
+		grille.changeCase(x,y,'*');
+		System.out.println("Vous ne pouvez pas toucher ces bateaux avec vos sous-marin");
+	}
+		
 		
 	
 		

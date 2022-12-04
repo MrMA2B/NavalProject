@@ -3,7 +3,7 @@ public class Destroyers extends Navire {
 
 	public Destroyers() {
 		super();
-		int pv = 3;
+		pv = 3;
 	}
 
 	public void placer(Grille grille) {
@@ -33,15 +33,23 @@ public class Destroyers extends Navire {
 		if(grille.getCase(x,y)=='.') {
 			grille.changeCase(x,y,'o');}
 			
-	if (grille.getCase(x,y)=='S'||grille.getCase(x,y)=='C'||grille.getCase(x,y)=='F'||grille.getCase(x,y)=='D')	{
+	if (grille.getCase(x,y)=='C'||grille.getCase(x,y)=='F'||grille.getCase(x,y)=='D')	{
 		grille.changeCase(x,y,'X');}
-		
 	
+	if (grille.getCase(x,y)=='S')	{
+		grille.changeCase(x,y,'?');
+		}
 		
 	if(grille.getCase(x, y)=='x') {
 		return false;
 	}
 	return true;
 	}
+	
+//	@Override
+//	public void touche() {
+//		pv=-1;
+//	}
+	
 }
 
