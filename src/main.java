@@ -16,8 +16,6 @@ public class main
             try{System.in.read();}
             catch(Exception e)
             {}
-         
-            
         }
         entrer=1;
 

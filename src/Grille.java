@@ -3,7 +3,7 @@ public class Grille {
 	private int ligne;
 	private int col;
 	private String [][] grille;
-	
+	Navire nav = new Navire();
 
 	public Grille(int n, int p) {
 		ligne = n;
@@ -94,9 +94,9 @@ public class Grille {
 	  }
 	  
 
-	  public void anciennePos(Navire navire, String test, char val) {
-		  int i = navire.getPositionY();
-		  int j = navire.getPositionX();
+	  public void anciennePos(int x, int y, String test, char val) {
+		  int i = x;
+		  int j = y;
 		  if(grille[i][j] == test) {
 			  if(val == 'H') {
 				  for(int b=0;b<3;b++) {
@@ -120,9 +120,9 @@ public class Grille {
 			  }
 	  }
 }
-	  public void nouvellePos(Navire navire, String test, char val) {
-		  int i = navire.getPositionY();
-		  int j = navire.getPositionX();
+	  public void nouvellePos(int x, int y, String test, char val) {
+		  int i = x;
+		  int j = y;
 		  if(val == 'H') {
 			  i = i-1;
 			  if(grille[i][j] == ". ") {
@@ -157,10 +157,10 @@ public class Grille {
 		  }
 		  
 }
-	  public boolean testerPos(Navire navire, char val, int cases) {
-		  int i = navire.getPositionY();
-		  int j = navire.getPositionX();
-		  int axe = navire.getAxe();
+	  public boolean testerPos(int x, int y, char val, int cases, int choix, int axe1) {
+		  int i = x;
+		  int j = y;
+		  int axe = axe1;
 		  if(axe == 0) {
 			  if(val == 'H') {
 			  	if(grille[i-1][j] == ". " && i-1 >= 0 ) {
@@ -188,4 +188,5 @@ public class Grille {
 		  }
 		  return false;
 	  }
+
 }
