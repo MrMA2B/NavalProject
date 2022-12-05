@@ -11,8 +11,7 @@ public class Jeu {
 	Grille grille = new Grille(15, 15);
 	Destroyers d1 = new Destroyers();
 	Navire nav = new Navire();
-	d1.placerD1(grille);
-	d1.placerD2(grille);
+	d1.placer(grille);
 	grille.afficher();
 
 	System.out.println("1.Tirer");
@@ -20,7 +19,36 @@ public class Jeu {
 	System.out.println("Que voulez-vous faire : ");	
 	int choix = sc.nextInt();
 	if(choix==1) {
-		System.out.println("Attente...");
+		System.out.println("Depuis quel navire voulez-vous tirer?");
+		String choixbat = sc1.nextLine();
+		System.out.println("Rentre coord");
+		boolean test = false;
+
+		while (test == false) {
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		test = nav.tirer(x, y, grille); 
+		}
+		test = false;
+		grille.afficher();
+		System.out.println("Rentre coord");
+		while (test == false) {
+			int x = sc.nextInt();
+			int y = sc.nextInt();
+			test = nav.tirer(x, y, grille);
+			nav.touche();
+			}
+		test = false;
+		grille.afficher();
+		System.out.println("Rentre coord");
+		while (test == false) {
+			int x = sc.nextInt();
+			int y = sc.nextInt();
+			test = nav.tirer(x, y, grille);
+			nav.touche();
+			}
+			
+			grille.afficher();
 	}
 	if(choix==2) {
 		System.out.println("Quel navire voulez-vous déplacer ?");
