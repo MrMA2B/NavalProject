@@ -21,18 +21,20 @@ public class Jeu {
 	if(choix==1) {
 		System.out.println("Depuis quel navire voulez-vous tirer?");
 		String choixbat = sc1.nextLine();
-		System.out.println("Rentre coord");
 		boolean test = false;
 
 		while (test == false) {
-		int x = sc.nextInt();
-		int y = sc.nextInt();
+		System.out.println("Rentrer X : ");
+		int x = sc.nextInt()-1;
+		System.out.println("Rentrer Y : ");
+		int y = sc.nextInt()-1;
 		test = nav.tirer(x, y, grille); 
 		}
 		test = false;
 		grille.afficher();
 		System.out.println("Rentre coord");
 		while (test == false) {
+			
 			int x = sc.nextInt();
 			int y = sc.nextInt();
 			test = nav.tirer(x, y, grille);
