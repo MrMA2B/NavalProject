@@ -1,10 +1,10 @@
+import java.util.*;
 
 public class Navire {
 	public int x;
-    public int y;
-    protected int pv;
-  
-    
+	public int y;
+	protected int pv;
+
 	public Navire() {
 	}
 
@@ -14,15 +14,15 @@ public class Navire {
 		int test = 0;
 
 		for (int b = 0; b < val; b++) {
-			if (grille.getCase(l+b,c) == ". ") {
+			if (grille.getCase(l + b, c) == ". ") {
 				test = test + 1;
 			}
 		}
 		if (test == val) {
 			for (int b = 0; b < val; b++) {
-				x=c;
-				y=l;
-				grille.changeCase(l+b, c, ch);
+				x = c;
+				y = l;
+				grille.changeCase(l + b, c, ch);
 			}
 			return true;
 		} else {
@@ -37,50 +37,43 @@ public class Navire {
 		int test = 0;
 
 		for (int b = 0; b < val; b++) {
-			if (grille.getCase(l,c + b) == ". ") {
+			if (grille.getCase(l, c + b) == ". ") {
 				test = test + 1;
 			}
 		}
 		if (test == val) {
 			for (int b = 0; b < val; b++) {
-				x=c;
-				y=l;
-				grille.changeCase(l, c+b, ch);
+				x = c;
+				y = l;
+				grille.changeCase(l, c + b, ch);
 			}
 		} else {
 			return false;
 		}
 		return true;
 	}
-	public boolean tirer(int x ,int y, Grille grille) {
-        if(grille.getCase(x,y)==". ") {
-                grille.changeCase(x,y,"O ");}
-                
-        if (grille.getCase(x,y)=="D1")   
-        {
-            grille.changeCase(x,y,"X ");
-            }
- 
-        if(grille.getCase(x, y)=="X ") {
-            return true;
-        }
-        return false;
-        }
-    
-    
-    public int getPv() {
-        return pv;
-    }
-    
-    public void touche() {
-        pv=pv-1;
-    }
-    
-    public int getPositionX() {
-        return x;
-    }
-    public int getPositionY() {
-        return y;
-    }
 
+	public boolean tirer(int x, int y, Grille grille) {
+		return false;
+	}
+
+	public int getPv() {
+		return pv;
+	}
+
+	public void touche() {
+		pv = pv - 1;
+	}
+
+	public int getPositionX() {
+		return x;
+	}
+
+	public int getPositionY() {
+		return y;
+	}
+
+	public Navire getNavire(HashMap<String,Navire> hashMap, String s) {
+		return hashMap.get(s);
+	}
 }
