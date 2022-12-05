@@ -1,3 +1,4 @@
+
 public class Fregate extends Navire {
 
 	public Fregate() {
@@ -26,59 +27,161 @@ public class Fregate extends Navire {
 		}
 	}
 
-	@Override
-	public boolean tirer(int x, int y, Grille grille) {
-		if (grille.getCase(x, y) == ". ") {
-			grille.changeCase(x, y, "O ");
-		}
-		if (grille.getCase(x, y - 1) == ". ") {
-			grille.changeCase(x, y - 1, "O ");
-		}
-		if (grille.getCase(x - 1, y) == ". ") {
-			grille.changeCase(x - 1, y, "O ");
-		}
-		if (grille.getCase(x + 1, y) == ". ") {
-			grille.changeCase(x + 1, y, "O ");
-		}
-		if (grille.getCase(x, y + 1) == ". ") {
-			grille.changeCase(x, y + 1, "O ");
-		}
-
-		if (grille.getCase(x, y) == "C1" || grille.getCase(x, y) == "F1" || grille.getCase(x, y) == "D1") {
-			grille.changeCase(x, y, "X ");
-		}
-		if (grille.getCase(x, y - 1) == "C1" || grille.getCase(x, y - 1) == "F1" || grille.getCase(x, y - 1) == "D1") {
-			grille.changeCase(x, y - 1, "X ");
-		}
-		if (grille.getCase(x - 1, y) == "C1" || grille.getCase(x - 1, y) == "F1" || grille.getCase(x - 1, y) == "D1") {
-			grille.changeCase(x - 1, y, "X ");
-		}
-		if (grille.getCase(x + 1, y) == "C1" || grille.getCase(x + 1, y) == "F1" || grille.getCase(x + 1, y) == "D1") {
-			grille.changeCase(x + 1, y, "X ");
-		}
-		if (grille.getCase(x, y + 1) == "C1" || grille.getCase(x, y + 1) == "F1" || grille.getCase(x, y + 1) == "D1") {
-			grille.changeCase(x, y + 1, "X ");
+	public boolean tirer(int y, int x, Grille grille) {
+		shoot(y, x, grille);
+		if ((y > 0) && (x > 0) && (y < 14) && (x < 14)) {
+			for (int i = y - 1; i <= y + 1; i++) {
+				for (int j = x - 1; j <= x + 1; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
 		}
 
-		if (grille.getCase(x, y) == "S1") {
-			grille.changeCase(x, y, "? ");
-		}
-		if (grille.getCase(x, y - 1) == "C1") {
-			grille.changeCase(x, y - 1, "? ");
-		}
-		if (grille.getCase(x - 1, y) == "S1") {
-			grille.changeCase(x - 1, y, "? ");
-		}
-		if (grille.getCase(x + 1, y) == "S1") {
-			grille.changeCase(x + 1, y, "? ");
-		}
-		if (grille.getCase(x, y + 1) == "S1") {
-			grille.changeCase(x, y + 1, "? ");
+		else if ((y == 0) && (x == 0)) {
+			for (int i = y; i <= y + 1; i++) {
+				for (int j = x; j <= x + 1; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
 		}
 
-		if (grille.getCase(x, y) == "X ") {
-			return false;
+		else if ((y > 0) && (x == 0) && (y < 14)) {
+			for (int i = y - 1; i <= y + 1; i++) {
+				for (int j = x; j <= x + 1; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
 		}
-		return true;
+
+		else if ((y == 14) && (x == 0)) {
+			for (int i = y - 1; i <= y; i++) {
+				for (int j = x; j <= x + 1; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
+		}
+
+		else if ((y == 14) && (x > 0) && (x < 14)) {
+			for (int i = y - 1; i <= y; i++) {
+				for (int j = x - 1; j <= x + 1; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
+		}
+
+		else if ((y == 14) && (x == 14)) {
+			for (int i = y - 1; i <= y; i++) {
+				for (int j = x - 1; j <= x; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
+		}
+
+		else if ((y > 0) && (x == 14) && (y < 14)) {
+			for (int i = y - 1; i <= y + 1; i++) {
+				for (int j = x - 1; j <= x; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
+		}
+
+		else if ((y == 0) && (x == 14)) {
+			for (int i = y; i <= y + 1; i++) {
+				for (int j = x - 1; j <= x; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
+		}
+
+		else if ((y == 0) && (x > 0) && (x < 14)) {
+			for (int i = y; i <= y + 1; i++) {
+				for (int j = x - 1; j <= x + 1; j++) {
+					if (Math.abs(x - y) % 2 == 0) {
+						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					} else {
+						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+							shoot(i, j, grille);
+						}
+					}
+				}
+			}
+			return true;
+		}
+
+		return false;
 	}
 }

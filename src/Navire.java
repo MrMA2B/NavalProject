@@ -56,6 +56,34 @@ public class Navire {
 	public boolean tirer(int x, int y, Grille grille) {
 		return false;
 	}
+	
+	public boolean shoot(int x, int y, Grille grille) {
+		if (grille.getCase(x, y).equals(". ")) {
+			grille.changeCase(x, y, "O ");
+			return true;
+		}
+
+		if (grille.getCase(x, y).equals("O ")) {
+			grille.changeCase(x, y, "O ");
+			return true;
+		}
+
+		if (grille.getCase(x, y).equals("S1") || grille.getCase(x, y).equals("S2") || grille.getCase(x, y).equals("S3")
+				|| grille.getCase(x, y).equals("S4")) {
+			System.out.println("Vous ne pouvez pas toucher de sous-marin avec ce navire");
+			return true;
+		}
+
+		if (grille.getCase(x, y).equals("X ")) {
+			System.out.println("Vous ne pouvez pas tirer sur un une case déjà touchée.");
+			return true;
+		}
+
+		else {
+			grille.changeCase(x, y, "X ");
+			return true;
+		}
+	}
 
 	public int getPv() {
 		return pv;

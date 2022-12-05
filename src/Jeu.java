@@ -3,6 +3,7 @@ import java.util.*;
 public class Jeu {
 	Scanner sc = new Scanner(System.in);
 	Scanner sc1 = new Scanner(System.in);
+	Scanner sc2 = new Scanner(System.in);
 	Scanner sc3 = new Scanner(System.in);
 
 	public void jeu() {
@@ -70,21 +71,26 @@ public class Jeu {
 //			grille.afficher();
 			System.out.println("Continuer : ");
 			String TEST = sc1.nextLine();
-			
+						
 			while (!TEST.equals("Q")) {
-				System.out.println("X : ");
-				int x = sc.nextInt()-1;
-				System.out.println("Y : ");
 				
-				int y=5;
-				String tst = sc.nextLine();
-				System.out.println(grille.getColonne(tst));
+				System.out.println("X : ");
+				String aux = sc2.nextLine();
+				int x = grille.getColonne(aux);
+				
+				System.out.println("Y : ");
+				int y = sc.nextInt()-1;
 				
 				test = navire.tirer(x, y, grille);
 				navire.touche();
 				grille.afficher();
+				
 				System.out.println("Continuer : ");
 				TEST = sc1.nextLine();
+				
+				System.out.println("Depuis quel navire voulez-vous tirer?");
+				choixbat = sc1.nextLine();
+				navire = hashMap.get(choixbat);
 			}
 
 		}

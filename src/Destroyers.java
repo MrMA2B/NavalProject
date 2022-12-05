@@ -30,21 +30,7 @@ public class Destroyers extends Navire {
 
 	@Override
 	public boolean tirer(int x, int y, Grille grille) {
-		if (grille.getCase(x, y) == ". ") {
-			grille.changeCase(x, y, "O");
-		}
-
-		if (grille.getCase(x, y) == "C1" || grille.getCase(x, y) == "F1" || grille.getCase(x, y) == "D1") {
-			grille.changeCase(x, y, "X ");
-		}
-
-		if (grille.getCase(x, y) == "S1") {
-			grille.changeCase(x, y, "? ");
-		}
-
-		if (grille.getCase(x, y) == "X ") {
-			return false;
-		}
+		shoot(x,y,grille);
 		return true;
 	}
 }

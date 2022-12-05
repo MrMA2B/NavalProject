@@ -20,12 +20,12 @@ public class Grille {
 	
 	public int getColonne(String s) {
 		String[] colonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
-		for (int i = 0; i < 14; i++){
+		for (int i = 0; i < colonne.length; i++)
+	    {
 	        if (colonne[i].equals(s)) {
 	            return i;
 	        }
 	    }
-	 
 	    return -1;
 	}
 
