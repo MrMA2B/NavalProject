@@ -1,8 +1,8 @@
 
 public class Grille {
-	private int ligne;
-	private int col;
-	private String [][] grille;
+	int ligne;
+	int col;
+	String [][] grille;
 	Navire nav = new Navire();
 
 	public Grille(int n, int p) {
@@ -92,12 +92,15 @@ public class Grille {
 	  public void setGrille(String[][] newGrille) {
 	    this.grille = newGrille;
 	  }
-	  
+	  public void changementPos(int x, int y, String test, char val) {
+		  anciennePos(x, y, test, val);
+		  nouvellePos(x, y, test, val);
+	  }
 
 	  public void anciennePos(int x, int y, String test, char val) {
 		  int i = x;
 		  int j = y;
-		  if(grille[i][j] == test) {
+		  if(grille[i][j].equals(test)) {
 			  if(val == 'H') {
 				  for(int b=0;b<3;b++) {
 					  grille[i+b][j] = ". ";
@@ -157,7 +160,7 @@ public class Grille {
 		  }
 		  
 }
-	  public boolean testerPos(int x, int y, char val, int cases, int choix, int axe1) {
+	  public boolean testerPos(int x, int y, char val, int cases, int axe1) {
 		  int i = x;
 		  int j = y;
 		  int axe = axe1;
@@ -181,12 +184,49 @@ public class Grille {
 				  }
 			  if(val == 'D') {
 				  	if(grille[i][j+cases] == ". " && j+cases < col) {
-				  		System.out.println(j);
 				  		return true;
 				  	}
 				  }
 		  }
 		  return false;
+	  }
+
+
+	  public int getAxe(String s) {
+		  for (int i = 0; i < ligne; i++) {
+				for (int j = 0; j < col; j++)
+					if(grille[i][j].equals(s)) {
+						if(grille[i+1][j] == grille[i][j] ) {
+							return 0;
+						}
+						if(grille[i][j+1] == grille[i][j] ) {
+							return 1;
+						}	
+					}
+		  }
+		  return 0;
+	  }
+
+	  public int getX(String s) {
+			  for (int i = 0; i < ligne; i++) {
+					for (int j = 0; j < col; j++) {
+						if(grille[i][j].equals(s)) {
+							  return i;
+						}
+					}
+			  }
+			  return 0;
+		  }
+	  
+	  public int getY(String s) {
+		  for (int i = 0; i < ligne; i++) {
+				for (int j = 0; j < col; j++) {
+					if(grille[i][j].equals(s)) {
+						  return j;
+					}
+				}
+		  }
+		  return 0;
 	  }
 
 }

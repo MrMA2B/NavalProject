@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 public class Jeu {
-	static Scanner sc = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
+	Scanner sc1 = new Scanner(System.in);
+	Scanner sc3 = new Scanner(System.in);
 	public void jeu() {
 	
 	System.out.println("Vous jouez contre l'ordinateur");
@@ -11,8 +13,6 @@ public class Jeu {
 	Navire nav = new Navire();
 	d1.placerD1(grille);
 	d1.placerD2(grille);
-	int x = nav.getPositionX();
-	int y = nav.getPositionY();
 	grille.afficher();
 
 	System.out.println("1.Tirer");
@@ -24,38 +24,26 @@ public class Jeu {
 	}
 	if(choix==2) {
 		System.out.println("Quel navire voulez-vous déplacer ?");
-		int choixbat = sc.nextInt();
-			if(choixbat == nav.getBat(choixbat)) {
-				if(nav.getAxeb(choixbat) == 0) {
+		String choixbat = sc1.nextLine();
+		
+			if(grille.getAxe(choixbat) == 0) {
+				
 					System.out.println("Faire H");
 					System.out.println("Faire B");
 					char direction = sc.next().charAt(0);
-					while(grille.testerPos(nav.getX(choixbat),nav.getY(choixbat), direction, 3, choixbat, nav.getAxeb(choixbat)) == false) {
-						System.out.println("Faire H");
-						System.out.println("Faire B");
-						direction = sc.next().charAt(0);
-					}
-					grille.testerPos(nav.getX(choixbat),nav.getY(choixbat), direction, 3, choixbat, nav.getAxeb(choixbat));
-					grille.anciennePos(nav.getX(choixbat),nav.getY(choixbat), "D1", direction);	
-					grille.nouvellePos(nav.getX(choixbat),nav.getY(choixbat), "D1", direction);
+					grille.testerPos(grille.getX(choixbat), grille.getY(choixbat), direction, 3, grille.getAxe(choixbat));
+					grille.changementPos(grille.getX(choixbat), grille.getY(choixbat), choixbat, direction);
 					grille.afficher();
-				}
-				if(nav.getAxeb(choixbat)  == 1) {
+			}
+				if(grille.getAxe(choixbat) == 1){
 					System.out.println("Faire G");
 					System.out.println("Faire D");
 					char direction2 = sc.next().charAt(0);
-					while(grille.testerPos(nav.getX(choixbat),nav.getY(choixbat), direction2, 3, choixbat, nav.getAxeb(choixbat)) == false) {
-						System.out.println("Faire G");
-						System.out.println("Faire D");
-						direction2 = sc.next().charAt(0);
+					grille.testerPos(grille.getX(choixbat), grille.getY(choixbat), direction2, 3, grille.getAxe(choixbat));
+					grille.changementPos(grille.getX(choixbat), grille.getY(choixbat), choixbat, direction2);
+					grille.afficher();
 					}
-						grille.testerPos(nav.getX(choixbat),nav.getY(choixbat), direction2, 3, choixbat, nav.getAxeb(choixbat));
-						grille.anciennePos(nav.getX(choixbat),nav.getY(choixbat), "D1", direction2);	
-						grille.nouvellePos(nav.getX(choixbat),nav.getY(choixbat), "D1", direction2);
-						grille.afficher();
-				}
 			}
-	}
 	System.out.println("Au tour de l'adversaire...");	
 	}
 	
