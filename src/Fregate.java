@@ -26,7 +26,9 @@ public class Fregate extends Navire {
 			}
 		}
 	}
-
+/**
+ * EX : J 11 ne fonctionne pas... autres cas ? / pourquoi ? / A corriger
+ */
 	public boolean tirer(int y, int x, Grille grille) {
 		shoot(y, x, grille);
 		if ((y > 0) && (x > 0) && (y < 14) && (x < 14)) {

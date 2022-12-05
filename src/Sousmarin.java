@@ -16,11 +16,13 @@ public class Sousmarin extends Navire {
 	public boolean tirer(int x, int y, Grille grille) {
 		if (grille.getCase(x, y) == ". ") {
 			grille.changeCase(x, y, "O ");
+			return true;
 		}
 
 		if (grille.getCase(x, y).equals("S1") || grille.getCase(x, y).equals("S2") || grille.getCase(x, y).equals("S3")
 				|| grille.getCase(x, y).equals("S4")) {
 			grille.changeCase(x, y, "X ");
+			return true;
 		}
 
 		if (grille.getCase(x, y) == "X") {
@@ -30,9 +32,8 @@ public class Sousmarin extends Navire {
 
 		else {
 			System.out.println("Vous ne pouvez pas toucher ces bateaux avec vos sous-marin");
+			return true;
 		}
-
-		return true;
 	}
 
 }
