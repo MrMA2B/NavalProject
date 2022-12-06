@@ -1,18 +1,15 @@
-import java.util.ArrayList;
+
 public class Sousmarin extends Navire {
 
 	public Sousmarin() {
 		super();
 	}
 
-	public void placer(Grille grille) {
+	public void placer(Grille grille,String s) {
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 15);
 		if (grille.getCase(l, c) == ". ") {
-			System.out.println(nameboat.get(nameboat.size()-1));
-			grille.changeCase(l, c, nameboat.get(nameboat.size()-1));
-			nameboat.remove(nameboat.get(nameboat.size()-1));
-			System.out.println(nameboat.get(nameboat.size()-1));
+			grille.changeCase(l, c,s);
 		}
 	}
 

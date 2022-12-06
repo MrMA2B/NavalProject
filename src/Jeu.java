@@ -13,41 +13,41 @@ public class Jeu {
 		Grille grilleH = new Grille(15, 15);
 
 		Sousmarin s1 = new Sousmarin();
-		s1.placer(grilleH);
+		s1.placer(grilleH,"S1");
 		Sousmarin s2 = new Sousmarin();
-		s2.placer(grilleH);
+		s2.placer(grilleH,"S2");
 		Sousmarin s3 = new Sousmarin();
-		s3.placer(grilleH);
+		s3.placer(grilleH,"S3");
 		Sousmarin s4 = new Sousmarin();
-		s4.placer(grilleH);
+		s4.placer(grilleH,"S4");
 
 		Destroyers d1 = new Destroyers();
-		d1.placer(grilleH);
+		d1.placer(grilleH,"D1");
 		Destroyers d2 = new Destroyers();
-		d2.placer(grilleH);
+		d2.placer(grilleH,"D2");
 		Destroyers d3 = new Destroyers();
-		d3.placer(grilleH);
+		d3.placer(grilleH,"D3");
 
 		Fregate f1 = new Fregate();
-		f1.placer(grilleH);
+		f1.placer(grilleH,"F1");
 		Fregate f2 = new Fregate();
-		f2.placer(grilleH);
-		
+		f2.placer(grilleH,"F2");
+
 		Cuirasses c0 = new Cuirasses();
 		c0.placer(grilleH);
-		
+
 		HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
-		hashMap.put("S1",s1);
-		hashMap.put("S2",s2);
-		hashMap.put("S3",s3);
-		hashMap.put("S4",s4);
-		hashMap.put("D1",d1);
-		hashMap.put("D2",d2);
-		hashMap.put("D3",d3);
-		hashMap.put("F1",f1);
-		hashMap.put("F2",f2);
-		hashMap.put("C0",c0);
-		
+		hashMap.put("S1", s1);
+		hashMap.put("S2", s2);
+		hashMap.put("S3", s3);
+		hashMap.put("S4", s4);
+		hashMap.put("D1", d1);
+		hashMap.put("D2", d2);
+		hashMap.put("D3", d3);
+		hashMap.put("F1", f1);
+		hashMap.put("F2", f2);
+		hashMap.put("C0", c0);
+
 		grilleH.afficher();
 		grilleH.affichercacher();
 
@@ -72,24 +72,24 @@ public class Jeu {
 			grilleH.afficher();
 			System.out.println("Continuer : ");
 			String TEST = sc1.nextLine();
-						
+
 			while (!TEST.equals("Q")) {
-				
+
 				System.out.println("X : ");
 				String aux = sc2.nextLine();
 				int x = grilleH.getColonne(aux);
-				
+
 				System.out.println("Y : ");
-				int y = sc.nextInt()-1;
-				
+				int y = sc.nextInt() - 1;
+
 				test = navire.tirer(x, y, grilleH);
 				navire.touche();
 				grilleH.afficher();
 				grilleH.affichercacher();
-				
+
 				System.out.println("Continuer : ");
 				TEST = sc1.nextLine();
-				
+
 				System.out.println("Depuis quel navire voulez-vous tirer?");
 				choixbat = sc1.nextLine();
 				navire = hashMap.get(choixbat);
@@ -104,7 +104,8 @@ public class Jeu {
 
 				System.out.println("Faire B");
 				char direction = sc.next().charAt(0);
-				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction, 3, grilleH.getAxe(choixbat));
+				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction, 3,
+						grilleH.getAxe(choixbat));
 				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction);
 				grilleH.afficher();
 			}
@@ -112,7 +113,8 @@ public class Jeu {
 				System.out.println("Faire G");
 				System.out.println("Faire D");
 				char direction2 = sc.next().charAt(0);
-				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction2, 3, grilleH.getAxe(choixbat));
+				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction2, 3,
+						grilleH.getAxe(choixbat));
 				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction2);
 				grilleH.afficher();
 			}
@@ -120,4 +122,3 @@ public class Jeu {
 		System.out.println("Au tour de l'adversaire...");
 	}
 }
-

@@ -14,7 +14,7 @@ public class Cuirasses extends Navire {
 
 		if (axe == 0) {
 			while (placer == false) {
-				placer = testA(7, l, c, "C1", grille);
+				placer = testA(7, l, c, "C0", grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 8);
 			}
@@ -22,7 +22,7 @@ public class Cuirasses extends Navire {
 		}
 		if (axe == 1) {
 			while (placer == false) {
-				placer = testB(7, l, c, "C1", grille);
+				placer = testB(7, l, c, "C0", grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 8);
 			}

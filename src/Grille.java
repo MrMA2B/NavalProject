@@ -1,10 +1,8 @@
-import java.util.*;
 
 public class Grille {
 	int ligne;
 	int col;
 	String[][] grille;
-	Navire nav = new Navire();
 
 	public Grille(int n, int p) {
 		ligne = n;
