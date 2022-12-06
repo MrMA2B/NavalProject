@@ -8,19 +8,19 @@ public class Fregate extends Navire {
 	public void placer(Grille grille) {
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 10);
-		int p = (int) (Math.random() * 2);
-		boolean gg = false;
+		int axe = (int) (Math.random() * 2);
+		boolean placer = false;
 
-		if (p == 0) {
-			while (gg == false) {
-				gg = testA(5, l, c, "F1", grille);
+		if (axe == 0) {
+			while (placer == false) {
+				placer = testA(5, l, c, "F1", grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 12);
 			}
 		}
-		if (p == 1) {
-			while (gg == false) {
-				gg = testB(5, l, c, "F1", grille);
+		if (axe == 1) {
+			while (placer == false) {
+				placer = testB(5, l, c, "F1", grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 12);
 			}

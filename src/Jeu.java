@@ -100,7 +100,6 @@ public class Jeu {
 
 			if (grille.getAxe(choixbat) == 0) {
 
-				System.out.println("Faire H");
 				System.out.println("Faire B");
 				char direction = sc.next().charAt(0);
 				grille.testerPos(grille.getX(choixbat), grille.getY(choixbat), direction, 3, grille.getAxe(choixbat));

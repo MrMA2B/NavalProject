@@ -18,11 +18,11 @@ public class Grille {
 		}
 	}
 	
-	public int getColonne(String s) {
+	public int getColonne(String str) {
 		String[] colonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
 		for (int i = 0; i < colonne.length; i++)
 	    {
-	        if (colonne[i].equals(s)) {
+	        if (colonne[i].equals(str)) {
 	            return i;
 	        }
 	    }
@@ -101,31 +101,31 @@ public class Grille {
 		this.grille = newGrille;
 	}
 
-	public void changementPos(int x, int y, String test, char val) {
-		anciennePos(x, y, test, val);
-		nouvellePos(x, y, test, val);
+	public void changementPos(int x, int y, String strnav, char direction) {
+		anciennePos(x, y, strnav, direction);
+		nouvellePos(x, y, strnav, direction);
 	}
 
-	public void anciennePos(int x, int y, String test, char val) {
+	public void anciennePos(int x, int y, String strnav, char direction) {
 		int i = x;
 		int j = y;
-		if (grille[i][j].equals(test)) {
-			if (val == 'H') {
+		if (grille[i][j].equals(strnav)) {
+			if (direction == 'H') {
 				for (int b = 0; b < 3; b++) {
 					grille[i + b][j] = ". ";
 				}
 			}
-			if (val == 'B') {
+			if (direction == 'B') {
 				for (int b = 0; b < 3; b++) {
 					grille[i + b][j] = ". ";
 				}
 			}
-			if (val == 'G') {
+			if (direction == 'G') {
 				for (int b = 0; b < 3; b++) {
 					grille[i][j + b] = ". ";
 				}
 			}
-			if (val == 'D') {
+			if (direction == 'D') {
 				for (int b = 0; b < 3; b++) {
 					grille[i][j + b] = ". ";
 				}
@@ -133,67 +133,66 @@ public class Grille {
 		}
 	}
 
-	public void nouvellePos(int x, int y, String test, char val) {
+	public void nouvellePos(int x, int y, String strnav, char direction) {
 		int i = x;
 		int j = y;
-		if (val == 'H') {
+		if (direction == 'H') {
 			i = i - 1;
 			if (grille[i][j] == ". ") {
 				for (int b = 0; b < 3; b++) {
-					grille[i + b][j] = test;
+					grille[i + b][j] = strnav;
 				}
 			}
 		}
-		if (val == 'B') {
+		if (direction == 'B') {
 			i = i + 1;
 			if (grille[i][j] == ". ") {
 				for (int b = 0; b < 3; b++) {
-					grille[i + b][j] = test;
+					grille[i + b][j] = strnav;
 				}
 			}
 		}
-		if (val == 'G') {
+		if (direction == 'G') {
 			j = j - 1;
 			if (grille[i][j] == ". ") {
 				for (int b = 0; b < 3; b++) {
-					grille[i][j + b] = test;
+					grille[i][j + b] = strnav;
 				}
 			}
 		}
-		if (val == 'D') {
+		if (direction == 'D') {
 			j = j + 1;
 			if (grille[i][j] == ". ") {
 				for (int b = 0; b < 3; b++) {
-					grille[i][j + b] = test;
+					grille[i][j + b] = strnav;
 				}
 			}
 		}
 
 	}
 
-	public boolean testerPos(int x, int y, char val, int cases, int axe1) {
+	public boolean testerPos(int x, int y, char direction, int cases, int axe) {
 		int i = x;
 		int j = y;
-		int axe = axe1;
 		if (axe == 0) {
-			if (val == 'H') {
+			if (direction == 'H') {
 				if (grille[i - 1][j] == ". " && i - 1 >= 0) {
 					return true;
 				}
 			}
-			if (val == 'B') {
+			if (direction == 'B') {
 				if (grille[i + cases][j] == ". " && i + cases < ligne) {
 					return true;
 				}
 			}
 		}
 		if (axe == 1) {
-			if (val == 'G') {
+			if (direction == 'G') {
 				if (grille[i][j - 1] == ". " && j - 1 >= 0) {
 					return true;
 				}
 			}
-			if (val == 'D') {
+			if (direction == 'D') {
 				if (grille[i][j + cases] == ". " && j + cases < col) {
 					return true;
 				}
@@ -202,10 +201,10 @@ public class Grille {
 		return false;
 	}
 
-	public int getAxe(String s) {
+	public int getAxe(String strnav) {
 		for (int i = 0; i < ligne; i++) {
 			for (int j = 0; j < col; j++)
-				if (grille[i][j].equals(s)) {
+				if (grille[i][j].equals(strnav)) {
 					if (grille[i + 1][j] == grille[i][j]) {
 						return 0;
 					}
@@ -217,10 +216,10 @@ public class Grille {
 		return 0;
 	}
 
-	public int getX(String s) {
+	public int getX(String strnav) {
 		for (int i = 0; i < ligne; i++) {
 			for (int j = 0; j < col; j++) {
-				if (grille[i][j].equals(s)) {
+				if (grille[i][j].equals(strnav)) {
 					return i;
 				}
 			}
@@ -228,10 +227,10 @@ public class Grille {
 		return 0;
 	}
 
-	public int getY(String s) {
+	public int getY(String strnav) {
 		for (int i = 0; i < ligne; i++) {
 			for (int j = 0; j < col; j++) {
-				if (grille[i][j].equals(s)) {
+				if (grille[i][j].equals(strnav)) {
 					return j;
 				}
 			}

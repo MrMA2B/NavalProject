@@ -7,21 +7,21 @@ public class Destroyers extends Navire {
 
 	public void placer(Grille grille) {
 		int l = (int) (Math.random() * 15);
-		int c = (int) (Math.random() * 12);
-		int p = (int) (Math.random() * 2);
-		boolean placee = false;
+		int c = (int) (Math.random() * 15);
+		int axe = (int) (Math.random() * 2);
+		boolean placer = false;
 
-		if (p == 0) {
-			while (placee == false) {
-				placee = testA(3, l, c, "D1", grille);// Modifier 3 par lenght du bateau
+		if (axe == 0) {
+			while (placer == false) {
+				placer = testA(3, l, c, "D1", grille);// Modifier 3 par lenght du bateau
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 12);
 			}
 		}
 
-		if (p == 1) {
-			while (placee == false) {
-				placee = testB(3, l, c, "D1", grille);
+		if (axe == 1) {
+			while (placer == false) {
+				placer = testB(3, l, c, "D1", grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 12);
 			}

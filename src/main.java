@@ -26,8 +26,8 @@ public class main {
 			switch (choix) {
 			case 1:
 
-				Jeu Test = new Jeu();
-				Test.jeu();
+				Jeu jeu = new Jeu();
+				jeu.jeu();
 				break;
 			case 2:
 				System.out.println("En travaux...");

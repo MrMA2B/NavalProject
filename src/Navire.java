@@ -8,21 +8,19 @@ public class Navire {
 	public Navire() {
 	}
 
-	public boolean testA(int val, int t1, int t2, String ch, Grille grille) {
-		int l = t2;
-		int c = t1;
-		int test = 0;
+	public boolean testA(int taille, int c, int l, String strnav, Grille grille) {
+		int cases = 0;
 
-		for (int b = 0; b < val; b++) {
+		for (int b = 0; b < taille; b++) {
 			if (grille.getCase(l + b, c) == ". ") {
-				test = test + 1;
+				cases = cases + 1;
 			}
 		}
-		if (test == val) {
-			for (int b = 0; b < val; b++) {
+		if (cases == taille) {
+			for (int b = 0; b < taille; b++) {
 				x = c;
 				y = l;
-				grille.changeCase(l + b, c, ch);
+				grille.changeCase(l + b, c, strnav);
 			}
 			return true;
 		} else {
@@ -31,21 +29,19 @@ public class Navire {
 
 	}
 
-	public boolean testB(int val, int t1, int t2, String ch, Grille grille) {
-		int l = t1;
-		int c = t2;
-		int test = 0;
+	public boolean testB(int taille, int l, int c, String strnav, Grille grille) {
+		int cases = 0;
 
-		for (int b = 0; b < val; b++) {
+		for (int b = 0; b < taille; b++) {
 			if (grille.getCase(l, c + b) == ". ") {
-				test = test + 1;
+				cases = cases + 1;
 			}
 		}
-		if (test == val) {
-			for (int b = 0; b < val; b++) {
+		if (cases == taille) {
+			for (int b = 0; b < taille; b++) {
 				x = c;
 				y = l;
-				grille.changeCase(l, c + b, ch);
+				grille.changeCase(l, c + b, strnav);
 			}
 		} else {
 			return false;
