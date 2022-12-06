@@ -15,14 +15,14 @@ public class Fregate extends Navire {
 			while (placer == false) {
 				placer = testA(5, l, c, "F1", grille);
 				l = (int) (Math.random() * 15);
-				c = (int) (Math.random() * 12);
+				c = (int) (Math.random() * 10);
 			}
 		}
 		if (axe == 1) {
 			while (placer == false) {
 				placer = testB(5, l, c, "F1", grille);
 				l = (int) (Math.random() * 15);
-				c = (int) (Math.random() * 12);
+				c = (int) (Math.random() * 10);
 			}
 		}
 	}
@@ -35,11 +35,11 @@ public class Fregate extends Navire {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -52,11 +52,11 @@ public class Fregate extends Navire {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x; j <= x + 1; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -69,11 +69,11 @@ public class Fregate extends Navire {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x; j <= x + 1; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -86,11 +86,11 @@ public class Fregate extends Navire {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x; j <= x + 1; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -103,11 +103,11 @@ public class Fregate extends Navire {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -120,11 +120,11 @@ public class Fregate extends Navire {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x - 1; j <= x; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -137,11 +137,11 @@ public class Fregate extends Navire {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -154,11 +154,11 @@ public class Fregate extends Navire {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
@@ -171,11 +171,11 @@ public class Fregate extends Navire {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
 					if (Math.abs(x - y) % 2 == 0) {
-						if ((!(Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if ((!(Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					} else {
-						if (((Math.abs(i - j) % 2 == 0) && (Math.abs(i - j) != 0)) || ((i == y) && (j == x))) {
+						if (((Math.abs(i - j) % 2 == 0)) || ((i == y) && (j == x))) {
 							shoot(i, j, grille);
 						}
 					}
