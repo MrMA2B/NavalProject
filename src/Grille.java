@@ -5,7 +5,7 @@ public class Grille {
 	int col;
 	String[][] grille;
 	Navire nav = new Navire();
-	
+
 	public Grille(int n, int p) {
 		ligne = n;
 		col = p;
@@ -17,16 +17,15 @@ public class Grille {
 			}
 		}
 	}
-	
+
 	public int getColonne(String str) {
 		String[] colonne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
-		for (int i = 0; i < colonne.length; i++)
-	    {
-	        if (colonne[i].equals(str)) {
-	            return i;
-	        }
-	    }
-	    return -1;
+		for (int i = 0; i < colonne.length; i++) {
+			if (colonne[i].equals(str)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public void afficher() {
@@ -37,6 +36,24 @@ public class Grille {
 			System.out.print(cologne[i]);
 			for (int j = 0; j < col; j++) {
 				System.out.print("  " + grille[i][j]);
+			}
+			System.out.println("  ");
+		}
+		System.out.println();
+	}
+
+	public void affichercacher() {
+		String[] cologne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
+		System.out.println();
+		System.out.println("   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15");
+		for (int i = 0; i < ligne; i++) {
+			System.out.print(cologne[i]);
+			for (int j = 0; j < col; j++) {
+				if ((grille[i][j] == ". ") || (grille[i][j] == "X ")|| (grille[i][j] == "O ")) {
+					System.out.print("  " + grille[i][j]);
+				} else {
+					System.out.print("  . ");
+				}
 			}
 			System.out.println("  ");
 		}
@@ -237,5 +254,4 @@ public class Grille {
 		}
 		return 0;
 	}
-
 }

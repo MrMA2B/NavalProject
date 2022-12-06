@@ -10,31 +10,31 @@ public class Jeu {
 
 		System.out.println("Vous jouez contre l'ordinateur");
 
-		Grille grille = new Grille(15, 15);
+		Grille grilleH = new Grille(15, 15);
 
 		Sousmarin s1 = new Sousmarin();
-		s1.placer(grille);
+		s1.placer(grilleH);
 		Sousmarin s2 = new Sousmarin();
-		s2.placer(grille);
+		s2.placer(grilleH);
 		Sousmarin s3 = new Sousmarin();
-		s3.placer(grille);
+		s3.placer(grilleH);
 		Sousmarin s4 = new Sousmarin();
-		s4.placer(grille);
+		s4.placer(grilleH);
 
 		Destroyers d1 = new Destroyers();
-		d1.placer(grille);
+		d1.placer(grilleH);
 		Destroyers d2 = new Destroyers();
-		d2.placer(grille);
+		d2.placer(grilleH);
 		Destroyers d3 = new Destroyers();
-		d3.placer(grille);
+		d3.placer(grilleH);
 
 		Fregate f1 = new Fregate();
-		f1.placer(grille);
+		f1.placer(grilleH);
 		Fregate f2 = new Fregate();
-		f2.placer(grille);
+		f2.placer(grilleH);
 		
 		Cuirasses c0 = new Cuirasses();
-		c0.placer(grille);
+		c0.placer(grilleH);
 		
 		HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
 		hashMap.put("S1",s1);
@@ -48,7 +48,8 @@ public class Jeu {
 		hashMap.put("F2",f2);
 		hashMap.put("C0",c0);
 		
-		grille.afficher();
+		grilleH.afficher();
+		grilleH.affichercacher();
 
 		System.out.println("1.Tirer");
 		System.out.println("2.Déplacer");
@@ -65,10 +66,10 @@ public class Jeu {
 //				int x = sc.nextInt() - 1;
 //				System.out.println("Rentrer Y : ");
 //				int y = sc.nextInt() - 1;
-//				test = navire.tirer(x, y, grille);
+//				test = navire.tirer(x, y, grilleH);
 //			}
-//			test = false;
-//			grille.afficher();
+			test = false;
+			grilleH.afficher();
 			System.out.println("Continuer : ");
 			String TEST = sc1.nextLine();
 						
@@ -76,14 +77,15 @@ public class Jeu {
 				
 				System.out.println("X : ");
 				String aux = sc2.nextLine();
-				int x = grille.getColonne(aux);
+				int x = grilleH.getColonne(aux);
 				
 				System.out.println("Y : ");
 				int y = sc.nextInt()-1;
 				
-				test = navire.tirer(x, y, grille);
+				test = navire.tirer(x, y, grilleH);
 				navire.touche();
-				grille.afficher();
+				grilleH.afficher();
+				grilleH.affichercacher();
 				
 				System.out.println("Continuer : ");
 				TEST = sc1.nextLine();
@@ -98,24 +100,24 @@ public class Jeu {
 			System.out.println("Quel navire voulez-vous déplacer ?");
 			String choixbat = sc1.nextLine();
 
-			if (grille.getAxe(choixbat) == 0) {
-				System.out.println("Faire H");
+			if (grilleH.getAxe(choixbat) == 0) {
+
 				System.out.println("Faire B");
 				char direction = sc.next().charAt(0);
-				grille.testerPos(grille.getX(choixbat), grille.getY(choixbat), direction, 3, grille.getAxe(choixbat));
-				grille.changementPos(grille.getX(choixbat), grille.getY(choixbat), choixbat, direction);
-				grille.afficher();
+				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction, 3, grilleH.getAxe(choixbat));
+				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction);
+				grilleH.afficher();
 			}
-			if (grille.getAxe(choixbat) == 1) {
+			if (grilleH.getAxe(choixbat) == 1) {
 				System.out.println("Faire G");
 				System.out.println("Faire D");
 				char direction2 = sc.next().charAt(0);
-				grille.testerPos(grille.getX(choixbat), grille.getY(choixbat), direction2, 3, grille.getAxe(choixbat));
-				grille.changementPos(grille.getX(choixbat), grille.getY(choixbat), choixbat, direction2);
-				grille.afficher();
+				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction2, 3, grilleH.getAxe(choixbat));
+				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction2);
+				grilleH.afficher();
 			}
 		}
 		System.out.println("Au tour de l'adversaire...");
 	}
-
 }
+
