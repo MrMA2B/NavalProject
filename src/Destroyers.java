@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class Destroyers extends Navire {
 	
@@ -31,8 +32,8 @@ public class Destroyers extends Navire {
 	}
 
 	@Override
-	public boolean tirer(int x, int y, Grille grille) {
-		shoot(x,y,grille);
+	public boolean tirer(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
+		shoot(x,y,grille,hashMap);
 		return true;
 	}
 }

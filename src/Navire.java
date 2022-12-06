@@ -50,11 +50,11 @@ abstract class Navire {
 		return true;
 	}
 
-	public boolean tirer(int x, int y, Grille grille) {
+	public boolean tirer(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
 		return false;
 	}
 
-	public boolean shoot(int x, int y, Grille grille) {
+	public boolean shoot(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
 		if (grille.getCase(x, y).equals(". ")) {
 			grille.changeCase(x, y, "O ");
 			return true;
@@ -71,14 +71,22 @@ abstract class Navire {
 			return true;
 		}
 
-		if (grille.getCase(x, y).equals("X ")) {
+		if (grille.getCase(x, y).equals("T ")||grille.getCase(x, y).equals("X ")) {
 			System.out.println("Vous ne pouvez pas tirer sur un une case déjà touchée.");
 			return true;
 		}
 
 		else {
-			grille.changeCase(x, y, "X ");
-			return true;
+			if(getNavire(hashMap, grille.getCase(x, y)).pv>1) {
+				getNavire(hashMap, grille.getCase(x, y)).touche();
+				grille.changeCase(x, y, "T ");
+				return true;
+			}
+			else {
+				getNavire(hashMap, grille.getCase(x, y)).touche();
+				grille.changeCase(x, y, "X ");
+				return true;	
+			}
 		}
 	}
 

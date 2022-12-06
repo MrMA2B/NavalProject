@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Cuirasses extends Navire {
 
 	public Cuirasses() {
@@ -40,11 +42,11 @@ public class Cuirasses extends Navire {
 	 */
 
 	@Override
-	public boolean tirer(int y, int x, Grille grille) {
+	public boolean tirer(int y, int x, Grille grille,HashMap<String, Navire> hashMap) {
 		if ((y > 0) && (x > 0) && (y < 14) && (x < 14)) {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -53,7 +55,7 @@ public class Cuirasses extends Navire {
 		else if ((y == 0) && (x == 0)) {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x; j <= x + 1; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -62,7 +64,7 @@ public class Cuirasses extends Navire {
 		else if ((y > 0) && (x == 0) && (y < 14)) {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x; j <= x + 1; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -71,7 +73,7 @@ public class Cuirasses extends Navire {
 		else if ((y == 14) && (x == 0)) {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x; j <= x + 1; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -80,7 +82,7 @@ public class Cuirasses extends Navire {
 		else if ((y == 14) && (x > 0) && (x < 14)) {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -89,7 +91,7 @@ public class Cuirasses extends Navire {
 		else if ((y == 14) && (x == 14)) {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x - 1; j <= x; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -98,7 +100,7 @@ public class Cuirasses extends Navire {
 		else if ((y > 0) && (x == 14) && (y < 14)) {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -107,7 +109,7 @@ public class Cuirasses extends Navire {
 		else if ((y == 0) && (x == 14)) {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;
@@ -116,7 +118,7 @@ public class Cuirasses extends Navire {
 		else if ((y == 0) && (x > 0) && (x < 14)) {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
-					shoot(i, j, grille);
+					shoot(i, j, grille,hashMap);
 				}
 			}
 			return true;

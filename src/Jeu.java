@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Jeu {
+	HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
 	Scanner sc = new Scanner(System.in);
 	Scanner sc1 = new Scanner(System.in);
 	Scanner sc2 = new Scanner(System.in);
@@ -36,7 +37,7 @@ public class Jeu {
 		Cuirasses c0 = new Cuirasses();
 		c0.placer(grilleH);
 
-		HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
+		//HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
 		hashMap.put("S1", s1);
 		hashMap.put("S2", s2);
 		hashMap.put("S3", s3);
@@ -82,8 +83,7 @@ public class Jeu {
 				System.out.println("Y : ");
 				int y = sc.nextInt() - 1;
 
-				test = navire.tirer(x, y, grilleH);
-				navire.touche();
+				test = navire.tirer(x, y, grilleH,hashMap);
 				grilleH.afficher();
 				grilleH.affichercacher();
 
@@ -121,4 +121,8 @@ public class Jeu {
 		}
 		System.out.println("Au tour de l'adversaire...");
 	}
+	
+	public HashMap<String, Navire> getMap(){ 
+		return this.hashMap;
+		}
 }

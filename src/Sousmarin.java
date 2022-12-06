@@ -1,20 +1,22 @@
+import java.util.HashMap;
 
 public class Sousmarin extends Navire {
-
+	
 	public Sousmarin() {
 		super();
+		pv = 1;
 	}
 
-	public void placer(Grille grille,String s) {
+	public void placer(Grille grille, String s) {
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 15);
 		if (grille.getCase(l, c) == ". ") {
-			grille.changeCase(l, c,s);
+			grille.changeCase(l, c, s);
 		}
 	}
 
 	@Override
-	public boolean tirer(int x, int y, Grille grille) {
+	public boolean tirer(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
 		if (grille.getCase(x, y) == ". ") {
 			grille.changeCase(x, y, "O ");
 			return true;

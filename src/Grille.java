@@ -47,7 +47,7 @@ public class Grille {
 		for (int i = 0; i < ligne; i++) {
 			System.out.print(cologne[i]);
 			for (int j = 0; j < col; j++) {
-				if ((grille[i][j] == ". ") || (grille[i][j] == "X ")|| (grille[i][j] == "O ")) {
+				if ((grille[i][j] == ". ") || (grille[i][j] == "X ")|| (grille[i][j] == "O ")|| (grille[i][j] == "T ")) {
 					System.out.print("  " + grille[i][j]);
 				} else {
 					System.out.print("  . ");
@@ -64,46 +64,6 @@ public class Grille {
 
 	public void changeCase(int l, int c, String a) {
 		grille[l][c] = a;
-	}
-
-	public boolean isWater(int l, int c) {
-		if (getCase(l, c) == ". ") {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isSm(int l, int c) {
-		if (getCase(l, c) == "S") {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isF(int l, int c) {
-		if (getCase(l, c) == "F") {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isC(int l, int c) {
-		if (getCase(l, c) == "C") {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public boolean isD(int l, int c) {
-		if (getCase(l, c) == "D") {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	// Getter
