@@ -1,11 +1,15 @@
-
+import java.util.ArrayList;
 public class Fregate extends Navire {
+	ArrayList<String> fregate = new ArrayList<String>();
 
 	public Fregate() {
 		super();
+		fregate.add("F2");
+		fregate.add("F1");
 	}
 
 	public void placer(Grille grille) {
+		int strnav = fregate.size() - 1;
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 10);
 		int axe = (int) (Math.random() * 2);
@@ -13,17 +17,20 @@ public class Fregate extends Navire {
 
 		if (axe == 0) {
 			while (placer == false) {
-				placer = testA(5, l, c, "F1", grille);
+				placer = testA(5, l, c, fregate.get(fregate.size()-1), grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 10);
 			}
+			fregate.remove(strnav);
+			System.out.println(fregate.get(fregate.size()-1));
 		}
 		if (axe == 1) {
 			while (placer == false) {
-				placer = testB(5, l, c, "F1", grille);
+				placer = testB(5, l, c, fregate.get(fregate.size()-1), grille);
 				l = (int) (Math.random() * 15);
 				c = (int) (Math.random() * 10);
 			}
+			fregate.remove(strnav);
 		}
 	}
 /**

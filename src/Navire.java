@@ -1,11 +1,26 @@
 import java.util.*;
 
 public class Navire {
+	public ArrayList<String> nameboat = new ArrayList<String>();
 	public int x;
 	public int y;
 	protected int pv;
 
 	public Navire() {
+		nameboat.add("F2");
+		nameboat.add("F1");
+		nameboat.add("D3");
+		nameboat.add("D2");
+		nameboat.add("D1");
+		nameboat.add("S4");
+		nameboat.add("S3");
+		nameboat.add("S2");
+		nameboat.add("S1");
+		nameboat.remove(nameboat.get(nameboat.size()-1));
+		nameboat.remove(nameboat.get(nameboat.size()-1));
+		nameboat.remove(nameboat.get(nameboat.size()-1));
+		nameboat.remove(nameboat.get(nameboat.size()-1));
+		nameboat.remove(nameboat.get(nameboat.size()-1));
 	}
 
 	public boolean testA(int taille, int c, int l, String strnav, Grille grille) {

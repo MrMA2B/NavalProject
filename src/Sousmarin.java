@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Sousmarin extends Navire {
 
 	public Sousmarin() {
@@ -8,7 +9,10 @@ public class Sousmarin extends Navire {
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 15);
 		if (grille.getCase(l, c) == ". ") {
-			grille.changeCase(l, c, "S1");
+			System.out.println(nameboat.get(nameboat.size()-1));
+			grille.changeCase(l, c, nameboat.get(nameboat.size()-1));
+			nameboat.remove(nameboat.get(nameboat.size()-1));
+			System.out.println(nameboat.get(nameboat.size()-1));
 		}
 	}
 
