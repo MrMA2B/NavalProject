@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Cuirasses extends Navire {
+public class Cuirasses extends Navire implements Serializable{
 
 	public Cuirasses() {
 		super();

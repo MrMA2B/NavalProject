@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
 
-public class Robot {
+public class Robot implements Serializable{
 
 
 		public void Robot() {

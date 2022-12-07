@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Destroyers extends Navire {
+public class Destroyers extends Navire implements Serializable {
 	
 	public Destroyers() {
 		super();

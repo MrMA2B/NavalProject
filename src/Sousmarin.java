@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Sousmarin extends Navire {
+public class Sousmarin extends Navire implements Serializable{
 	
 	public Sousmarin() {
 		super();

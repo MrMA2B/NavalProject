@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class main {
+public class main implements Serializable{
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -32,7 +33,8 @@ public class main {
 //				robot.Robot();
 				break;
 			case 2:
-				System.out.println("En travaux...");
+				System.out.println("Veillez entrer le nom du fichier : à finir");
+				
 				break;
 			case 3:
 				Aide();

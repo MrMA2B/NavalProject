@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 
-abstract class Navire {
+abstract class Navire implements Serializable{
 	public int x;
 	public int y;
 	public int pv;

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Fregate extends Navire {
+public class Fregate extends Navire implements Serializable{
 
 	public Fregate() {
 		super();

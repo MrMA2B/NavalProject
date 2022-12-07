@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Jeu {
+public class Jeu implements Serializable{
 	HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
 	Scanner sc = new Scanner(System.in);
 	Scanner sc1 = new Scanner(System.in);
