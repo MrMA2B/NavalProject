@@ -212,4 +212,77 @@ public class Grille {
 		}
 		return 0;
 	}
+	public void testerCouler(int x, int y, int axe, String strnav) {
+		int i = x;
+		int j = y;
+		if (axe == 0) {
+			System.out.println(" 0 ");
+			if(grille[i-1][j]== "T ") {
+				System.out.println(" 01 ");
+				i=i-1;
+				while(grille[i][j]== "T "|| grille[i][j]== strnav) {
+					i = i-1;	//si navire placer en haut out truc
+					System.out.println(" 02 ");
+				}
+				i = i+1;
+				while(grille[i][j]== "T " || grille[i][j]== strnav) {
+					System.out.println(" 03 ");
+					grille[i][j] = "X ";
+					i=i+1;
+				}
+			}
+			else {
+				while(grille[i][j]== "T " || grille[i][j]== strnav) {
+					System.out.println(" 04 ");
+					grille[i][j] = "X ";
+					i=i+1;
+				}
+			}
+		}
+		if (axe == 1) {
+			System.out.println(" 1 ");
+			if(grille[i][j-1]== "T ") {
+				System.out.println(" 12 ");
+				j=j-1;
+				while(grille[i][j]== "T "|| grille[i][j]== strnav) {
+					System.out.println(" 13 ");
+					j=j-1;
+				}
+				grille[i][j] = grille[i][j+1];
+				while(grille[i][j]== "T " || grille[i][j]== strnav) {
+					System.out.println(" 14 ");
+					grille[i][j] = "X ";
+					j=j+1;
+				}
+			}
+			else {
+				while(grille[i][j]== "T " || grille[i][j]== strnav) {
+					System.out.println(" 15 ");
+					grille[i][j] = "X ";
+					j=j+1;
+				}
+			}	
+		}
+	}
+	public int getAxe2(int x, int y) {
+		for (int i = 0; i < ligne; i++) {
+			for (int j = 0; j < col; j++)
+				if (grille[i][j]==grille[x][y]) {
+					if (grille[i + 1][j] == "T ") {
+						return 0;
+					}
+					if (grille[i - 1][j] == "T ") {
+						return 0;
+					}
+					if (grille[i][j+1] == "T ") {
+						return 1;
+					}
+					if (grille[i][j+1] == "T ") {
+						return 1;
+					}
+				}
+		}
+		return 0;
+	}
+	
 }
