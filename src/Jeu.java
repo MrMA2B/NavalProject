@@ -63,38 +63,45 @@ public class Jeu implements Serializable{
 			Navire navire = hashMap.get(choixbat);
 			boolean test = false;
 
-//			while (test == false) {
-//				System.out.println("Rentrer X : ");
-//				int x = sc.nextInt() - 1;
-//				System.out.println("Rentrer Y : ");
-//				int y = sc.nextInt() - 1;
-//				test = navire.tirer(x, y, grilleH);
-//			}
-			test = false;
-			grilleH.afficher();
-			System.out.println("Continuer : ");
-			String TEST = sc1.nextLine();
-
-			while (!TEST.equals("Q")) {
-
+			while (test == false) {
+				
 				System.out.println("X : ");
 				String aux = sc2.nextLine();
 				int x = grilleH.getColonne(aux);
-
+				
 				System.out.println("Y : ");
 				int y = sc.nextInt() - 1;
-
+				
 				test = navire.tirer(x, y, grilleH,hashMap);
+				
 				grilleH.afficher();
 				grilleH.affichercacher();
-
-				System.out.println("Continuer : ");
-				TEST = sc1.nextLine();
-
-				System.out.println("Depuis quel navire voulez-vous tirer?");
-				choixbat = sc1.nextLine();
-				navire = hashMap.get(choixbat);
 			}
+//			test = false;
+//			grilleH.afficher();
+//			System.out.println("Continuer : ");
+//			String TEST = sc1.nextLine();
+//
+//			while (!TEST.equals("Q")) {
+//
+//				System.out.println("X : ");
+//				String aux = sc2.nextLine();
+//				int x = grilleH.getColonne(aux);
+//
+//				System.out.println("Y : ");
+//				int y = sc.nextInt() - 1;
+//
+//				test = navire.tirer(x, y, grilleH,hashMap);
+//				grilleH.afficher();
+//				grilleH.affichercacher();
+//
+//				System.out.println("Continuer : ");
+//				TEST = sc1.nextLine();
+//
+//				System.out.println("Depuis quel navire voulez-vous tirer?");
+//				choixbat = sc1.nextLine();
+//				navire = hashMap.get(choixbat);
+//			}
 
 		}
 		if (choix == 2) {

@@ -27,10 +27,11 @@ public class main implements Serializable{
 			switch (choix) {
 			case 1:
 
-				Jeu jeu = new Jeu();
-				jeu.jeu();
-//				Robot robot = new Robot();
-//				robot.Robot();
+//				Jeu jeu = new Jeu();
+//				jeu.jeu();
+				Robot robot = new Robot();
+				robot.placementRobot();
+				robot.jouerRobot();
 				break;
 			case 2:
 				Deserialisation charger = new Deserialisation();

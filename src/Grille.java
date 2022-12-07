@@ -60,6 +60,23 @@ public class Grille implements Serializable{
 		}
 		System.out.println();
 	}
+	public void flashbang(int x, int y) {
+		String[] cologne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
+		System.out.println();
+		System.out.println("   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15");
+		for (int i = x; i < x+4; i++) {
+			System.out.print(cologne[i]);
+			for (int j = y; j < y+4; j++) {
+				if ((grille[i][j] == ". ") || (grille[i][j] == "X ")|| (grille[i][j] == "O ")|| (grille[i][j] == "S1")|| (grille[i][j] == "S2")|| (grille[i][j] == "S3")|| (grille[i][j] == "S4")|| (grille[i][j] == "C1")|| (grille[i][j] == "F1")|| (grille[i][j] == "F2")) {
+					System.out.print("  " + grille[i][j]);
+				} else {
+					System.out.print("  . ");
+				}
+			}
+			System.out.println("  ");
+		}
+		System.out.println();
+	}
 
 	public String getCase(int l, int c) {
 		return grille[l][c];

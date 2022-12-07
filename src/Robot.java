@@ -58,7 +58,7 @@ public class Robot {
 		}
 	
 	public void jouerRobot () {
-		int a = 1; //random.nextInt(2);
+		int a = random.nextInt(2);
 		int randomIndex= random.nextInt(bateau.size()); // random dans une liste qui contient ["S1", "S2", ....]
 		String choixBat = bateau.get(randomIndex);
 		Navire navire = hashMapp.get(choixBat);
@@ -69,7 +69,7 @@ public class Robot {
 			int tx = random.nextInt(15);
 			System.out.println("Case en X est : "+tx);
 			int ty = random.nextInt(15);
-			System.out.println("Case en X est :"+ty);
+			System.out.println("Case en Y est :"+ty);
 			navire.tirer(tx,ty,grilleR,hashMapp);
 			grilleR.afficher();
 			grilleR.affichercacher();
