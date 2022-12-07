@@ -46,6 +46,30 @@ public class Joueur implements Serializable {
 		return grilleH;
 	}
 
+	public Grille jeuTriche() {
+
+		Grille grilleH = new Grille(15, 15);
+
+		Sousmarin s1 = new Sousmarin();
+		s1.placer(grilleH, "S1");
+
+		Destroyers d1 = new Destroyers();
+		d1.placer(grilleH, "D1");
+
+		Fregate f1 = new Fregate();
+		f1.placer(grilleH, "F1");
+
+		Cuirasses c0 = new Cuirasses();
+		c0.placer(grilleH);
+
+		hashMap.put("S1", s1);
+		hashMap.put("D1", d1);
+		hashMap.put("F1", f1);
+		hashMap.put("C0", c0);
+
+		return grilleH;
+	}
+
 	public HashMap<String, Navire> getHashMap() {
 		return this.hashMap;
 	}
@@ -54,6 +78,10 @@ public class Joueur implements Serializable {
 		return hashMap.get("S1").pv + hashMap.get("S2").pv + hashMap.get("S3").pv + hashMap.get("S4").pv
 				+ hashMap.get("D1").pv + hashMap.get("D2").pv + hashMap.get("D3").pv + hashMap.get("F1").pv
 				+ hashMap.get("F2").pv + hashMap.get("C0").pv;
+	}
+
+	public int getGeneralPvHTriche() {
+		return hashMap.get("S1").pv + hashMap.get("D1").pv + hashMap.get("F1").pv + hashMap.get("C0").pv;
 	}
 
 }

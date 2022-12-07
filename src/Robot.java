@@ -47,6 +47,31 @@ public class Robot implements Serializable {
 
 	}
 
+	public Grille jeuTriche() {
+
+		Grille grilleR = new Grille(15, 15);
+
+		Sousmarin s1 = new Sousmarin();
+		s1.placer(grilleR, "S1");
+
+		Destroyers d1 = new Destroyers();
+		d1.placer(grilleR, "D1");
+
+		Fregate f1 = new Fregate();
+		f1.placer(grilleR, "F1");
+
+		Cuirasses c0 = new Cuirasses();
+		c0.placer(grilleR);
+
+		hashMap.put("S1", s1);
+		hashMap.put("D1", d1);
+		hashMap.put("F1", f1);
+		hashMap.put("C0", c0);
+
+		return grilleR;
+
+	}
+
 	public HashMap<String, Navire> getHashMap() {
 		return this.hashMap;
 	}
@@ -55,5 +80,9 @@ public class Robot implements Serializable {
 		return hashMap.get("S1").pv + hashMap.get("S2").pv + hashMap.get("S3").pv + hashMap.get("S4").pv
 				+ hashMap.get("D1").pv + hashMap.get("D2").pv + hashMap.get("D3").pv + hashMap.get("F1").pv
 				+ hashMap.get("F2").pv + hashMap.get("C0").pv;
+	}
+
+	public int getGeneralPvRTriche() {
+		return hashMap.get("S1").pv + hashMap.get("D1").pv + hashMap.get("F1").pv + hashMap.get("C0").pv;
 	}
 }
