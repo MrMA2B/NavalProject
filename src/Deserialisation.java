@@ -1,11 +1,33 @@
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.Scanner;
 
-public class Deserialisation implements Serializable {
+public class Deserialisation implements Serializable{
+	static Scanner sc = new Scanner(System.in);
+
+	public void verifierExistenceFichier() {
+		
+		File fichier;
+		System.out.println("Veuillez entrer le nom du fichier : à finir");
+		String nomFichier = sc.nextLine();
+		fichier = new File(nomFichier);
+
+		while (fichier.exists() ==false) {
+			System.out.println("Le fichier n'existe pas");
+			System.out.println("Veuillez entrer le nom du fichier : à finir");
+			nomFichier = sc.nextLine();	
+			fichier = new File(nomFichier);
+		} 
+		restaurer(nomFichier);
+		
+	}
+
 	public void restaurer(String nomFichier) {
+
 		try (FileInputStream fis = new FileInputStream(nomFichier);
 				ObjectInputStream ois = new ObjectInputStream(fis)) {
 

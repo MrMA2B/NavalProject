@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class main {
+public class main implements Serializable{
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -28,12 +29,12 @@ public class main {
 
 				Jeu jeu = new Jeu();
 				jeu.jeu();
-				Robot robot = new Robot();
-				robot.placementRobot();
-				robot.jouerRobot();
+//				Robot robot = new Robot();
+//				robot.Robot();
 				break;
 			case 2:
-				System.out.println("En travaux...");
+				Deserialisation charger = new Deserialisation();
+				charger.verifierExistenceFichier();
 				break;
 			case 3:
 				Aide();
@@ -63,3 +64,4 @@ public class main {
 	}
 
 }
+
