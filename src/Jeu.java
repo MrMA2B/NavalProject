@@ -108,6 +108,7 @@ public class Jeu implements Serializable{
 						grilleH.getAxe(choixbat)) == false) {
 					System.out.println("Faire H");
 					System.out.println("Faire B");
+					direction = sc.next().charAt(0);
 				}
 				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction,grilleH.getNbrcase(choixbat));
 				grilleH.afficher();
@@ -120,6 +121,7 @@ public class Jeu implements Serializable{
 						grilleH.getAxe(choixbat)) == false) {
 					System.out.println("Faire G");
 					System.out.println("Faire D");
+					direction2 = sc.next().charAt(0);
 				}
 				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction2,grilleH.getNbrcase(choixbat));
 				grilleH.afficher();
@@ -131,12 +133,12 @@ public class Jeu implements Serializable{
 				System.out.println("Faire G");
 				System.out.println("Faire D");
 				char direction3 = sc.next().charAt(0);
-				while(grilleH.testerSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat)) == false) {
+				while(grilleH.testerSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat), direction3) == false) {
 					System.out.println("Faire H");
 					System.out.println("Faire B");
 					System.out.println("Faire G");
 					System.out.println("Faire D");
-					grilleH.testerSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat));
+					direction3 = sc.next().charAt(0);
 				}
 				grilleH.changeSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat),direction3, choixbat);
 				grilleH.afficher();
