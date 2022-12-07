@@ -111,45 +111,45 @@ public class Grille implements Serializable{
 		return false;
 	}
 	
-	public void changementPos(int x, int y, String strnav, char direction) {
-		anciennePos(x, y, strnav, direction);
-		nouvellePos(x, y, strnav, direction);
+	public void changementPos(int x, int y, String strnav, char direction, int cases) {
+		anciennePos(x, y, strnav, direction, cases);
+		nouvellePos(x, y, strnav, direction, cases);
 	}
 
-	public void anciennePos(int x, int y, String strnav, char direction) {
+	public void anciennePos(int x, int y, String strnav, char direction, int cases) {
 		int i = x;
 		int j = y;
 		if (grille[i][j].equals(strnav)) {
 			if (direction == 'H') {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i + b][j] = ". ";
 				}
 			}
 			if (direction == 'B') {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i + b][j] = ". ";
 				}
 			}
 			if (direction == 'G') {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i][j + b] = ". ";
 				}
 			}
 			if (direction == 'D') {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i][j + b] = ". ";
 				}
 			}
 		}
 	}
 
-	public void nouvellePos(int x, int y, String strnav, char direction) {
+	public void nouvellePos(int x, int y, String strnav, char direction, int cases) {
 		int i = x;
 		int j = y;
 		if (direction == 'H') {
 			i = i - 1;
 			if (grille[i][j] == ". ") {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i + b][j] = strnav;
 				}
 			}
@@ -157,7 +157,7 @@ public class Grille implements Serializable{
 		if (direction == 'B') {
 			i = i + 1;
 			if (grille[i][j] == ". ") {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i + b][j] = strnav;
 				}
 			}
@@ -165,7 +165,7 @@ public class Grille implements Serializable{
 		if (direction == 'G') {
 			j = j - 1;
 			if (grille[i][j] == ". ") {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i][j + b] = strnav;
 				}
 			}
@@ -173,7 +173,7 @@ public class Grille implements Serializable{
 		if (direction == 'D') {
 			j = j + 1;
 			if (grille[i][j] == ". ") {
-				for (int b = 0; b < 3; b++) {
+				for (int b = 0; b < cases; b++) {
 					grille[i][j + b] = strnav;
 				}
 			}
@@ -322,5 +322,29 @@ public class Grille implements Serializable{
         }
         return 0;
     }
+	public int getNbrcase(String strnav){
+		int axe = getAxe(strnav);
+		int x = getX(strnav);
+		int y = getY(strnav);
+		int cases = 0;
+		if(axe == 0) {
+			while(grille[x][y].equals(strnav)) {
+				x=x+1;
+				cases = cases +1;
+			}
+			
+			return cases;
+			
+		}
+		if(axe == 1) {
+			while(grille[x][y].equals(strnav)) {
+				y=y+1;
+				cases = cases +1;
+			}
+			return cases;
+		}
+		return 0;
+	}
+		
 	
 }
