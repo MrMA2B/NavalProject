@@ -99,7 +99,6 @@ public class Jeu {
 		if (choix == 2) {
 			System.out.println("Quel navire voulez-vous déplacer ?");
 			String choixbat = sc1.nextLine();
-
 			if (grilleH.getAxe(choixbat) == 0) {
 				System.out.println("Faire H");
 				System.out.println("Faire B");
@@ -116,6 +115,22 @@ public class Jeu {
 				grilleH.testerPos(grilleH.getX(choixbat), grilleH.getY(choixbat), direction2, 3,
 						grilleH.getAxe(choixbat));
 				grilleH.changementPos(grilleH.getX(choixbat), grilleH.getY(choixbat), choixbat, direction2);
+				grilleH.afficher();
+			}
+			if (grilleH.getAxe(choixbat) == 2) {
+				System.out.println("Faire H");
+				System.out.println("Faire B");
+				System.out.println("Faire G");
+				System.out.println("Faire D");
+				char direction3 = sc.next().charAt(0);
+				while(grilleH.testerSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat)) == false) {
+					System.out.println("Faire H");
+					System.out.println("Faire B");
+					System.out.println("Faire G");
+					System.out.println("Faire D");
+					grilleH.testerSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat));
+				}
+				grilleH.changeSousmarin(grilleH.getX(choixbat), grilleH.getY(choixbat),direction3, choixbat);
 				grilleH.afficher();
 			}
 		}

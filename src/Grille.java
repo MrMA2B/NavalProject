@@ -75,7 +75,41 @@ public class Grille {
 	public void setGrille(String[][] newGrille) {
 		this.grille = newGrille;
 	}
-
+	public void changeSousmarin(int i, int j, char direction, String strnav) {
+		if (direction == 'H') {
+				grille[i][j] = ". ";
+				grille[i - 1][j] = strnav;
+		}
+		if (direction == 'B') {
+				grille[i][j] = ". ";
+				grille[i -+1][j] = strnav;
+		}
+		if (direction == 'G') {
+				grille[i][j] = ". ";
+				grille[i][j -1] = strnav;
+		}
+		if (direction == 'D') {
+				grille[i][j] = ". ";
+				grille[i ][j+1] = strnav;
+		}
+		
+	}
+	public boolean testerSousmarin(int i, int j) {
+		if (grille[i - 1][j] == ". " && i - 1 >= 0) {
+			return true;
+		}
+		if (grille[i + 1][j] == ". " && i + 1 >= 0) {
+			return true;
+		}
+		if (grille[i][j-1] == ". " && j - 1 >= 0) {
+			return true;
+		}
+		if (grille[i][j+1] == ". " && j + 1 < 15) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void changementPos(int x, int y, String strnav, char direction) {
 		anciennePos(x, y, strnav, direction);
 		nouvellePos(x, y, strnav, direction);
@@ -186,6 +220,9 @@ public class Grille {
 					if (grille[i][j + 1] == grille[i][j]) {
 						return 1;
 					}
+					else {
+						return 2;
+					}
 				}
 		}
 		return 0;
@@ -265,24 +302,24 @@ public class Grille {
 		}
 	}
 	public int getAxe2(int x, int y) {
-		for (int i = 0; i < ligne; i++) {
-			for (int j = 0; j < col; j++)
-				if (grille[i][j]==grille[x][y]) {
-					if (grille[i + 1][j] == "T ") {
-						return 0;
-					}
-					if (grille[i - 1][j] == "T ") {
-						return 0;
-					}
-					if (grille[i][j+1] == "T ") {
-						return 1;
-					}
-					if (grille[i][j+1] == "T ") {
-						return 1;
-					}
-				}
-		}
-		return 0;
-	}
+        for (int i = 0; i < ligne; i++) {
+            for (int j = 0; j < col; j++)
+                if (grille[i][j]==grille[x][y]) {
+                    if (grille[i + 1][j] == "T ") {
+                        return 0;
+                    }
+                    if (grille[i - 1][j] == "T ") {
+                        return 0;
+                    }
+                    if (grille[i][j+1] == "T ") {
+                        return 1;
+                    }
+                    if (grille[i][j+1] == "T ") {
+                        return 1;
+                    }
+                }
+        }
+        return 0;
+    }
 	
 }

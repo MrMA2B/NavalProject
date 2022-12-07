@@ -84,7 +84,7 @@ abstract class Navire {
 			}
 			else {
 				getNavire(hashMap, grille.getCase(x, y)).touche();
-				grille.testerCouler(x, y,grille.getAxe2(x,y),"D3");
+				grille.testerCouler(x, y,grille.getAxe2(x,y),getNavireString(hashMap,getNavire(hashMap,grille.getCase(x, y))));
 				return true;	
 			}
 		}
