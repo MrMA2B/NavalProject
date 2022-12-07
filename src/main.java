@@ -2,7 +2,7 @@
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class main implements Serializable{
+public class main implements Serializable {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -17,22 +17,18 @@ public class main implements Serializable{
 			}
 			entrer = 1;
 
-			System.out.println("Bienvenue dans Bataille Navale. Sélectionnez un choix pour commencer");
-			System.out.println("1. Jouer une partie");
-			System.out.println("2. Charger une partie");
-			System.out.println("3. Aide");
-			System.out.println("4. Quitter");
-
+			System.out.println("Bienvenue dans Bataille Navale Mobile. Entrez : \n");
+			System.out.println("1 : Pour jouer une partie");
+			System.out.println("2 : Pour charger une partie");
+			System.out.println("3 : Pour obtenir de l'aide");
+			System.out.println("4 : Pour quitter");
+			
+			System.out.print("Faites votre choix :");
 			int choix = sc.nextInt();
 			switch (choix) {
 			case 1:
-
-//				Jeu jeu = new Jeu();
-//				jeu.jeu();
-				Robot robot = new Robot();
-				robot.placementRobot();
-				robot.jouerRobot();
-				break;
+				Jeu j = new Jeu();
+				j.newGame();
 			case 2:
 				Deserialisation charger = new Deserialisation();
 				charger.verifierExistenceFichier();
@@ -65,4 +61,3 @@ public class main implements Serializable{
 	}
 
 }
-
