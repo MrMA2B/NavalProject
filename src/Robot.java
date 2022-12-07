@@ -1,121 +1,115 @@
-import java.io.Serializable;
-import java.util.HashMap;
+import java.util.*;
 
-
-public class Robot implements Serializable{
-
-
-		public void Robot() {
-
-			
-
-			Grille grilleR = new Grille(15, 15);
-
-			Sousmarin s1 = new Sousmarin();
-			s1.placer(grilleR);
-			Sousmarin s2 = new Sousmarin();
-			s2.placer(grilleR);
-			Sousmarin s3 = new Sousmarin();
-			s3.placer(grilleR);
-			Sousmarin s4 = new Sousmarin();
-			s4.placer(grilleR);
-
-			Destroyers d1 = new Destroyers();
-			d1.placer(grilleR);
-			Destroyers d2 = new Destroyers();
-			d2.placer(grilleR);
-			Destroyers d3 = new Destroyers();
-			d3.placer(grilleR);
-
-			Fregate f1 = new Fregate();
-			f1.placer(grilleR);
-			Fregate f2 = new Fregate();
-			f2.placer(grilleR);
-			
-			Cuirasses c0 = new Cuirasses();
-			c0.placer(grilleR);
-			
-			HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
-			hashMap.put("S1",s1);
-			hashMap.put("S2",s2);
-			hashMap.put("S3",s3);
-			hashMap.put("S4",s4);
-			hashMap.put("D1",d1);
-			hashMap.put("D2",d2);
-			hashMap.put("D3",d3);
-			hashMap.put("F1",f1);
-			hashMap.put("F2",f2);
-			hashMap.put("C0",c0);
-			
-			grilleR.afficher(); }}
-
-//			System.out.println("1.Tirer");
-//			System.out.println("2.Déplacer");
-//			System.out.println("Que voulez-vous faire : ");
-//			int choix = sc.nextInt();
-//			if (choix == 1) {
-//				System.out.println("Depuis quel navire voulez-vous tirer?");
-//				//String choixbat = sc1.nextLine();
-//				Navire navire = hashMap.get(choixbat);
-//				boolean test = false;
-//
-//				while (test == false) {
-//					System.out.println("Rentrer X : ");
-//					int x = sc.nextInt() - 1;
-//					System.out.println("Rentrer Y : ");
-//					int y = sc.nextInt() - 1;
-//					test = navire.tirer(x, y, grilleR);
-//				}
-//				test = false;
-//				grilleR.afficher();
-//				System.out.println("Continuer : ");
-//				String TEST = sc1.nextLine();
-//							
-//				while (!TEST.equals("Q")) {
-//					
-//					System.out.println("X : ");
-//					String aux = sc2.nextLine();
-//					int x = grilleR.getColonne(aux);
-//					
-//					System.out.println("Y : ");
-//					int y = sc.nextInt()-1;
-//					
-//					test = navire.tirer(x, y, grilleR);
-//					navire.touche();
-//					grilleR.afficher();
-//					
-//					System.out.println("Continuer : ");
-//					TEST = sc1.nextLine();
-//					
-//					System.out.println("Depuis quel navire voulez-vous tirer?");
-//					choixbat = sc1.nextLine();
-//					navire = hashMap.get(choixbat);
-//				}
-//
-//			}
-//			if (choix == 2) {
-//				System.out.println("Quel navire voulez-vous déplacer ?");
-//				String choixbat = sc1.nextLine();
-//
-//				if (grilleR.getAxe(choixbat) == 0) {
-//
-//					System.out.println("Faire B");
-//					char direction = sc.next().charAt(0);
-//					grilleR.testerPos(grilleR.getX(choixbat), grilleR.getY(choixbat), direction, 3, grilleR.getAxe(choixbat));
-//					grilleR.changementPos(grilleR.getX(choixbat), grilleR.getY(choixbat), choixbat, direction);
-//					grilleR.afficher();
-//				}
-//				if (grilleR.getAxe(choixbat) == 1) {
-//					System.out.println("Faire G");
-//					System.out.println("Faire D");
-//					char direction2 = sc.next().charAt(0);
-//					grilleR.testerPos(grilleR.getX(choixbat), grilleR.getY(choixbat), direction2, 3, grilleR.getAxe(choixbat));
-//					grilleR.changementPos(grilleR.getX(choixbat), grilleR.getY(choixbat), choixbat, direction2);
-//					grilleR.afficher();
-//				}
-//			}
-//			System.out.println("Au tour de l'adversaire...");
-//		}
-
+public class Robot {
 	
+	HashMap<String, Navire> hashMapp = new HashMap<String, Navire>();
+	ArrayList<String> bateau = new ArrayList <String>(Arrays.asList("S1","S2","S3","S4","D1","D2","D3","F1","F2","C1"));
+	Random random = new Random(); 
+	ArrayList<Character> pos = new ArrayList <Character>(Arrays.asList('H','B','G','D')); 
+	
+	
+	Grille grilleR = new Grille(15, 15);
+	
+	public void placementRobot() {
+		
+		
+		System.out.println("Vous êtes l'ordinateur");
+
+		
+
+		Sousmarin s1 = new Sousmarin();
+		s1.placer(grilleR,"S1");
+		Sousmarin s2 = new Sousmarin();
+		s2.placer(grilleR,"S2");
+		Sousmarin s3 = new Sousmarin();
+		s3.placer(grilleR,"S3");
+		Sousmarin s4 = new Sousmarin();
+		s4.placer(grilleR,"S4");
+
+		Destroyers d1 = new Destroyers();
+		d1.placer(grilleR,"D1");
+		Destroyers d2 = new Destroyers();
+		d2.placer(grilleR,"D2");
+		Destroyers d3 = new Destroyers();
+		d3.placer(grilleR,"D3");
+
+		Fregate f1 = new Fregate();
+		f1.placer(grilleR,"F1");
+		Fregate f2 = new Fregate();
+		f2.placer(grilleR,"F2");
+
+		Cuirasses c0 = new Cuirasses();
+		c0.placer(grilleR);
+
+		
+		hashMapp.put("S1", s1);
+		hashMapp.put("S2", s2);
+		hashMapp.put("S3", s3);
+		hashMapp.put("S4", s4);
+		hashMapp.put("D1", d1);
+		hashMapp.put("D2", d2);
+		hashMapp.put("D3", d3);
+		hashMapp.put("F1", f1);
+		hashMapp.put("F2", f2);
+		hashMapp.put("C0", c0);
+
+		grilleR.afficher();
+		grilleR.affichercacher();
+		}
+	
+	public void jouerRobot () {
+		int a = 1; //random.nextInt(2);
+		int randomIndex= random.nextInt(bateau.size()); // random dans une liste qui contient ["S1", "S2", ....]
+		String choixBat = bateau.get(randomIndex);
+		Navire navire = hashMapp.get(choixBat);
+		int randomIndexPos= random.nextInt(pos.size()); // random dans une liste qui contient ["S1", "S2", ....]
+		char choixPos = pos.get(randomIndexPos);
+		switch(a) {
+		case 0 : //tirer
+			int tx = random.nextInt(15);
+			System.out.println("Case en X est : "+tx);
+			int ty = random.nextInt(15);
+			System.out.println("Case en X est :"+ty);
+			navire.tirer(tx,ty,grilleR,hashMapp);
+			grilleR.afficher();
+			grilleR.affichercacher();
+			break;
+		
+		case 1: //déplacer choiPos = H ou G ou D
+			System.out.println("le navire choisi est :"+choixBat);
+			
+			if (grilleR.getAxe(choixBat) == 0) {
+				while(grilleR.testerPos(grilleR.getX(choixBat), grilleR.getY(choixBat), choixPos, grilleR.getNbrcase(choixBat),
+						grilleR.getAxe(choixBat)) == false) {
+					randomIndexPos= random.nextInt(pos.size());
+					choixPos = pos.get(randomIndexPos);
+				}
+				grilleR.changementPos(grilleR.getX(choixBat), grilleR.getY(choixBat), choixBat, choixPos,grilleR.getNbrcase(choixBat));
+				grilleR.afficher();
+			}
+			if (grilleR.getAxe(choixBat) == 1) {				
+				while(grilleR.testerPos(grilleR.getX(choixBat), grilleR.getY(choixBat), choixPos, grilleR.getNbrcase(choixBat),
+						grilleR.getAxe(choixBat)) == false) {
+					randomIndexPos= random.nextInt(pos.size());
+					choixPos = pos.get(randomIndexPos);
+				}
+				grilleR.changementPos(grilleR.getX(choixBat), grilleR.getY(choixBat), choixBat, choixPos,grilleR.getNbrcase(choixBat));
+				grilleR.afficher();
+				}
+			
+			if (grilleR.getAxe(choixBat) == 2) {				
+				while(grilleR.testerSousmarin(grilleR.getX(choixBat), grilleR.getY(choixBat),choixPos) == false) {
+					randomIndexPos= random.nextInt(pos.size());
+					choixPos = pos.get(randomIndexPos);
+					grilleR.testerSousmarin(grilleR.getX(choixBat), grilleR.getY(choixBat),choixPos);
+				}
+				grilleR.changeSousmarin(grilleR.getX(choixBat), grilleR.getY(choixBat),choixPos, choixBat);
+				grilleR.afficher();
+			}
+			
+			break;
+		}
+		
+	}
+}
 

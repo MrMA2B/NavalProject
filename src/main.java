@@ -28,8 +28,9 @@ public class main {
 
 				Jeu jeu = new Jeu();
 				jeu.jeu();
-//				Robot robot = new Robot();
-//				robot.Robot();
+				Robot robot = new Robot();
+				robot.placementRobot();
+				robot.jouerRobot();
 				break;
 			case 2:
 				System.out.println("En travaux...");

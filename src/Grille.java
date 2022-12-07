@@ -193,34 +193,55 @@ public class Grille implements Serializable{
 	}
 
 	public boolean testerPos(int x, int y, char direction, int cases, int axe) {
-		int i = x;
-		int j = y;
-		if (axe == 0) {
-			if (direction == 'H') {
-				if (grille[i - 1][j] == ". " && i - 1 >= 0) {
-					return true;
-				}
-			}
-			if (direction == 'B') {
-				if (grille[i + cases][j] == ". " && i + cases < ligne) {
-					return true;
-				}
-			}
-		}
-		if (axe == 1) {
-			if (direction == 'G') {
-				if (grille[i][j - 1] == ". " && j - 1 >= 0) {
-					return true;
-				}
-			}
-			if (direction == 'D') {
-				if (grille[i][j + cases] == ". " && j + cases < col) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+        int i = x;
+        int j = y;
+        if (axe == 0) {
+            if (direction == 'H') {
+                if(i - 1 >= 0) {
+                if (grille[i - 1][j] == ". ") {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+                }
+            }
+            if (direction == 'B') {
+                if(i + 1 < 15) {
+                if (grille[i + cases][j] == ". ") {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+                }
+            }
+        }
+        if (axe == 1) {
+            if (direction == 'G') {
+                if(j - 1 >= 0) {
+                if (grille[i][j - 1] == ". ") {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+                }
+            }
+            if (direction == 'D') {
+                if(j + 1 < 15) {
+                if (grille[i][j + cases] == ". " && j + cases < col) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+                }
+            }
+        }
+        return false;
+    }
+
 
 	public int getAxe(String strnav) {
 		for (int i = 0; i < ligne; i++) {
