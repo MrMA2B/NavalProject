@@ -35,7 +35,7 @@ public class Jeu implements Serializable {
 		int generalPvR = robot.getGeneralPvR();
 
 		ArrayList<String> listOfBoatRadomTargetChoice = new ArrayList<String>(
-				Arrays.asList("S1", "S2", "S3", "S4", "D1", "D2", "D3", "F1", "F2", "C1"));
+				Arrays.asList("S1", "S2", "S3", "S4", "D1", "D2", "D3", "F1", "F2", "C0"));
 		ArrayList<Character> listOfRandomPositionChoice = new ArrayList<Character>(Arrays.asList('H', 'B', 'G', 'D'));
 		Random random = new Random();
 

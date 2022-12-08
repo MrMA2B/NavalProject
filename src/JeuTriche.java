@@ -35,18 +35,21 @@ public class JeuTriche implements Serializable {
 		int generalPvR = robot.getGeneralPvRTriche();
 
 		ArrayList<String> listOfBoatRadomTargetChoice = new ArrayList<String>(
-				Arrays.asList("S1","D1","F1","C1"));
+				Arrays.asList("S1","D1","F1","C0"));
 		ArrayList<Character> listOfRandomPositionChoice = new ArrayList<Character>(Arrays.asList('H', 'B', 'G', 'D'));
 		Random random = new Random();
 
-		System.out.println("Voici votre grille mon Amiral : ");
-		grilleH.afficher();
-		System.out.println("Voici la grille ennemie : ");
-		grilleR.affichercacher();
-
 		while ((generalPvH > 0) || (generalPvR > 0)) { // NE PAS OUBLIER DE GETTER LE PV GENERAL EN FIN DE BOUCLE
-			System.out.println("C'est votre tour moussaillon ! \n");
-			System.out.println("Entrez 1 pour : Tirer");
+			
+			System.out.println("\n C'est votre tour moussaillon ! \n");
+			
+			System.out.println("Voici votre grille mon Amiral : ");
+			grilleH.afficher();
+			System.out.println("Voici la grille ennemie : ");
+			grilleR.afficher();
+			
+			
+			System.out.println("\n Entrez 1 pour : Tirer");
 			System.out.println("Entrez 2 pour : Déplacer");
 
 			System.out.print("En attente d'ordre d'action : ");
@@ -74,7 +77,7 @@ public class JeuTriche implements Serializable {
 					System.out.println("Voici votre grille mon Amiral : ");
 					grilleH.afficher();
 					System.out.println("Voici la grille ennemie : ");
-					grilleR.affichercacher();
+					grilleR.afficher();
 				}
 			}
 			if (actionChoice == 2) {
@@ -146,7 +149,7 @@ public class JeuTriche implements Serializable {
 				System.out.println("Voici votre grille mon Amiral : ");
 				grilleH.afficher();
 				System.out.println("Voici la grille ennemie : ");
-				grilleR.affichercacher();
+				grilleR.afficher();
 
 			}
 
@@ -170,7 +173,7 @@ public class JeuTriche implements Serializable {
 																								// ....
 				int randomTargetY = random.nextInt(15);
 				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
-
+				
 				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfRobot);
 
 				System.out.println("Voici votre grille mon Robot Amiral : ");
