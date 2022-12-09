@@ -6,6 +6,7 @@ public class Sousmarin extends Navire implements Serializable{
 	public Sousmarin() {
 		super();
 		pv = 1;
+		length=	1;
 	}
 
 	public void placer(Grille grille, String s) {

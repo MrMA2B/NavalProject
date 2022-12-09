@@ -6,6 +6,7 @@ public class Fregate extends Navire implements Serializable{
 	public Fregate() {
 		super();
 		pv = 5;
+		length=5;
 	}
 
 	public void placer(Grille grille,String s) {

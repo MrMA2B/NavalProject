@@ -5,6 +5,7 @@ public class Grille implements Serializable{
 	int col;
 	String[][] grille;
 	String bleu = "\u001B[34m";
+	
 
 	public Grille(int n, int p) {
 		ligne = n;

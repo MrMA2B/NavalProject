@@ -6,6 +6,7 @@ public class Cuirasses extends Navire implements Serializable{
 	public Cuirasses() {
 		super();
 		pv = 7;
+		length=7;
 
 	}
 

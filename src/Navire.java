@@ -6,6 +6,7 @@ abstract class Navire implements Serializable{
 	public int x;
 	public int y;
 	public int pv;
+	public int length;
 
 	public Navire() {
 	}

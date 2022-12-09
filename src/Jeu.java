@@ -44,7 +44,7 @@ public class Jeu implements Serializable {
 		System.out.println("Voici la grille ennemie : ");
 		grilleR.affichercacher();
 
-		while ((generalPvH > 0) || (generalPvR > 0)) { // NE PAS OUBLIER DE GETTER LE PV GENERAL EN FIN DE BOUCLE
+		while ((generalPvH > 0) && (generalPvR > 0)) { // NE PAS OUBLIER DE GETTER LE PV GENERAL EN FIN DE BOUCLE
 			System.out.println("C'est votre tour moussaillon ! \n");
 			System.out.println("Entrez 1 pour : Tirer");
 			System.out.println("Entrez 2 pour : Déplacer");
@@ -80,9 +80,12 @@ public class Jeu implements Serializable {
 			if (actionChoice == 2) {
 
 				System.out.print("Quel navire voulez-vous déplacer ?");
-				String chosenBoat = sc4.nextLine();
-
-				if (grilleH.getAxe(chosenBoat) == 0) {
+				String choosenBoat = sc4.nextLine();
+				
+				if(hashMapBoatsOfJoueur.get(choosenBoat).getPv() == grilleH.getNbrcase(choosenBoat)) {
+					
+				
+				if(grilleH.getAxe(choosenBoat) == 0) {
 
 					System.out.println("Pour déplacer vers le haut, entrez : H");
 					System.out.println("Pour déplacer vers le bas, entrez : B");
@@ -90,19 +93,19 @@ public class Jeu implements Serializable {
 					System.out.print("En attente d'ordre d'action : ");
 					char chosenDirection = sc5.next().charAt(0);
 
-					while (grilleH.testerPos(grilleH.getX(chosenBoat), grilleH.getY(chosenBoat), chosenDirection,
-							grilleH.getNbrcase(chosenBoat), grilleH.getAxe(chosenBoat)) == false) {
+					while (grilleH.testerPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
+							grilleH.getNbrcase(choosenBoat), grilleH.getAxe(choosenBoat)) == false) {
 						System.out.println("Pour déplacer vers le haut, entrez : H");
 						System.out.println("Pour déplacer vers le bas, entrez : B");
 						System.out.print("En attente d'ordre d'action : ");
 						chosenDirection = sc6.next().charAt(0);
 					}
 
-					grilleH.changementPos(grilleH.getX(chosenBoat), grilleH.getY(chosenBoat), chosenBoat,
-							chosenDirection, grilleH.getNbrcase(chosenBoat));
+					grilleH.changementPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), choosenBoat,
+							chosenDirection, grilleH.getNbrcase(choosenBoat));
 				}
 
-				if (grilleH.getAxe(chosenBoat) == 1) {
+				if (grilleH.getAxe(choosenBoat) == 1) {
 
 					System.out.println("Pour déplacer vers la gauche, entrez : G");
 					System.out.println("Pour déplacer vers la droite, entrez : D");
@@ -110,18 +113,18 @@ public class Jeu implements Serializable {
 					System.out.print("En attente d'ordre d'action : ");
 					char chosenDirection = sc7.next().charAt(0);
 
-					while (grilleH.testerPos(grilleH.getX(chosenBoat), grilleH.getY(chosenBoat), chosenDirection,
-							grilleH.getNbrcase(chosenBoat), grilleH.getAxe(chosenBoat)) == false) {
+					while (grilleH.testerPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
+							grilleH.getNbrcase(choosenBoat), grilleH.getAxe(choosenBoat)) == false) {
 						System.out.println("Pour déplacer vers la gauche, entrez : G");
 						System.out.println("Pour déplacer vers la droite, entrez : D");
 						System.out.print("En attente d'ordre d'action : ");
 						chosenDirection = sc8.next().charAt(0);
 					}
-					grilleH.changementPos(grilleH.getX(chosenBoat), grilleH.getY(chosenBoat), chosenBoat,
-							chosenDirection, grilleH.getNbrcase(chosenBoat));
+					grilleH.changementPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), choosenBoat,
+							chosenDirection, grilleH.getNbrcase(choosenBoat));
 				}
 
-				if (grilleH.getAxe(chosenBoat) == 2) {
+				if (grilleH.getAxe(choosenBoat) == 2) {
 					System.out.println("Pour déplacer vers le haut, entrez : H");
 					System.out.println("Pour déplacer vers le bas, entrez : B");
 					System.out.println("Pour déplacer vers la gauche, entrez : G");
@@ -130,7 +133,7 @@ public class Jeu implements Serializable {
 					System.out.print("En attente d'ordre d'action : ");
 					char chosenDirection = sc9.next().charAt(0);
 
-					while (grilleH.testerSousmarin(grilleH.getX(chosenBoat), grilleH.getY(chosenBoat),
+					while (grilleH.testerSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat),
 							chosenDirection) == false) {
 						System.out.println("Pour déplacer vers le haut, entrez : H");
 						System.out.println("Pour déplacer vers le bas, entrez : B");
@@ -139,8 +142,12 @@ public class Jeu implements Serializable {
 						System.out.print("En attente d'ordre d'action : ");
 						chosenDirection = sc10.next().charAt(0);
 					}
-					grilleH.changeSousmarin(grilleH.getX(chosenBoat), grilleH.getY(chosenBoat), chosenDirection,
-							chosenBoat);
+					grilleH.changeSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
+							choosenBoat);
+				}
+				}
+				else {
+					System.out.println("Impossible à déplacer : ");
 				}
 
 				System.out.println("Voici votre grille mon Amiral : ");
@@ -152,7 +159,7 @@ public class Jeu implements Serializable {
 
 			System.out.println("\n Au tour de l'ennemi... \n");
 
-			int randomActionChoice = random.nextInt(2);
+			int randomActionChoice = 1;
 			int indexOfBoatRadomTargetChoice = random.nextInt(listOfBoatRadomTargetChoice.size());
 			String randomTargetChoice = listOfBoatRadomTargetChoice.get(indexOfBoatRadomTargetChoice);
 			Navire navireR = hashMapBoatsOfRobot.get(randomTargetChoice);
@@ -181,7 +188,7 @@ public class Jeu implements Serializable {
 
 			case 1: // déplacer
 				System.out.println("Le Robot Amiral à choisi de déplacer le navire : " + randomTargetChoice);
-
+				if(hashMapBoatsOfRobot.get(randomTargetChoice).getPv() == grilleH.getNbrcase(randomTargetChoice)) {
 				if (grilleR.getAxe(randomTargetChoice) == 0) {
 
 					while (grilleR.testerPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
@@ -221,6 +228,11 @@ public class Jeu implements Serializable {
 					}
 					grilleR.changeSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
 							randomPositionChoice, randomTargetChoice);
+				}
+				}
+				else
+				{
+					System.out.println("Imopossible de déplacer ");
 				}
 
 				System.out.println("Voici votre grille mon Robot Amiral : ");

@@ -6,6 +6,7 @@ public class Destroyers extends Navire implements Serializable {
 	public Destroyers() {
 		super();
 		pv = 3;
+		length=3;
 	}
 
 	public void placer(Grille grille,String s) {
