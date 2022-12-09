@@ -98,19 +98,19 @@ public class Grille implements Serializable{
 	public void changeSousmarin(int i, int j, char direction, String strnav) {
 		if (direction == 'H') {
 				grille[i][j] = ". ";
-				grille[i - 1][j] = strnav;
+				grille[i-1][j] = strnav;
 		}
 		if (direction == 'B') {
 				grille[i][j] = ". ";
-				grille[i -+1][j] = strnav;
+				grille[i+1][j] = strnav;
 		}
 		if (direction == 'G') {
 				grille[i][j] = ". ";
-				grille[i][j -1] = strnav;
+				grille[i][j-1] = strnav;
 		}
 		if (direction == 'D') {
 				grille[i][j] = ". ";
-				grille[i ][j+1] = strnav;
+				grille[i][j+1] = strnav;
 		}
 		
 	}
@@ -303,48 +303,36 @@ public class Grille implements Serializable{
 		int i = x;
 		int j = y;
 		if (axe == 0) {
-			System.out.println(" 0 ");
 			if(grille[i-1][j]== "T ") {
-				System.out.println(" 01 ");
-				i=i-1;
 				while(grille[i][j]== "T "|| grille[i][j]== strnav) {
 					i = i-1;	//si navire placer en haut out truc
-					System.out.println(" 02 ");
 				}
 				i = i+1;
 				while(grille[i][j]== "T " || grille[i][j]== strnav) {
-					System.out.println(" 03 ");
 					grille[i][j] = "X ";
 					i=i+1;
 				}
 			}
 			else {
 				while(grille[i][j]== "T " || grille[i][j]== strnav) {
-					System.out.println(" 04 ");
 					grille[i][j] = "X ";
 					i=i+1;
 				}
 			}
 		}
 		if (axe == 1) {
-			System.out.println(" 1 ");
 			if(grille[i][j-1]== "T ") {
-				System.out.println(" 12 ");
-				j=j-1;
 				while(grille[i][j]== "T "|| grille[i][j]== strnav) {
-					System.out.println(" 13 ");
 					j=j-1;
 				}
-				grille[i][j] = grille[i][j+1];
+				j=j+1;
 				while(grille[i][j]== "T " || grille[i][j]== strnav) {
-					System.out.println(" 14 ");
 					grille[i][j] = "X ";
 					j=j+1;
 				}
 			}
 			else {
 				while(grille[i][j]== "T " || grille[i][j]== strnav) {
-					System.out.println(" 15 ");
 					grille[i][j] = "X ";
 					j=j+1;
 				}
@@ -355,16 +343,16 @@ public class Grille implements Serializable{
         for (int i = 0; i < ligne; i++) {
             for (int j = 0; j < col; j++)
                 if (grille[i][j]==grille[x][y]) {
-                    if (grille[i + 1][j] == "T ") {
+                    if (grille[i + 1][j] == "T " && i+1 < 15) {
                         return 0;
                     }
-                    if (grille[i - 1][j] == "T ") {
+                    if (grille[i - 1][j] == "T " && i-1 >= 0) {
                         return 0;
                     }
-                    if (grille[i][j+1] == "T ") {
+                    if (grille[i][j-1] == "T " && j-1 >= 0) {
                         return 1;
                     }
-                    if (grille[i][j+1] == "T ") {
+                    if (grille[i][j+1] == "T " && j+1 < 15) {
                         return 1;
                     }
                 }
