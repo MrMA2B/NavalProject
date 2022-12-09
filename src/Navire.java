@@ -80,12 +80,14 @@ abstract class Navire implements Serializable{
 
 		else {
 			if(getNavire(hashMap, grille.getCase(x, y)).pv>1) {
-				getNavire(hashMap, grille.getCase(x, y)).touche();
+				
+				getNavire(hashMap, grille.getCase(x, y)).pv--;
+				
 				grille.changeCase(x, y, "T ");
 				return true;
 			}
 			else {
-				getNavire(hashMap, grille.getCase(x, y)).touche();
+				getNavire(hashMap, grille.getCase(x, y)).pv--;
 				grille.testerCouler(x, y,grille.getAxe2(x,y),getNavireString(hashMap,getNavire(hashMap,grille.getCase(x, y))));
 				return true;	
 			}
@@ -96,8 +98,8 @@ abstract class Navire implements Serializable{
 		return pv;
 	}
 
-	public void touche() {
-		pv = pv - 1;
+	public void touche(Navire navire) {
+		navire.pv--;
 	}
 
 	public int getPositionX() {

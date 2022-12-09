@@ -83,5 +83,6 @@ public class Joueur implements Serializable {
 	public int getGeneralPvHTriche() {
 		return hashMap.get("S1").pv + hashMap.get("D1").pv + hashMap.get("F1").pv + hashMap.get("C0").pv;
 	}
+	
 
 }

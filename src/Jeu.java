@@ -69,7 +69,7 @@ public class Jeu implements Serializable {
 					System.out.print("Entrez les coordonées Y de votre cible (ex : 1, 6, 15) : ");
 					int targetY = sc3.nextInt() - 1;
 
-					testH = navireH.tirer(targetX, targetY, grilleR, hashMapBoatsOfJoueur);
+					testH = navireH.tirer(targetX, targetY, grilleR, hashMapBoatsOfRobot);
 
 					System.out.println("Voici votre grille mon Amiral : ");
 					grilleH.afficher();
@@ -81,72 +81,70 @@ public class Jeu implements Serializable {
 
 				System.out.print("Quel navire voulez-vous déplacer ?");
 				String choosenBoat = sc4.nextLine();
-				
-				if(hashMapBoatsOfJoueur.get(choosenBoat).getPv() == grilleH.getNbrcase(choosenBoat)) {
-					
-				
-				if(grilleH.getAxe(choosenBoat) == 0) {
 
-					System.out.println("Pour déplacer vers le haut, entrez : H");
-					System.out.println("Pour déplacer vers le bas, entrez : B");
+				if (hashMapBoatsOfJoueur.get(choosenBoat).getPv() == grilleH.getNbrcase(choosenBoat)) {
 
-					System.out.print("En attente d'ordre d'action : ");
-					char chosenDirection = sc5.next().charAt(0);
+					if (grilleH.getAxe(choosenBoat) == 0) {
 
-					while (grilleH.testerPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
-							grilleH.getNbrcase(choosenBoat), grilleH.getAxe(choosenBoat)) == false) {
 						System.out.println("Pour déplacer vers le haut, entrez : H");
 						System.out.println("Pour déplacer vers le bas, entrez : B");
+
 						System.out.print("En attente d'ordre d'action : ");
-						chosenDirection = sc6.next().charAt(0);
+						char chosenDirection = sc5.next().charAt(0);
+
+						while (grilleH.testerPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
+								grilleH.getNbrcase(choosenBoat), grilleH.getAxe(choosenBoat)) == false) {
+							System.out.println("Pour déplacer vers le haut, entrez : H");
+							System.out.println("Pour déplacer vers le bas, entrez : B");
+							System.out.print("En attente d'ordre d'action : ");
+							chosenDirection = sc6.next().charAt(0);
+						}
+
+						grilleH.changementPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), choosenBoat,
+								chosenDirection, grilleH.getNbrcase(choosenBoat));
 					}
 
-					grilleH.changementPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), choosenBoat,
-							chosenDirection, grilleH.getNbrcase(choosenBoat));
-				}
+					if (grilleH.getAxe(choosenBoat) == 1) {
 
-				if (grilleH.getAxe(choosenBoat) == 1) {
-
-					System.out.println("Pour déplacer vers la gauche, entrez : G");
-					System.out.println("Pour déplacer vers la droite, entrez : D");
-
-					System.out.print("En attente d'ordre d'action : ");
-					char chosenDirection = sc7.next().charAt(0);
-
-					while (grilleH.testerPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
-							grilleH.getNbrcase(choosenBoat), grilleH.getAxe(choosenBoat)) == false) {
 						System.out.println("Pour déplacer vers la gauche, entrez : G");
 						System.out.println("Pour déplacer vers la droite, entrez : D");
+
 						System.out.print("En attente d'ordre d'action : ");
-						chosenDirection = sc8.next().charAt(0);
+						char chosenDirection = sc7.next().charAt(0);
+
+						while (grilleH.testerPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
+								grilleH.getNbrcase(choosenBoat), grilleH.getAxe(choosenBoat)) == false) {
+							System.out.println("Pour déplacer vers la gauche, entrez : G");
+							System.out.println("Pour déplacer vers la droite, entrez : D");
+							System.out.print("En attente d'ordre d'action : ");
+							chosenDirection = sc8.next().charAt(0);
+						}
+						grilleH.changementPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), choosenBoat,
+								chosenDirection, grilleH.getNbrcase(choosenBoat));
 					}
-					grilleH.changementPos(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), choosenBoat,
-							chosenDirection, grilleH.getNbrcase(choosenBoat));
-				}
 
-				if (grilleH.getAxe(choosenBoat) == 2) {
-					System.out.println("Pour déplacer vers le haut, entrez : H");
-					System.out.println("Pour déplacer vers le bas, entrez : B");
-					System.out.println("Pour déplacer vers la gauche, entrez : G");
-					System.out.println("Pour déplacer vers la droite, entrez : D");
-
-					System.out.print("En attente d'ordre d'action : ");
-					char chosenDirection = sc9.next().charAt(0);
-
-					while (grilleH.testerSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat),
-							chosenDirection) == false) {
+					if (grilleH.getAxe(choosenBoat) == 2) {
 						System.out.println("Pour déplacer vers le haut, entrez : H");
 						System.out.println("Pour déplacer vers le bas, entrez : B");
 						System.out.println("Pour déplacer vers la gauche, entrez : G");
 						System.out.println("Pour déplacer vers la droite, entrez : D");
+
 						System.out.print("En attente d'ordre d'action : ");
-						chosenDirection = sc10.next().charAt(0);
+						char chosenDirection = sc9.next().charAt(0);
+
+						while (grilleH.testerSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat),
+								chosenDirection) == false) {
+							System.out.println("Pour déplacer vers le haut, entrez : H");
+							System.out.println("Pour déplacer vers le bas, entrez : B");
+							System.out.println("Pour déplacer vers la gauche, entrez : G");
+							System.out.println("Pour déplacer vers la droite, entrez : D");
+							System.out.print("En attente d'ordre d'action : ");
+							chosenDirection = sc10.next().charAt(0);
+						}
+						grilleH.changeSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
+								choosenBoat);
 					}
-					grilleH.changeSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
-							choosenBoat);
-				}
-				}
-				else {
+				} else {
 					System.out.println("Impossible à déplacer : ");
 				}
 
@@ -178,7 +176,7 @@ public class Jeu implements Serializable {
 				int randomTargetY = random.nextInt(15);
 				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
 
-				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfRobot);
+				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfJoueur);
 
 				System.out.println("Voici votre grille mon Robot Amiral : ");
 				grilleR.afficher();
@@ -188,50 +186,50 @@ public class Jeu implements Serializable {
 
 			case 1: // déplacer
 				System.out.println("Le Robot Amiral à choisi de déplacer le navire : " + randomTargetChoice);
-				if(hashMapBoatsOfRobot.get(randomTargetChoice).getPv() == grilleH.getNbrcase(randomTargetChoice)) {
-				if (grilleR.getAxe(randomTargetChoice) == 0) {
+				
+				if (hashMapBoatsOfRobot.get(randomTargetChoice).getPv() == grilleR.getNbrcase(randomTargetChoice)) {
+					
+					if (grilleR.getAxe(randomTargetChoice) == 0) {
 
-					while (grilleR.testerPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-							randomPositionChoice, grilleR.getNbrcase(randomTargetChoice),
-							grilleR.getAxe(randomTargetChoice)) == false) {
+						while (grilleR.testerPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
+								randomPositionChoice, grilleR.getNbrcase(randomTargetChoice),
+								grilleR.getAxe(randomTargetChoice)) == false) {
 
-						randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
-						randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+							randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
+							randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+						}
+
+						grilleR.changementPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
+								randomTargetChoice, randomPositionChoice, grilleR.getNbrcase(randomTargetChoice));
+
+					}
+					if (grilleR.getAxe(randomTargetChoice) == 1) {
+						while (grilleR.testerPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
+								randomPositionChoice, grilleR.getNbrcase(randomTargetChoice),
+								grilleR.getAxe(randomTargetChoice)) == false) {
+
+							randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
+							randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+						}
+
+						grilleR.changementPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
+								randomTargetChoice, randomPositionChoice, grilleR.getNbrcase(randomTargetChoice));
+
 					}
 
-					grilleR.changementPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-							randomTargetChoice, randomPositionChoice, grilleR.getNbrcase(randomTargetChoice));
+					if (grilleR.getAxe(randomTargetChoice) == 2) {
+						while (grilleR.testerSousmarin(grilleR.getX(randomTargetChoice),
+								grilleR.getY(randomTargetChoice), randomPositionChoice) == false) {
 
-				}
-				if (grilleR.getAxe(randomTargetChoice) == 1) {
-					while (grilleR.testerPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-							randomPositionChoice, grilleR.getNbrcase(randomTargetChoice),
-							grilleR.getAxe(randomTargetChoice)) == false) {
-
-						randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
-						randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+							randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
+							randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+							grilleR.testerSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
+									randomPositionChoice);
+						}
+						grilleR.changeSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
+								randomPositionChoice, randomTargetChoice);
 					}
-
-					grilleR.changementPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-							randomTargetChoice, randomPositionChoice, grilleR.getNbrcase(randomTargetChoice));
-
-				}
-
-				if (grilleR.getAxe(randomTargetChoice) == 2) {
-					while (grilleR.testerSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-							randomPositionChoice) == false) {
-
-						randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
-						randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
-						grilleR.testerSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-								randomPositionChoice);
-					}
-					grilleR.changeSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
-							randomPositionChoice, randomTargetChoice);
-				}
-				}
-				else
-				{
+				} else {
 					System.out.println("Imopossible de déplacer ");
 				}
 
@@ -241,7 +239,7 @@ public class Jeu implements Serializable {
 				grilleH.affichercacher();
 				break;
 			}
-			
+
 			generalPvH = joueur.getGeneralPvH();
 			generalPvR = robot.getGeneralPvR();
 		}

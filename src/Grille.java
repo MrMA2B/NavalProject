@@ -117,22 +117,22 @@ public class Grille implements Serializable{
 	}
 	public boolean testerSousmarin(int i, int j, char direction) {
 		if(direction == 'H') {
-		if (grille[i - 1][j] == ". " && i - 1 >= 0) {
+		if (i - 1 >= 0 && grille[i - 1][j] == ". ") {
 			return true;
 		}
 		}
 		if(direction == 'B') {
-		if (grille[i + 1][j] == ". " && i + 1 >= 0) {
+		if (i + 1 >= 0 && grille[i + 1][j] == ". ") {
 			return true;
 		}
 		}
 		if(direction == 'G') {
-		if (grille[i][j-1] == ". " && j - 1 >= 0) {
+		if (j - 1 >= 0 && grille[i][j-1] == ". ") {
 			return true;
 		}
 		}
 		if(direction == 'D') {
-		if (grille[i][j+1] == ". " && j + 1 < 15) {
+		if (j + 1 < 15 && grille[i][j+1] == ". ") {
 			return true;
 		}
 		}
