@@ -26,6 +26,8 @@ public class Sousmarin extends Navire implements Serializable{
 
 		if (grille.getCase(x, y).equals("S1") || grille.getCase(x, y).equals("S2") || grille.getCase(x, y).equals("S3")
 				|| grille.getCase(x, y).equals("S4")) {
+			
+			getNavire(hashMap, grille.getCase(x, y)).pv--;
 			grille.changeCase(x, y, "X ");
 			return true;
 		}

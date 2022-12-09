@@ -71,6 +71,9 @@ public class JeuTriche implements Serializable {
 					int targetY = sc3.nextInt() - 1;
 
 					testH = navireH.tirer(targetX, targetY, grilleR, hashMapBoatsOfRobot);
+					
+					generalPvH = joueur.getGeneralPvHTriche();
+					generalPvR = robot.getGeneralPvRTriche();
 
 					System.out.println("Voici votre grille mon Amiral : ");
 					grilleH.afficher();
@@ -176,6 +179,9 @@ public class JeuTriche implements Serializable {
 				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
 
 				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfJoueur);
+				
+				generalPvH = joueur.getGeneralPvHTriche();
+				generalPvR = robot.getGeneralPvRTriche();
 
 				System.out.println("Voici votre grille mon Robot Amiral : ");
 				grilleR.afficher();

@@ -95,7 +95,7 @@ abstract class Navire implements Serializable{
 	}
 
 	public int getPv() {
-		return pv;
+		return this.pv;
 	}
 
 	public void touche(Navire navire) {

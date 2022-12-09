@@ -344,16 +344,16 @@ public class Grille implements Serializable{
         for (int i = 0; i < ligne; i++) {
             for (int j = 0; j < col; j++)
                 if (grille[i][j]==grille[x][y]) {
-                    if (grille[i + 1][j] == "T " && i+1 < 15) {
+                    if (i+1 < 15 && grille[i + 1][j] == "T ") {
                         return 0;
                     }
-                    if (grille[i - 1][j] == "T " && i-1 >= 0) {
+                    if (i-1 >= 0 && grille[i - 1][j] == "T ") {
                         return 0;
                     }
-                    if (grille[i][j-1] == "T " && j-1 >= 0) {
+                    if (j-1 >= 0 && grille[i][j-1] == "T ") {
                         return 1;
                     }
-                    if (grille[i][j+1] == "T " && j+1 < 15) {
+                    if (j+1 < 15 && grille[i][j+1] == "T ") {
                         return 1;
                     }
                 }

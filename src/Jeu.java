@@ -70,7 +70,10 @@ public class Jeu implements Serializable {
 					int targetY = sc3.nextInt() - 1;
 
 					testH = navireH.tirer(targetX, targetY, grilleR, hashMapBoatsOfRobot);
-
+					
+					generalPvH = joueur.getGeneralPvH();
+					generalPvR = robot.getGeneralPvR();
+					
 					System.out.println("Voici votre grille mon Amiral : ");
 					grilleH.afficher();
 					System.out.println("Voici la grille ennemie : ");
@@ -177,6 +180,9 @@ public class Jeu implements Serializable {
 				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
 
 				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfJoueur);
+				
+				generalPvH = joueur.getGeneralPvH();
+				generalPvR = robot.getGeneralPvR();
 
 				System.out.println("Voici votre grille mon Robot Amiral : ");
 				grilleR.afficher();
@@ -239,9 +245,6 @@ public class Jeu implements Serializable {
 				grilleH.affichercacher();
 				break;
 			}
-
-			generalPvH = joueur.getGeneralPvH();
-			generalPvR = robot.getGeneralPvR();
 		}
 	}
 
