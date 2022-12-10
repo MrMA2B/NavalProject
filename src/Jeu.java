@@ -160,7 +160,7 @@ public class Jeu implements Serializable {
 
 			System.out.println("\n Au tour de l'ennemi... \n");
 
-			int randomActionChoice = 1;
+			int randomActionChoice = random.nextInt(2);
 			int indexOfBoatRadomTargetChoice = random.nextInt(listOfBoatRadomTargetChoice.size());
 			String randomTargetChoice = listOfBoatRadomTargetChoice.get(indexOfBoatRadomTargetChoice);
 			Navire navireR = hashMapBoatsOfRobot.get(randomTargetChoice);
