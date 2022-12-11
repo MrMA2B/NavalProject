@@ -278,12 +278,12 @@ public class JeuTriche implements Serializable {
 			switch (randomActionChoice) {
 
 			case 0: // Shoot
-
+				System.out.println("L'ordinateur a chosi de tirer avec : " + randomTargetChoice);
 				int randomTargetX = random.nextInt(15);
-				System.out.println("L'ordinateur à choisi la coordonnée X : " + randomTargetX);
+				System.out.println("L'ordinateur a choisi la coordonnée X : " + randomTargetX);
 
 				int randomTargetY = random.nextInt(15);
-				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
+				System.out.println("L'ordinateur a choisi la coordonnée Y : " + randomTargetY);
 
 				while (hashMapBoatsOfRobot.get(randomTargetChoice).getPv() == 0) {
 					indexOfBoatRadomTargetChoice = random.nextInt(listOfBoatRadomTargetChoice.size());
@@ -303,15 +303,14 @@ public class JeuTriche implements Serializable {
 				break;
 
 			case 1: // déplacer
-
+				System.out.println("L'ordinateur a chosi de se déplacer avec : " + randomTargetChoice);
+				
 				while (hashMapBoatsOfRobot.get(randomTargetChoice)
 						.getPv() != hashMapBoatsOfRobot.get(randomTargetChoice).length) {
 					indexOfBoatRadomTargetChoice = random.nextInt(listOfBoatRadomTargetChoice.size());
 					randomTargetChoice = listOfBoatRadomTargetChoice.get(indexOfBoatRadomTargetChoice);
 					navireR = hashMapBoatsOfRobot.get(randomTargetChoice);
 				}
-
-				System.out.println(navireR);
 
 				if (grilleR.getAxe(randomTargetChoice) == 0) {
 
@@ -325,6 +324,7 @@ public class JeuTriche implements Serializable {
 
 					grilleR.changementPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
 							randomTargetChoice, randomPositionChoice, grilleR.getNbrcase(randomTargetChoice));
+					System.out.println(randomTargetChoice + " navigue dans cette direction : " + randomPositionChoice);
 
 				}
 				if (grilleR.getAxe(randomTargetChoice) == 1) {
@@ -334,11 +334,12 @@ public class JeuTriche implements Serializable {
 
 						randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
 						randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+						
 					}
 
 					grilleR.changementPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
 							randomTargetChoice, randomPositionChoice, grilleR.getNbrcase(randomTargetChoice));
-
+					System.out.println(randomTargetChoice + " navigue dans cette direction : " + randomPositionChoice);
 				}
 
 				if (grilleR.getAxe(randomTargetChoice) == 2) {
@@ -352,6 +353,7 @@ public class JeuTriche implements Serializable {
 					}
 					grilleR.changeSousmarin(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
 							randomPositionChoice, randomTargetChoice);
+					System.out.println(randomTargetChoice + " navigue dans cette direction : " + randomPositionChoice);
 				}
 
 				System.out.println("Voici votre grille mon Robot Amiral : ");
@@ -377,6 +379,8 @@ public class JeuTriche implements Serializable {
 			// Sinon alors on a gagné
 		} else {
 			System.out.println("Bravo vous avez été plus fort que le robot Amiral ! Vous avez gagné en "+tour+" tours");
+			System.out.println("Voici votre grille de victoire !");
+			grilleR.afficher();
 		}
 	}
 
