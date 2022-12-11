@@ -64,7 +64,7 @@ public class main implements Serializable {
 	        	public void actionPerformed(ActionEvent e){  
 	        		Jeu jeu = new Jeu();
 	        		frame.dispose();
-	        	//	jeu.newGame();
+	        		jeu.newGame();
 	        	    }  
 	        });
 	        btn1.addActionListener(new ActionListener(){  
