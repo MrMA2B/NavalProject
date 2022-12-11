@@ -219,6 +219,10 @@ public class JeuTriche implements Serializable {
 							choosenBoat);
 				}
 			}
+			
+			if((generalPvH == 0) || (generalPvR == 0)) {
+				break;
+			}
 
 			System.out.println("\n Au tour de l'ennemi... \n");
 
@@ -324,6 +328,14 @@ public class JeuTriche implements Serializable {
 
 			generalPvH = joueur.getGeneralPvHTriche();
 			generalPvR = robot.getGeneralPvRTriche();
+		}
+		
+		System.out.println("La partie est terminée! ");
+		if(generalPvH == 0) {
+			System.out.println("Dommage vous avez perdu.");
+		}
+		else {
+			System.out.println("Bravo vous avez été plus fort que le robot Amiral !");
 		}
 	}
 
