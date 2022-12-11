@@ -1,13 +1,23 @@
+
+/**
+ * This class define a Joueur
+ *
+ * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
+ */
+
 import java.io.Serializable;
 import java.util.*;
 
 public class Joueur implements Serializable {
 	HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
 
+	// Constructeur
 	public Grille jeu() {
 
+		// On crée un grille propre au joueur
 		Grille grilleH = new Grille(15, 15);
 
+		// On crée tous les navires propres au joueur
 		Sousmarin s1 = new Sousmarin();
 		s1.placer(grilleH, "S1");
 		Sousmarin s2 = new Sousmarin();
@@ -32,6 +42,7 @@ public class Joueur implements Serializable {
 		Cuirasses c0 = new Cuirasses();
 		c0.placer(grilleH);
 
+		// On ajoute les objets dans une HashMap avec les noms associés en String
 		hashMap.put("S1", s1);
 		hashMap.put("S2", s2);
 		hashMap.put("S3", s3);
@@ -46,6 +57,7 @@ public class Joueur implements Serializable {
 		return grilleH;
 	}
 
+	// Pareil mais pour le mode triche avec moins de bateaux
 	public Grille jeuTriche() {
 
 		Grille grilleH = new Grille(15, 15);
@@ -74,6 +86,7 @@ public class Joueur implements Serializable {
 		return this.hashMap;
 	}
 
+	// On récupère la sommes de tous les pv de chaque navire du joueur
 	public int getGeneralPvH() {
 		return hashMap.get("S1").pv + hashMap.get("S2").pv + hashMap.get("S3").pv + hashMap.get("S4").pv
 				+ hashMap.get("D1").pv + hashMap.get("D2").pv + hashMap.get("D3").pv + hashMap.get("F1").pv

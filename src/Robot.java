@@ -1,13 +1,23 @@
+
+/**
+ * This class define a Joueur
+ *
+ * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
+ */
+
 import java.io.Serializable;
 import java.util.*;
 
 public class Robot implements Serializable {
 	HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
-
+	
+	// Constructeur
 	public Grille jeu() {
 
+		// On crée un grille propre au Robot
 		Grille grilleR = new Grille(15, 15);
 
+		// On crée tous les navires propres au robot
 		Sousmarin s1 = new Sousmarin();
 		s1.placer(grilleR, "S1");
 		Sousmarin s2 = new Sousmarin();
@@ -32,6 +42,7 @@ public class Robot implements Serializable {
 		Cuirasses c0 = new Cuirasses();
 		c0.placer(grilleR);
 
+		// On ajoute les objets dans une HashMap avec les noms associés en String
 		hashMap.put("S1", s1);
 		hashMap.put("S2", s2);
 		hashMap.put("S3", s3);
@@ -47,6 +58,7 @@ public class Robot implements Serializable {
 
 	}
 
+	// Pareil mais pour le mode triche avec moins de bateaux
 	public Grille jeuTriche() {
 
 		Grille grilleR = new Grille(15, 15);

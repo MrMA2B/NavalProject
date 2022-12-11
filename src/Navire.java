@@ -8,6 +8,7 @@ abstract class Navire implements Serializable {
 	public int pv;
 	public int length;
 
+	// Constructeur
 	public Navire() {
 	}
 
@@ -56,35 +57,44 @@ abstract class Navire implements Serializable {
 		return false;
 	}
 
+	// Méthode shoot de savoir quoi faire en fonction de la case
 	public boolean shoot(int x, int y, Grille grille, HashMap<String, Navire> hashMap) {
+		// Si c'est un point alors on change pour un O
 		if (grille.getCase(x, y).equals(". ")) {
 			grille.changeCase(x, y, "O ");
 			return true;
 		}
 
+		// Si c'est une case déjà touché O alors on retest car on sait jamais des
+		// navires peuvent se déplacer sur cette case
 		if (grille.getCase(x, y).equals("O ")) {
 			grille.changeCase(x, y, "O ");
 			return true;
 		}
-
+		// Si ce sont des sous-marin alors on peut pas car shoot est propre à tous les
+		// navires sauf les sous-marins
 		if (grille.getCase(x, y).equals("S1") || grille.getCase(x, y).equals("S2") || grille.getCase(x, y).equals("S3")
 				|| grille.getCase(x, y).equals("S4")) {
 			System.out.println("Vous ne pouvez pas toucher de sous-marin avec ce navire");
 			return true;
 		}
 
+		// Si c'est déjà touché alors on ne peut pas et on affiche pq
 		if (grille.getCase(x, y).equals("T ") || grille.getCase(x, y).equals("X ")) {
 			System.out.println("Vous ne pouvez pas tirer sur un une case déjà touchée.");
 			return true;
 		}
 
+		// Dans tous les autres cas alors càd qu'on tire sur des navires
 		else {
+			// Si ses pv sont sup à 1 alors on le touche
 			if (getNavire(hashMap, grille.getCase(x, y)).pv > 1) {
 
 				getNavire(hashMap, grille.getCase(x, y)).pv--;
 
 				grille.changeCase(x, y, "T ");
 				return true;
+				// Sinon alors on le coule
 			} else {
 				getNavire(hashMap, grille.getCase(x, y)).pv--;
 				grille.testerCouler(x, y, grille.getAxe2(x, y),

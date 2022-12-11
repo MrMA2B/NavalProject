@@ -1,4 +1,10 @@
 
+/**
+ * This class define all the methods' Cuirasses
+ *
+ * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
+ */
+
 import java.io.Serializable;
 import java.util.*;
 import java.util.Scanner;
