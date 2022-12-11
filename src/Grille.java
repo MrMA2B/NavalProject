@@ -320,7 +320,7 @@ public class Grille implements Serializable {
 		}
 		if (axe == 1) {
 			if (grille[i][j - 1] == "T ") {
-				while (grille[i][j] == "T " || grille[i][j] == strnav) {
+				while ((grille[i][j] == "T " || grille[i][j] == strnav)) {
 					j = j - 1;
 				}
 				j = j + 1;
