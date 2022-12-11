@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.util.*;
 import java.util.Scanner;
 
 public class main implements Serializable {
@@ -23,12 +24,28 @@ public class main implements Serializable {
 			System.out.println("3 : Pour obtenir de l'aide");
 			System.out.println("4 : Pour quitter");
 
-			System.out.print("Faites votre choix :");
-			int choix = sc.nextInt();
+			int choix = 0;
+
+			while ((choix != 1) && (choix != 2) && (choix != 3) && (choix != 4)) {
+				try {
+					System.out.print("\nFaites votre choix : ");
+					choix = sc.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("\nContrordre Amiral ! On attend de vous :\nl");
+					System.out.println("	- De lancer une partie (1)");
+					System.out.println("	- De charger une partie (2)");
+					System.out.println("	- D'obtenir de l'aide (3)");
+					System.out.println("	- Ou de quitter (4)");
+					sc.next();
+					continue;
+				}
+			}
+
 			switch (choix) {
 			case 1:
 				JeuTriche j = new JeuTriche();
 				j.newGame();
+				break;
 			case 2:
 				Deserialisation charger = new Deserialisation();
 				charger.verifierExistenceFichier();

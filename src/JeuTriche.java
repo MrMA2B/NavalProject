@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public class JeuTriche implements Serializable {
 
 	public void newGame() {
 
-		System.out.println("Vous jouez contre un ordinateur. Saurez-vous vous montrer plus stratégique que lui ?");
+		System.out.println("\nVous jouez contre un ordinateur. Saurez-vous vous montrer plus stratégique que lui ?");
 
 		Joueur joueur = new Joueur();
 		Robot robot = new Robot();
@@ -36,9 +37,13 @@ public class JeuTriche implements Serializable {
 
 		ArrayList<String> listOfBoatRadomTargetChoice = new ArrayList<String>(Arrays.asList("S1", "D1", "F1", "C0"));
 		ArrayList<Character> listOfRandomPositionChoice = new ArrayList<Character>(Arrays.asList('H', 'B', 'G', 'D'));
+		ArrayList<String> listOfCoordX = new ArrayList<>(
+				Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"));
+		ArrayList<Integer> listOfCoordY = new ArrayList<>(
+				Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14));
 		Random random = new Random();
 
-		while ((generalPvH > 0) && (generalPvR > 0)) { // NE PAS OUBLIER DE GETTER LE PV GENERAL EN FIN DE BOUCLE
+		while ((generalPvH > 0) && (generalPvR > 0)) {
 
 			System.out.println("\nC'est votre tour moussaillon ! \n");
 
@@ -50,35 +55,83 @@ public class JeuTriche implements Serializable {
 			System.out.println("\nEntrez 1 pour : Tirer");
 			System.out.println("Entrez 2 pour : Déplacer");
 
-			System.out.print("En attente d'ordre d'action : ");
-			int actionChoice = sc0.nextInt();
+			int actionChoice = 0;
+
+			while ((actionChoice != 1) && (actionChoice != 2)) {
+				try {
+					System.out.print("\nEn attente d'ordre d'action : ");
+					actionChoice = sc0.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("\nContrordre Amiral ! On attend de vous :\n");
+					System.out.println("	- De tirer (1)");
+					System.out.println("	- De déplacer un navire (2)");
+					sc0.next();
+					continue;
+				}
+			}
 
 			if (actionChoice == 1) {
 
-				System.out.print("Depuis quel navire voulez-vous tirer ?");
+				System.out.print("\nDepuis quel navire voulez-vous tirer ?");
 				String targetChoice = sc1.nextLine();
 
+				while (!listOfBoatRadomTargetChoice.contains(targetChoice)) {
+					System.out.println("\nContrordre Amiral ! On attend de vous d'identifier un navire parmi :\n");
+					System.out.println("	S1, D1, F1, et C0");
+					System.out.print("\nDepuis quel navire voulez-vous tirer ?");
+					targetChoice = sc1.nextLine();
+				}
+
 				Navire navireH = hashMapBoatsOfJoueur.get(targetChoice);
+
+				while (navireH.getPv() == 0) {
+					System.out.println("\nVous ne pouvez pas tirer à partir d'un navire coulé");
+					System.out.print("Depuis quel navire voulez-vous tirer ?");
+					targetChoice = sc1.nextLine();
+					while (!listOfBoatRadomTargetChoice.contains(targetChoice)) {
+						System.out
+								.println("\nContrordre Amiral ! On attend de vous d'identifier parmi ceux restant :\n");
+						System.out.print("\nDepuis quel navire voulez-vous tirer ?");
+						targetChoice = sc1.nextLine();
+					}
+					navireH = hashMapBoatsOfJoueur.get(targetChoice);
+				}
+
 				boolean testH = false;
 
 				while (testH == false) {
 
-					System.out.print("Entrez les coordonées X de votre cible (ex : A, G, O) : ");
+					System.out.print("\nEntrez les coordonées X de votre cible (ex : A, G, O) : ");
 					String targetChar = sc2.nextLine();
+
+					while (!listOfCoordX.contains(targetChar)) {
+						System.out.println(
+								"\nContrordre Amiral ! On attend de vous d'identifier une ligne comprise entre A et O :\n");
+						System.out.print("Entrez les coordonées X de votre cible (ex : A, G, O) : ");
+						targetChar = sc2.nextLine();
+					}
+
 					int targetX = grilleR.getColonne(targetChar);
 
-					System.out.print("Entrez les coordonées Y de votre cible (ex : 1, 6, 15) : ");
-					int targetY = sc3.nextInt() - 1;
+					int targetY = 22;
+
+					while (!listOfCoordY.contains(targetY)) {
+						try {
+							System.out.print("Entrez les coordonées Y de votre cible (ex : 1, 6, 15) : ");
+							targetY = sc3.nextInt() - 1;
+						} catch (InputMismatchException e) {
+							System.out.println(
+									"\nContrordre Amiral ! On attend de vous d'identifier une colonne comprise entre 1 et 15 :\n");
+							sc3.next();
+							continue;
+						}
+					}
 
 					testH = navireH.tirer(targetX, targetY, grilleR, hashMapBoatsOfRobot);
 
 					generalPvH = joueur.getGeneralPvHTriche();
 					generalPvR = robot.getGeneralPvRTriche();
 
-					System.out.println("Voici votre grille mon Amiral : ");
-					grilleH.afficher();
-					System.out.println("Voici la grille ennemie : ");
-					grilleR.afficher();
 				}
 			}
 			if (actionChoice == 2) {
@@ -86,10 +139,23 @@ public class JeuTriche implements Serializable {
 				System.out.print("Quel navire voulez-vous déplacer ?");
 				String choosenBoat = sc4.nextLine();
 
+				while (!listOfBoatRadomTargetChoice.contains(choosenBoat)) {
+					System.out.println("\nContrordre Amiral ! On attend de vous d'identifier un navire parmi :\n");
+					System.out.println("	S1, D1, F1, et C0");
+					System.out.print("\nDepuis quel navire voulez-vous tirer ?");
+					choosenBoat = sc4.nextLine();
+				}
+
 				while (hashMapBoatsOfJoueur.get(choosenBoat).getPv() != hashMapBoatsOfJoueur.get(choosenBoat).length) {
-					System.out.println("Le bateau selectionné ne peut pas être déplacé car il a déjà été touché.");
+					System.out.println("\nLe bateau selectionné ne peut pas être déplacé car il a déjà été touché.");
 					System.out.print("Quel navire voulez-vous déplacer : ");
 					choosenBoat = sc4.nextLine();
+					while (!listOfBoatRadomTargetChoice.contains(choosenBoat)) {
+						System.out.println(
+								"\nContrordre Amiral ! On attend de vous d'identifier un navire parmi ceux restant :\n");
+						System.out.println("	S1, D1, F1, et C0");
+						choosenBoat = sc4.nextLine();
+					}
 				}
 
 				if (grilleH.getAxe(choosenBoat) == 0) {
@@ -151,14 +217,7 @@ public class JeuTriche implements Serializable {
 					}
 					grilleH.changeSousmarin(grilleH.getX(choosenBoat), grilleH.getY(choosenBoat), chosenDirection,
 							choosenBoat);
-
 				}
-
-				System.out.println("Voici votre grille mon Amiral : ");
-				grilleH.afficher();
-				System.out.println("Voici la grille ennemie : ");
-				grilleR.afficher();
-
 			}
 
 			System.out.println("\n Au tour de l'ennemi... \n");
@@ -170,6 +229,11 @@ public class JeuTriche implements Serializable {
 
 			int randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
 			char randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+			
+			System.out.println("Voici votre grille mon Robot Amiral : ");
+			grilleR.afficher();
+			System.out.println("Voici la grille de l'ennemi humain : ");
+			grilleH.affichercacher();
 
 			switch (randomActionChoice) {
 
@@ -181,6 +245,12 @@ public class JeuTriche implements Serializable {
 																								// ....
 				int randomTargetY = random.nextInt(15);
 				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
+
+				while (hashMapBoatsOfRobot.get(randomTargetChoice).getPv() == 0) {
+					indexOfBoatRadomTargetChoice = random.nextInt(listOfBoatRadomTargetChoice.size());
+					randomTargetChoice = listOfBoatRadomTargetChoice.get(indexOfBoatRadomTargetChoice);
+					navireR = hashMapBoatsOfRobot.get(randomTargetChoice);
+				}
 
 				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfJoueur);
 
@@ -195,13 +265,14 @@ public class JeuTriche implements Serializable {
 
 			case 1: // déplacer
 
-				while (hashMapBoatsOfJoueur.get(randomTargetChoice)
-						.getPv() != hashMapBoatsOfJoueur.get(randomTargetChoice).length) {
-
+				while (hashMapBoatsOfRobot.get(randomTargetChoice)
+						.getPv() != hashMapBoatsOfRobot.get(randomTargetChoice).length) {
 					indexOfBoatRadomTargetChoice = random.nextInt(listOfBoatRadomTargetChoice.size());
 					randomTargetChoice = listOfBoatRadomTargetChoice.get(indexOfBoatRadomTargetChoice);
 					navireR = hashMapBoatsOfRobot.get(randomTargetChoice);
 				}
+
+				System.out.println(navireR);
 
 				if (grilleR.getAxe(randomTargetChoice) == 0) {
 
