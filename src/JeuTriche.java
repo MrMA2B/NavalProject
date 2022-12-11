@@ -17,10 +17,14 @@ public class JeuTriche implements Serializable {
 	Scanner sc8 = new Scanner(System.in);
 	Scanner sc9 = new Scanner(System.in);
 	Scanner sc10 = new Scanner(System.in);
+	Scanner sc11 = new Scanner(System.in);
 
 	public void newGame() {
 
 		System.out.println("Vous jouez contre un ordinateur. Saurez-vous vous montrer plus stratégique que lui ?");
+		
+		System.out.println("Entrez le nom de la partie : ");
+		String nomPartie = sc11.nextLine();
 
 		Joueur joueur = new Joueur();
 		Robot robot = new Robot();
@@ -253,6 +257,9 @@ public class JeuTriche implements Serializable {
 
 			generalPvH = joueur.getGeneralPvHTriche();
 			generalPvR = robot.getGeneralPvRTriche();
+			
+			Serialisation save = new Serialisation();
+			save.sauvegarde(nomPartie, this);
 		}
 	}
 

@@ -23,35 +23,18 @@ public class Deserialisation implements Serializable{
 			fichier = new File(nomFichier);
 		} 
 		restaurer(nomFichier);
+
 		
 	}
 
+	@SuppressWarnings("unused")
 	public void restaurer(String nomFichier) {
 
 		try (FileInputStream fis = new FileInputStream(nomFichier);
 				ObjectInputStream ois = new ObjectInputStream(fis)) {
 
-			Grille grille = (Grille) ois.readObject();
-			Navire navire = (Navire) ois.readObject();
-
-			Fregate fregate = (Fregate) ois.readObject();
-			Fregate f1 = (Fregate) ois.readObject();
-			Fregate f2 = (Fregate) ois.readObject();
-
-			Sousmarin sousmarin = (Sousmarin) ois.readObject();
-			Sousmarin s1 = (Sousmarin) ois.readObject();
-			Sousmarin s2 = (Sousmarin) ois.readObject();
-			Sousmarin s3 = (Sousmarin) ois.readObject();
-			Sousmarin s4 = (Sousmarin) ois.readObject();
-
-			Cuirasses cuirasses = (Cuirasses) ois.readObject();
-			Cuirasses c1 = (Cuirasses) ois.readObject();
-
-			Destroyers destroyers = (Destroyers) ois.readObject();
-			Destroyers d1 = (Destroyers) ois.readObject();
-			Destroyers d2 = (Destroyers) ois.readObject();
-			Destroyers d3 = (Destroyers) ois.readObject();
-
+			JeuTriche jeu = (JeuTriche) ois.readObject();
+			
 			ois.close();
 		}
 
