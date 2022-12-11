@@ -51,6 +51,8 @@ public class JeuTriche implements Serializable {
 		ArrayList<Integer> listOfCoordY = new ArrayList<>(
 				Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14));
 		Random random = new Random();
+		
+		int tour = 0;
 
 		// Ici on test pour chaque tour si il reste des navires à toucher
 		while ((generalPvH > 0) && (generalPvR > 0)) {
@@ -154,7 +156,6 @@ public class JeuTriche implements Serializable {
 
 					generalPvH = joueur.getGeneralPvHTriche();
 					generalPvR = robot.getGeneralPvRTriche();
-
 				}
 			}
 
@@ -362,6 +363,8 @@ public class JeuTriche implements Serializable {
 
 			generalPvH = joueur.getGeneralPvHTriche();
 			generalPvR = robot.getGeneralPvRTriche();
+			
+			tour++;
 		}
 
 		// Ici on sort de la boucle while càd que une des 2 grille a tous ses bateaux
@@ -370,10 +373,10 @@ public class JeuTriche implements Serializable {
 		// Ici si les pv de la grille homme sont à 0 alors on affiche que l'homme a
 		// perdu
 		if (generalPvH == 0) {
-			System.out.println("Dommage vous avez perdu.");
+			System.out.println("Dommage vous avez perdu en "+tour+" tours");
 			// Sinon alors on a gagné
 		} else {
-			System.out.println("Bravo vous avez été plus fort que le robot Amiral !");
+			System.out.println("Bravo vous avez été plus fort que le robot Amiral ! Vous avez gagné en "+tour+" tours");
 		}
 	}
 
