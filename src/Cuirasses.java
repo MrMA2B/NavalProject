@@ -1,13 +1,12 @@
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Cuirasses extends Navire implements Serializable{
+public class Cuirasses extends Navire implements Serializable {
 
 	public Cuirasses() {
 		super();
 		pv = 7;
-		length=7;
-
+		length = 7;
 	}
 
 	public void placer(Grille grille) {
@@ -44,11 +43,11 @@ public class Cuirasses extends Navire implements Serializable{
 	 */
 
 	@Override
-	public boolean tirer(int y, int x, Grille grille,HashMap<String, Navire> hashMap) {
+	public boolean tirer(int y, int x, Grille grille, HashMap<String, Navire> hashMap) {
 		if ((y > 0) && (x > 0) && (y < 14) && (x < 14)) {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -57,7 +56,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y == 0) && (x == 0)) {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x; j <= x + 1; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -66,7 +65,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y > 0) && (x == 0) && (y < 14)) {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x; j <= x + 1; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -75,7 +74,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y == 14) && (x == 0)) {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x; j <= x + 1; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -84,7 +83,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y == 14) && (x > 0) && (x < 14)) {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -93,7 +92,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y == 14) && (x == 14)) {
 			for (int i = y - 1; i <= y; i++) {
 				for (int j = x - 1; j <= x; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -102,7 +101,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y > 0) && (x == 14) && (y < 14)) {
 			for (int i = y - 1; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -111,7 +110,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y == 0) && (x == 14)) {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;
@@ -120,7 +119,7 @@ public class Cuirasses extends Navire implements Serializable{
 		else if ((y == 0) && (x > 0) && (x < 14)) {
 			for (int i = y; i <= y + 1; i++) {
 				for (int j = x - 1; j <= x + 1; j++) {
-					shoot(i, j, grille,hashMap);
+					shoot(i, j, grille, hashMap);
 				}
 			}
 			return true;

@@ -1,12 +1,12 @@
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Sousmarin extends Navire implements Serializable{
-	
+public class Sousmarin extends Navire implements Serializable {
+
 	public Sousmarin() {
 		super();
 		pv = 1;
-		length=	1;
+		length = 1;
 	}
 
 	public void placer(Grille grille, String s) {
@@ -18,7 +18,7 @@ public class Sousmarin extends Navire implements Serializable{
 	}
 
 	@Override
-	public boolean tirer(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
+	public boolean tirer(int x, int y, Grille grille, HashMap<String, Navire> hashMap) {
 		if (grille.getCase(x, y) == ". ") {
 			grille.changeCase(x, y, "O ");
 			return true;
@@ -26,7 +26,7 @@ public class Sousmarin extends Navire implements Serializable{
 
 		if (grille.getCase(x, y).equals("S1") || grille.getCase(x, y).equals("S2") || grille.getCase(x, y).equals("S3")
 				|| grille.getCase(x, y).equals("S4")) {
-			
+
 			getNavire(hashMap, grille.getCase(x, y)).pv--;
 			grille.changeCase(x, y, "X ");
 			return true;

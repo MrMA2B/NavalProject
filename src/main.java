@@ -22,7 +22,7 @@ public class main implements Serializable {
 			System.out.println("2 : Pour charger une partie");
 			System.out.println("3 : Pour obtenir de l'aide");
 			System.out.println("4 : Pour quitter");
-			
+
 			System.out.print("Faites votre choix :");
 			int choix = sc.nextInt();
 			switch (choix) {

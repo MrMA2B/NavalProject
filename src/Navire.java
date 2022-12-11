@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 
-abstract class Navire implements Serializable{
+abstract class Navire implements Serializable {
 	public int x;
 	public int y;
 	public int pv;
@@ -52,11 +52,11 @@ abstract class Navire implements Serializable{
 		return true;
 	}
 
-	public boolean tirer(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
+	public boolean tirer(int x, int y, Grille grille, HashMap<String, Navire> hashMap) {
 		return false;
 	}
 
-	public boolean shoot(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
+	public boolean shoot(int x, int y, Grille grille, HashMap<String, Navire> hashMap) {
 		if (grille.getCase(x, y).equals(". ")) {
 			grille.changeCase(x, y, "O ");
 			return true;
@@ -73,23 +73,23 @@ abstract class Navire implements Serializable{
 			return true;
 		}
 
-		if (grille.getCase(x, y).equals("T ")||grille.getCase(x, y).equals("X ")) {
+		if (grille.getCase(x, y).equals("T ") || grille.getCase(x, y).equals("X ")) {
 			System.out.println("Vous ne pouvez pas tirer sur un une case déjà touchée.");
 			return true;
 		}
 
 		else {
-			if(getNavire(hashMap, grille.getCase(x, y)).pv>1) {
-				
+			if (getNavire(hashMap, grille.getCase(x, y)).pv > 1) {
+
 				getNavire(hashMap, grille.getCase(x, y)).pv--;
-				
+
 				grille.changeCase(x, y, "T ");
 				return true;
-			}
-			else {
+			} else {
 				getNavire(hashMap, grille.getCase(x, y)).pv--;
-				grille.testerCouler(x, y,grille.getAxe2(x,y),getNavireString(hashMap,getNavire(hashMap,grille.getCase(x, y))));
-				return true;	
+				grille.testerCouler(x, y, grille.getAxe2(x, y),
+						getNavireString(hashMap, getNavire(hashMap, grille.getCase(x, y))));
+				return true;
 			}
 		}
 	}

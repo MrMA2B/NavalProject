@@ -2,14 +2,14 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class Destroyers extends Navire implements Serializable {
-	
+
 	public Destroyers() {
 		super();
 		pv = 3;
-		length=3;
+		length = 3;
 	}
 
-	public void placer(Grille grille,String s) {
+	public void placer(Grille grille, String s) {
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 12);
 		int axe = (int) (Math.random() * 2);
@@ -34,8 +34,8 @@ public class Destroyers extends Navire implements Serializable {
 	}
 
 	@Override
-	public boolean tirer(int x, int y, Grille grille,HashMap<String, Navire> hashMap) {
-		shoot(x,y,grille,hashMap);
+	public boolean tirer(int x, int y, Grille grille, HashMap<String, Navire> hashMap) {
+		shoot(x, y, grille, hashMap);
 		return true;
 	}
 }

@@ -39,12 +39,12 @@ public class Jeu implements Serializable {
 		ArrayList<Character> listOfRandomPositionChoice = new ArrayList<Character>(Arrays.asList('H', 'B', 'G', 'D'));
 		Random random = new Random();
 
-		System.out.println("Voici votre grille mon Amiral : ");
+		System.out.println("Voici votre grille Amiral : ");
 		grilleH.afficher();
 		System.out.println("Voici la grille ennemie : ");
 		grilleR.affichercacher();
 
-		while ((generalPvH > 0) && (generalPvR > 0)) { // NE PAS OUBLIER DE GETTER LE PV GENERAL EN FIN DE BOUCLE
+		while ((generalPvH > 0) && (generalPvR > 0)) {
 			System.out.println("C'est votre tour moussaillon ! \n");
 			System.out.println("Entrez 1 pour : Tirer");
 			System.out.println("Entrez 2 pour : Déplacer");
@@ -54,7 +54,7 @@ public class Jeu implements Serializable {
 
 			if (actionChoice == 1) {
 
-				System.out.print("Depuis quel navire voulez-vous tirer ?");
+				System.out.print("\nDepuis quel navire voulez-vous tirer ?");
 				String targetChoice = sc1.nextLine();
 
 				Navire navireH = hashMapBoatsOfJoueur.get(targetChoice);
@@ -70,14 +70,10 @@ public class Jeu implements Serializable {
 					int targetY = sc3.nextInt() - 1;
 
 					testH = navireH.tirer(targetX, targetY, grilleR, hashMapBoatsOfRobot);
-					
+
 					generalPvH = joueur.getGeneralPvH();
 					generalPvR = robot.getGeneralPvR();
-					
-					System.out.println("Voici votre grille mon Amiral : ");
-					grilleH.afficher();
-					System.out.println("Voici la grille ennemie : ");
-					grilleR.affichercacher();
+
 				}
 			}
 			if (actionChoice == 2) {
@@ -150,12 +146,6 @@ public class Jeu implements Serializable {
 				} else {
 					System.out.println("Impossible à déplacer : ");
 				}
-
-				System.out.println("Voici votre grille mon Amiral : ");
-				grilleH.afficher();
-				System.out.println("Voici la grille ennemie : ");
-				grilleR.affichercacher();
-
 			}
 
 			System.out.println("\n Au tour de l'ennemi... \n");
@@ -167,6 +157,11 @@ public class Jeu implements Serializable {
 
 			int randomIndexDirection = random.nextInt(listOfRandomPositionChoice.size());
 			char randomPositionChoice = listOfRandomPositionChoice.get(randomIndexDirection);
+
+			System.out.println("Voici votre grille Robot Amiral : ");
+			grilleR.afficher();
+			System.out.println("Voici la grille de l'ennemi humain : ");
+			grilleH.affichercacher();
 
 			switch (randomActionChoice) {
 
@@ -180,21 +175,17 @@ public class Jeu implements Serializable {
 				System.out.println("L'ordinateur à choisi la coordonnée Y : " + randomTargetY);
 
 				navireR.tirer(randomTargetX, randomTargetY, grilleH, hashMapBoatsOfJoueur);
-				
+
 				generalPvH = joueur.getGeneralPvH();
 				generalPvR = robot.getGeneralPvR();
 
-				System.out.println("Voici votre grille mon Robot Amiral : ");
-				grilleR.afficher();
-				System.out.println("Voici la grille de l'ennemi humain : ");
-				grilleH.affichercacher();
 				break;
 
 			case 1: // déplacer
 				System.out.println("Le Robot Amiral à choisi de déplacer le navire : " + randomTargetChoice);
-				
+
 				if (hashMapBoatsOfRobot.get(randomTargetChoice).getPv() == grilleR.getNbrcase(randomTargetChoice)) {
-					
+
 					if (grilleR.getAxe(randomTargetChoice) == 0) {
 
 						while (grilleR.testerPos(grilleR.getX(randomTargetChoice), grilleR.getY(randomTargetChoice),
@@ -239,7 +230,7 @@ public class Jeu implements Serializable {
 					System.out.println("Imopossible de déplacer ");
 				}
 
-				System.out.println("Voici votre grille mon Robot Amiral : ");
+				System.out.println("Voici votre grille Robot Amiral : ");
 				grilleR.afficher();
 				System.out.println("Voici la grille de l'ennemi humain : ");
 				grilleH.affichercacher();
