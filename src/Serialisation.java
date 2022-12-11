@@ -6,12 +6,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Serialisation implements Serializable {
-	public void sauvegarde(String nomFichier, JeuTriche jeu) {
+	public void sauvegarde(String nomFichier, JeuTriche jeuTriche) {
 		try {
 			FileOutputStream fos = new FileOutputStream(nomFichier);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-			oos.writeObject(jeu);
+			oos.writeObject(jeuTriche);
 
 			oos.close();
 		}
