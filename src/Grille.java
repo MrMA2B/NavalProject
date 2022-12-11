@@ -1,10 +1,20 @@
 import java.io.Serializable;
+/**
+ * La class Grille permet de générer et modifier la grille de jeux
+ */
+
 
 public class Grille implements Serializable {
 	int ligne;
 	int col;
 	String[][] grille;
-	String bleu = "\u001B[34m";
+	
+	/**
+	 * Permet la création d'une grille en String
+	 * @param n
+	 * @param p
+	 */
+
 
 	public Grille(int n, int p) {
 		ligne = n;
@@ -27,6 +37,9 @@ public class Grille implements Serializable {
 		}
 		return -1;
 	}
+	/**
+	 * Permet l'affichage de la grille
+	 */
 
 	public void afficher() {
 		String[] cologne = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" };
@@ -98,6 +111,14 @@ public class Grille implements Serializable {
 	public void setGrille(String[][] newGrille) {
 		this.grille = newGrille;
 	}
+	
+	/**
+	 * Permet de déplacer un sous marin selon le choix du joueur
+	 * @param i
+	 * @param j
+	 * @param direction
+	 * @param strnav
+	 */
 
 	public void changeSousmarin(int i, int j, char direction, String strnav) {
 		if (direction == 'H') {
@@ -118,6 +139,13 @@ public class Grille implements Serializable {
 		}
 
 	}
+	/**
+	 * Permet de tester si le déplacement est possible pour un sousmarin selon le choix du joueur
+	 * @param i
+	 * @param j
+	 * @param direction
+	 * @return true 
+	 */
 
 	public boolean testerSousmarin(int i, int j, char direction) {
 		if (direction == 'H') {
@@ -142,11 +170,27 @@ public class Grille implements Serializable {
 		}
 		return false;
 	}
+	/**
+	 * Permet de supprimer les anciennes coordonnées d'un navire et de poser les nouvelles coordonnées du navire
+	 * @param x
+	 * @param y
+	 * @param strnav
+	 * @param direction
+	 * @param cases
+	 */
 
 	public void changementPos(int x, int y, String strnav, char direction, int cases) {
 		anciennePos(x, y, strnav, direction, cases);
 		nouvellePos(x, y, strnav, direction, cases);
 	}
+	/**
+	 * Permet de supprimer les anciennes coordonnées d'un navire
+	 * @param x
+	 * @param y
+	 * @param strnav
+	 * @param direction
+	 * @param cases
+	 */
 
 	public void anciennePos(int x, int y, String strnav, char direction, int cases) {
 		int i = x;
@@ -174,13 +218,22 @@ public class Grille implements Serializable {
 			}
 		}
 	}
+	/**
+	 * Permet de poser les nouvelles coordonnées d'un navire
+	 * @param x
+	 * @param y
+	 * @param strnav
+	 * @param direction
+	 * @param cases
+	 */
+
 
 	public void nouvellePos(int x, int y, String strnav, char direction, int cases) {
 		int i = x;
 		int j = y;
 		if (direction == 'H') {
 			i = i - 1;
-			if (grille[i][j] == ". ") {
+			if (grille[i][j] == ". "|| grille[i][j] == "O ") {
 				for (int b = 0; b < cases; b++) {
 					grille[i + b][j] = strnav;
 				}
@@ -188,7 +241,7 @@ public class Grille implements Serializable {
 		}
 		if (direction == 'B') {
 			i = i + 1;
-			if (grille[i][j] == ". ") {
+			if (grille[i][j] == ". "|| grille[i][j] == "O ") {
 				for (int b = 0; b < cases; b++) {
 					grille[i + b][j] = strnav;
 				}
@@ -196,7 +249,7 @@ public class Grille implements Serializable {
 		}
 		if (direction == 'G') {
 			j = j - 1;
-			if (grille[i][j] == ". ") {
+			if (grille[i][j] == ". "|| grille[i][j] == "O ") {
 				for (int b = 0; b < cases; b++) {
 					grille[i][j + b] = strnav;
 				}
@@ -204,7 +257,7 @@ public class Grille implements Serializable {
 		}
 		if (direction == 'D') {
 			j = j + 1;
-			if (grille[i][j] == ". ") {
+			if (grille[i][j] == ". "|| grille[i][j] == "O ") {
 				for (int b = 0; b < cases; b++) {
 					grille[i][j + b] = strnav;
 				}
@@ -212,6 +265,16 @@ public class Grille implements Serializable {
 		}
 
 	}
+	/**
+	 * Permet de tester si le déplacement d'un d'un navire vers une direction est possible
+	 * @param x
+	 * @param y
+	 * @param direction
+	 * @param cases
+	 * @param axe
+	 * @return true
+	 */
+
 
 	public boolean testerPos(int x, int y, char direction, int cases, int axe) {
 		int i = x;
@@ -219,7 +282,7 @@ public class Grille implements Serializable {
 		if (axe == 0) {
 			if (direction == 'H') {
 				if (i - 1 >= 0) {
-					if (grille[i - 1][j] == ". ") {
+					if (grille[i - 1][j] == ". " || grille[i - 1][j] == "O ") {
 						return true;
 					} else {
 						return false;
@@ -228,7 +291,7 @@ public class Grille implements Serializable {
 			}
 			if (direction == 'B') {
 				if (i + 1 < 15) {
-					if (grille[i + cases][j] == ". ") {
+					if (grille[i + cases][j] == ". " && i + cases < 15|| grille[i + cases][j] == "O "&& i + cases < 15) {
 						return true;
 					} else {
 						return false;
@@ -239,7 +302,7 @@ public class Grille implements Serializable {
 		if (axe == 1) {
 			if (direction == 'G') {
 				if (j - 1 >= 0) {
-					if (grille[i][j - 1] == ". ") {
+					if (grille[i][j - 1] == ". "|| grille[j - 1][j] == "O ") {
 						return true;
 					} else {
 						return false;
@@ -248,7 +311,7 @@ public class Grille implements Serializable {
 			}
 			if (direction == 'D') {
 				if (j + 1 < 15) {
-					if (grille[i][j + cases] == ". " && j + cases < col) {
+					if (grille[i][j + cases] == ". " && j + cases < 15 || grille[j + cases][j] == "O "&& j + cases < 15) {
 						return true;
 					} else {
 						return false;
@@ -258,15 +321,23 @@ public class Grille implements Serializable {
 		}
 		return false;
 	}
+	/**
+	 * Permet de récupérer l'axe d'un navire (horizontal ou vertical)
+	 * @param strnav
+	 * @return 0
+	 * @return 1
+	 * @return 2
+	 */
+
 
 	public int getAxe(String strnav) {
 		for (int i = 0; i < ligne; i++) {
 			for (int j = 0; j < col; j++)
 				if (grille[i][j].equals(strnav)) {
-					if (grille[i + 1][j] == grille[i][j]) {
+					if (i+1 < 15 && grille[i + 1][j] == grille[i][j]) {
 						return 0;
 					}
-					if (grille[i][j + 1] == grille[i][j]) {
+					if (j+1 < 15 &&grille[i][j + 1] == grille[i][j]) {
 						return 1;
 					} else {
 						return 2;
@@ -275,6 +346,12 @@ public class Grille implements Serializable {
 		}
 		return 0;
 	}
+	/**
+	 * Permet de récupérer la coordonnées X d'un navire 
+	 * @param strnav
+	 * @return i
+	 */
+
 
 	public int getX(String strnav) {
 		for (int i = 0; i < ligne; i++) {
@@ -286,6 +363,11 @@ public class Grille implements Serializable {
 		}
 		return 0;
 	}
+	/**
+	 * Permet de récupérer la coordonnées Y d'un navire 
+	 * @param strnav
+	 * @return i
+	 */
 
 	public int getY(String strnav) {
 		for (int i = 0; i < ligne; i++) {
@@ -297,17 +379,24 @@ public class Grille implements Serializable {
 		}
 		return 0;
 	}
+	/**
+	 * Permet de vérifier si un navire est totalement touché pour le couler
+	 * @param x
+	 * @param y
+	 * @param axe
+	 * @param strnav
+	 */
 
 	public void testerCouler(int x, int y, int axe, String strnav) {
 		int i = x;
 		int j = y;
 		if (axe == 0) {
 			if (grille[i - 1][j] == "T ") {
-				while (grille[i][j] == "T " || grille[i][j] == strnav) {
-					i = i - 1; // si navire placer en haut out truc
+				while (i>=0 && grille[i][j] == "T " && i>=0 || grille[i][j] == strnav) {
+					i = i - 1; 
 				}
 				i = i + 1;
-				while (grille[i][j] == "T " || grille[i][j] == strnav) {
+				while (i<15 && grille[i][j] == "T " && i<15   || grille[i][j] == strnav) {
 					grille[i][j] = "X ";
 					i = i + 1;
 				}
@@ -320,11 +409,11 @@ public class Grille implements Serializable {
 		}
 		if (axe == 1) {
 			if (grille[i][j - 1] == "T ") {
-				while ((grille[i][j] == "T " || grille[i][j] == strnav)) {
+				while (j>=0 && grille[i][j] == "T "  || j>=0 && grille[i][j] == strnav) {
 					j = j - 1;
 				}
 				j = j + 1;
-				while (grille[i][j] == "T " || grille[i][j] == strnav) {
+				while (j<15 && grille[i][j] == "T "|| j<15 && grille[i][j] == strnav) {
 					grille[i][j] = "X ";
 					j = j + 1;
 				}
@@ -336,6 +425,13 @@ public class Grille implements Serializable {
 			}
 		}
 	}
+	/**
+	 * Permet de récupérer l'axe d'un navire touché
+	 * @param x
+	 * @param y
+	 * @return 0
+	 * @return 1
+	 */
 
 	public int getAxe2(int x, int y) {
 		for (int i = 0; i < ligne; i++) {
@@ -357,6 +453,11 @@ public class Grille implements Serializable {
 		}
 		return 0;
 	}
+	/**
+	 * Permet de récupérer le nombre de cases d'un navire
+	 * @param strnav
+	 * @return cases
+	 */
 
 	public int getNbrcase(String strnav) {
 		int axe = getAxe(strnav);
@@ -364,7 +465,7 @@ public class Grille implements Serializable {
 		int y = getY(strnav);
 		int cases = 0;
 		if (axe == 0) {
-			while (grille[x][y].equals(strnav)) {
+			while (grille[x][y].equals(strnav) && x < 15) {
 				x = x + 1;
 				cases = cases + 1;
 			}
@@ -373,7 +474,7 @@ public class Grille implements Serializable {
 
 		}
 		if (axe == 1) {
-			while (grille[x][y].equals(strnav)) {
+			while (grille[x][y].equals(strnav) && y < 15) {
 				y = y + 1;
 				cases = cases + 1;
 			}

@@ -1,9 +1,4 @@
 
-/**
- * This class define the gameplay. Ie. all the proccess to play
- *
- * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
- */
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +7,11 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+/**
+ * This class define the gameplay. Ie. all the proccess to play
+ *
+ * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
+ */
 
 public class JeuTriche implements Serializable {
 	Scanner sc0 = new Scanner(System.in);

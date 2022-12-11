@@ -4,7 +4,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
+/**
+ * La class permet de sauvegarder la partie 
+ */
 public class Serialisation implements Serializable {
 	public void sauvegarde(String nomFichier, JeuTriche jeuTriche) {
 		try {

@@ -7,6 +7,9 @@
 
 import java.io.Serializable;
 import java.util.HashMap;
+/**
+ * La class fregate est la class qui va gérer tout les paramètres concercant ce navire
+ */
 
 public class Fregate extends Navire implements Serializable {
 
@@ -17,9 +20,12 @@ public class Fregate extends Navire implements Serializable {
 		length = 5;
 	}
 
-	// Methode placer() qui place le navire de maniere aléatoire sur la grille
-	// donnée avec un caractère donnée qui sera le nom affiché du navire sur la
-	// grille (ex : F2)
+	/**
+	 * Méthode qui permet de placer un navire aléatoirement sur la grille
+	 * @param grille
+	 * @param s
+	 */
+
 
 	public void placer(Grille grille, String s) {
 		int l = (int) (Math.random() * 15);

@@ -7,6 +7,9 @@
 
 import java.io.Serializable;
 import java.util.HashMap;
+/**
+ * La class cuirasses est la class qui va gérer tout les paramètres concercant ce navire
+ */
 
 public class Sousmarin extends Navire implements Serializable {
 
@@ -17,7 +20,12 @@ public class Sousmarin extends Navire implements Serializable {
 		length = 1;
 	}
 
-	// On place le sous-marin
+	/**
+	 * Méthode qui permet de placer un navire aléatoirement sur la grille
+	 * @param grille
+	 * @param s
+	 */
+
 	public void placer(Grille grille, String s) {
 		int l = (int) (Math.random() * 15);
 		int c = (int) (Math.random() * 15);

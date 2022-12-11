@@ -1,6 +1,9 @@
 import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
+/**
+ * La class Navire va appliquer des méthodes générales pour l'ensemble des navires
+ */
 
 abstract class Navire implements Serializable {
 	public int x;
@@ -11,6 +14,16 @@ abstract class Navire implements Serializable {
 	// Constructeur
 	public Navire() {
 	}
+	/**
+	 * La méthode testA permet de vérifier si les coordonnées pour placer un navire son disponible si son axe est verticale
+	 * @param taille
+	 * @param c
+	 * @param l
+	 * @param strnav
+	 * @param grille
+	 * return true
+	 * return false
+	 */
 
 	public boolean testA(int taille, int c, int l, String strnav, Grille grille) {
 		int cases = 0;
@@ -32,6 +45,16 @@ abstract class Navire implements Serializable {
 		}
 
 	}
+	/**
+	 * La méthode testB permet de vérifier si les coordonnées pour placer un navire son disponible si son axe est horizontale
+	 * @param taille
+	 * @param c
+	 * @param l
+	 * @param strnav
+	 * @param grille
+	 * return true
+	 * return false
+	 */
 
 	public boolean testB(int taille, int l, int c, String strnav, Grille grille) {
 		int cases = 0;
@@ -57,7 +80,17 @@ abstract class Navire implements Serializable {
 		return false;
 	}
 
-	// Méthode shoot de savoir quoi faire en fonction de la case
+	/**
+	 * La méthode permet de vérifier les coordonnées sur lequel le joueur veut tirer
+	 * @param x
+	 * @param y
+	 * @param grille
+	 * @param hashMap
+	 * @param grille
+	 * return true
+	 * return false
+	 */
+
 	public boolean shoot(int x, int y, Grille grille, HashMap<String, Navire> hashMap) {
 		// Si c'est un point alors on change pour un O
 		if (grille.getCase(x, y).equals(". ")) {
@@ -103,18 +136,33 @@ abstract class Navire implements Serializable {
 			}
 		}
 	}
+	/**
+	 * La méthode permet de récuperer le nombre de point de vie d'un navire
+	 * @return pv
+	 */
 
 	public int getPv() {
 		return this.pv;
 	}
+	/**
+	 * La méthode d'enlever 1 à pv
+	 */
 
 	public void touche(Navire navire) {
 		navire.pv--;
 	}
+	/**
+	 * Permet de récupérer la coordonnée X
+	 * return x
+	 */
 
 	public int getPositionX() {
 		return x;
 	}
+	/**
+	 * Permet de récupérer la coordonnée Y
+	 * return y
+	 */
 
 	public int getPositionY() {
 		return y;

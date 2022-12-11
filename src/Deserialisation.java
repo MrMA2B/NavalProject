@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Scanner;
-
+/**
+ * La class permet de restaurer une partie 
+ */
 public class Deserialisation implements Serializable {
 	static Scanner sc = new Scanner(System.in);
 

@@ -1,13 +1,12 @@
 
+
+import java.io.Serializable;
+import java.util.*;
 /**
  * This class define a Joueur
  *
  * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
  */
-
-import java.io.Serializable;
-import java.util.*;
-
 public class Joueur implements Serializable {
 	HashMap<String, Navire> hashMap = new HashMap<String, Navire>();
 
