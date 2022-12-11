@@ -392,11 +392,11 @@ public class Grille implements Serializable {
 		int j = y;
 		if (axe == 0) {
 			if (grille[i - 1][j] == "T ") {
-				while (i>=0 && grille[i][j] == "T " && i>=0 || grille[i][j] == strnav) {
+				while (i>=0 && grille[i][j] == "T " || i>=0 && grille[i][j] == strnav) {
 					i = i - 1; 
 				}
 				i = i + 1;
-				while (i<15 && grille[i][j] == "T " && i<15   || grille[i][j] == strnav) {
+				while (i<15 && grille[i][j] == "T " || i<15 && grille[i][j] == strnav) {
 					grille[i][j] = "X ";
 					i = i + 1;
 				}
