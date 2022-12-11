@@ -27,7 +27,7 @@ public class main implements Serializable {
 			int choix = sc.nextInt();
 			switch (choix) {
 			case 1:
-				JeuTriche j = new JeuTriche();
+				Jeu j = new Jeu();
 				j.newGame();
 			case 2:
 				Deserialisation charger = new Deserialisation();
