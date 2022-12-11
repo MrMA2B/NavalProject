@@ -1,3 +1,10 @@
+
+/**
+ * This class define a sous-marin
+ *
+ * @author Adrien MATTEI, Thierry RINGLET, Felix HUMEAU, Augustin MEAUDRE
+ */
+
 import java.io.Serializable;
 import java.util.HashMap;
 
